@@ -14,6 +14,8 @@
 #include "movement.hpp"
 #include "routes/routes.hpp"
 
+#include "iostream"
+
 using namespace vex;
 
 // A global instance of competition
@@ -241,9 +243,9 @@ if(AutoSelectorVal==2)// awp mid steal
 
 }
 
-if(AutoSelectorVal==3)// 5 Ball rush
+if(AutoSelectorVal==3)// brin
 {
-  
+  ringquad();
 } 
 
 if(AutoSelectorVal==4)// Elim-Steal
@@ -297,6 +299,7 @@ int ATask(void)
     while(true)
   {
     pow=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
+    std::cout << "hi" << std::endl;
     RunRoller(-pow);
     
   
