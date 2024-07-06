@@ -233,12 +233,12 @@ Zeroing(true,true);
 //Put Auto route function into if statements to use autoselector
 if(AutoSelectorVal==1)//Quali close 6 triball auto 
 {
-  test();
+  //test();
 }
 
 if(AutoSelectorVal==2)// awp mid steal
 {
-  test2();
+  //test2();
 
 }
 
@@ -355,7 +355,7 @@ int PTask(void)
     {
       ButtonPressingB=1;
       BTaskActiv=1;
-      Pistake.set(true);
+      Climb.set(true);
     }
 
     else if(!Controller1.ButtonB.pressing())ButtonPressingB=0;
@@ -364,7 +364,7 @@ int PTask(void)
     {
       ButtonPressingB=1;
       BTaskActiv=0;
-      Pistake.set(false);
+      Climb.set(false);
     }
 
     
