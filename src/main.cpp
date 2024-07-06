@@ -125,7 +125,6 @@ Brain.Screen.print("StealAWP");
 Brain.Screen.setFont(monoM);
   Brain.Screen.setFillColor("#39FF14");
 }
-
 if(AutoSelectorVal==3){
 
 Brain.Screen.setFillColor(black);
@@ -133,9 +132,9 @@ Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
 Brain.Screen.setPenColor("#39FF14");
 Brain.Screen.setCursor(3,10);
-Brain.Screen.print("GOAL SIDE");
+Brain.Screen.print("BRIN");
 Brain.Screen.setCursor(4,10);
-Brain.Screen.print("5 BALL");
+Brain.Screen.print("BRIN");
 Brain.Screen.setFont(monoM);  
   Brain.Screen.setFillColor("#39FF14");
 }
@@ -311,6 +310,7 @@ int ATask(void)
 
 int ButtonPressingX,XTaskActiv;
 int ButtonPressingY,YTaskActiv;
+int ButtonPressingB,BTaskActiv;
 
 int PTask(void)
 {
@@ -350,6 +350,24 @@ int PTask(void)
       Clamp.set(false);
     }
 
+    //Toggles Climb
+     if(BTaskActiv==0&&Controller1.ButtonB.pressing()&&ButtonPressingB==0)
+    {
+      ButtonPressingB=1;
+      BTaskActiv=1;
+      Pistake.set(true);
+    }
+
+    else if(!Controller1.ButtonB.pressing())ButtonPressingB=0;
+
+    else if(YTaskActiv==1&&Controller1.ButtonB.pressing()&&ButtonPressingB==0)
+    {
+      ButtonPressingB=1;
+      BTaskActiv=0;
+      Pistake.set(false);
+    }
+
+    
 
 
   }
