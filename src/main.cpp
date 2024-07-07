@@ -244,7 +244,7 @@ if(AutoSelectorVal==2)// awp mid steal
 
 if(AutoSelectorVal==3)// brin
 {
-  ringquad();
+  two_ring_route();
 } 
 
 if(AutoSelectorVal==4)// Elim-Steal
