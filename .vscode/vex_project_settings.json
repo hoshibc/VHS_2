@@ -1,10 +1,10 @@
 {
 	"project": {
-		"name": "silver_owl_robotics",
+		"name": "High_Stakes_3150N",
 		"slot": 3,
 		"description": "Empty V5 C++ Project",
 		"platform": "V5",
-		"creationDate": "Thu, 02 May 2024 21:06:46 GMT",
+		"creationDate": "Sun, 07 Jul 2024 00:24:25 GMT",
 		"language": "cpp",
 		"sdkVersion": "V5_20240223_11_00_00",
 		"cpp": {
@@ -12,7 +12,7 @@
 		}
 	},
 	"extension": {
-		"version": "0.5.0",
+		"version": "0.6.0",
 		"json": 1
 	}
 }

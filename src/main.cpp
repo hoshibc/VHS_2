@@ -132,9 +132,9 @@ Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
 Brain.Screen.setPenColor("#39FF14");
 Brain.Screen.setCursor(3,10);
-Brain.Screen.print("BRIN");
+Brain.Screen.print("TWO");
 Brain.Screen.setCursor(4,10);
-Brain.Screen.print("BRIN");
+Brain.Screen.print("RING");
 Brain.Screen.setFont(monoM);  
   Brain.Screen.setFillColor("#39FF14");
 }
@@ -284,8 +284,8 @@ int DriveTask(void){
   while(true)
   {
     EXIT=true;
-    RV=-Controller1.Axis3.position(percent)+Controller1.Axis1.position(percent);
-    LV=-Controller1.Axis3.position(percent)-Controller1.Axis1.position(percent);
+    RV=Controller1.Axis3.position(percent)-Controller1.Axis1.position(percent);
+    LV=Controller1.Axis3.position(percent)+Controller1.Axis1.position(percent);
     Move(LV,RV);
   }
 

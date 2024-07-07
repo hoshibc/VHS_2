@@ -44,7 +44,7 @@ void DisplayWords(void)
   Brain.Screen.print("6 Ball");
 
   Brain.Screen.setCursor(7,3);
-  Brain.Screen.print("5 Ball");
+  Brain.Screen.print("TWO RING");
 
     Brain.Screen.setCursor(11,3);
   Brain.Screen.print("GS-AWP");

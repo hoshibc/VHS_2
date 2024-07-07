@@ -7,5 +7,5 @@
 
 extern void test();
 extern void test2();
-extern void ringquad();
+extern void two_ring_route();
 #endif
