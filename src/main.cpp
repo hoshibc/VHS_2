@@ -355,7 +355,7 @@ int PTask(void)
     {
       ButtonPressingB=1;
       BTaskActiv=1;
-      Climb.set(true);
+      Climb.set(false);
     }
 
     else if(!Controller1.ButtonB.pressing())ButtonPressingB=0;
@@ -364,7 +364,7 @@ int PTask(void)
     {
       ButtonPressingB=1;
       BTaskActiv=0;
-      Climb.set(false);
+      Climb.set(true);
     }
 
     
