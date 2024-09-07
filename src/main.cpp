@@ -38,7 +38,6 @@ bool SP;
 bool EXIT;
 void pre_auton(void) {
    EXIT=false;
-  Tilt.set(true);
   Clamp.set(true);
   PX=0;
   JX=0;
@@ -295,43 +294,44 @@ int V;
 int ATask(void)
 {
   double pow;
+  double pow1;
+  
     while(true)
   {
     pow=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
-    std::cout << "hi" << std::endl;
     RunRoller(-pow);
+    pow1=((Controller1.ButtonL2.pressing()-Controller1.ButtonL1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
+    std::cout << "hiiiiiiiiiiiiiii" << std::endl;
+    if(pow1==0){
+    Lift.setStopping(hold);
+    Lift.stop();}
+    else{
+    RunLift(-pow1);
+    }
+
+
     
   
   //RunPuncher((Controller1.ButtonB.pressing())*100);
   }
   
+
+  
   return 0;
 }
+
+
 
 int ButtonPressingX,XTaskActiv;
 int ButtonPressingY,YTaskActiv;
 int ButtonPressingB,BTaskActiv;
+int ButtonPressingA,ATaskActiv;
+
 
 int PTask(void)
 {
     while(true)
     {
-      //Toggles Tilt
-    if(XTaskActiv==0&&Controller1.ButtonX.pressing()&&ButtonPressingX==0)
-    {
-      ButtonPressingX=1;
-      XTaskActiv=1;
-      Tilt.set(true);
-    }
-
-    else if(!Controller1.ButtonX.pressing())ButtonPressingX=0;
-
-    else if(XTaskActiv==1&&Controller1.ButtonX.pressing()&&ButtonPressingX==0)
-    {
-      ButtonPressingX=1;
-      XTaskActiv=0;
-      Tilt.set(false);
-    }
     //----------------------
       //Toggles Clamp
     if(YTaskActiv==0&&Controller1.ButtonY.pressing()&&ButtonPressingY==0)
@@ -366,6 +366,26 @@ int PTask(void)
       BTaskActiv=0;
       Climb.set(true);
     }
+
+    //Toggles Climb
+     if(ATaskActiv==0&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
+    {
+      ButtonPressingA=1;
+      ATaskActiv=1;
+      RingClamp.set(false);
+    }
+
+    else if(!Controller1.ButtonA.pressing())ButtonPressingA=0;
+
+    else if(ATaskActiv==1&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
+    {
+      ButtonPressingA=1;
+      ATaskActiv=0;
+      RingClamp.set(true);
+    }
+
+
+  
 
     
 

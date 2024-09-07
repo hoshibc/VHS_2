@@ -5,7 +5,5 @@
     only put declarations in this file
 */
 
-extern void test();
-extern void test2();
 extern void two_ring_route();
 #endif

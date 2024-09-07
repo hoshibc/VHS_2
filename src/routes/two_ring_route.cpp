@@ -17,7 +17,7 @@ void two_ring_route(){
     MoveEncoderPID(TestPara, -100, 10, 0.4, 30, true); //backup toward goal
     Clamp.set(false); // clamp mogo
     wait(600,msec);
-    Tilt.set(false); // tilt mogo up
+    //Tilt.set(false); // tilt mogo up
     wait(600,msec);
     TurnMaxTimePID(TestPara, -100, 1,true); // turn to rings
     RunRoller(100);
