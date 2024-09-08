@@ -296,6 +296,7 @@ int ATask(void)
   double pow;
   double pow1;
   
+  
     while(true)
   {
     pow=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
@@ -366,33 +367,32 @@ int PTask(void)
       BTaskActiv=0;
       Climb.set(true);
     }
-
-    //Toggles Climb
-     if(ATaskActiv==0&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
-    {
-      ButtonPressingA=1;
-      ATaskActiv=1;
-      RingClamp.set(false);
-    }
-
-    else if(!Controller1.ButtonA.pressing())ButtonPressingA=0;
-
-    else if(ATaskActiv==1&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
-    {
-      ButtonPressingA=1;
-      ATaskActiv=0;
-      RingClamp.set(true);
-    }
-
-
-  
-
-    
-
-
   }
   return 0;
 }
+
+int BTask(void)
+{
+    int mvel = 0;
+    if(BTaskActiv==1&&Controller1.ButtonA.pressing()&&ButtonPressingA==0){
+      ButtonPressingA=1;
+      BTaskActiv=0;
+      if(LiftSensor.position(vex::rotationUnits::deg) <= 107) {
+        mvel = (107 - LiftSensor.position(vex::rotationUnits::deg)) * 1.25;
+		    RunLift(mvel);
+      }
+      else {
+        RunLift(0);
+      }
+       } 
+  return 0;
+}
+
+
+
+
+
+
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*                              User Control Task                            */

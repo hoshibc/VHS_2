@@ -118,6 +118,8 @@ Lift.setMaxTorque(100,percent);
 Lift.spin(forward,(double)val/100.0*12,volt);
 }
 
+
+
 int PrevE;//Error at t-1
 
 /** Moves the robot forward or backward. Negative speed moves
@@ -209,6 +211,8 @@ void TurnMaxTimePID(PIDDataSet KVals,double DeltaAngle,double TE, bool brake){
   wait(180,msec);}
   else CStop();
 }
+
+
 
 void MaxTimePIDTurnOneSide(PIDDataSet KVals,double DeltaAngle,double TE, bool brake){
   double CSpeed=0;
