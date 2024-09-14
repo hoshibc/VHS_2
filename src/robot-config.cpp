@@ -20,7 +20,7 @@ motor Lift = motor(PORT10 , ratio6_1, true);
 digital_out Climb = digital_out(Brain.ThreeWirePort.F);
 digital_out Clamp = digital_out(Brain.ThreeWirePort.H);
 digital_out RingClamp = digital_out(Brain.ThreeWirePort.G);
-rotation LiftSensor(PORT9);
+rotation LiftSensor(PORT6);
 inertial Gyro = inertial(PORT10);
 //Naming convention: 
 // Important variables

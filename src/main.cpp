@@ -37,6 +37,8 @@ competition Competition;
 bool SP;
 bool EXIT;
 void pre_auton(void) {
+  LiftSensor.resetPosition();
+  LiftSensor.setPosition(0,degrees);
    EXIT=false;
   Clamp.set(true);
   PX=0;
@@ -294,21 +296,12 @@ int V;
 int ATask(void)
 {
   double pow;
-  double pow1;
   
   
     while(true)
   {
     pow=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
     RunRoller(-pow);
-    pow1=((Controller1.ButtonL2.pressing()-Controller1.ButtonL1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
-    std::cout << "hiiiiiiiiiiiiiii" << std::endl;
-    if(pow1==0){
-    Lift.setStopping(hold);
-    Lift.stop();}
-    else{
-    RunLift(-pow1);
-    }
 
 
     
@@ -351,47 +344,60 @@ int PTask(void)
       Clamp.set(false);
     }
 
-    //Toggles Climb
-     if(BTaskActiv==0&&Controller1.ButtonB.pressing()&&ButtonPressingB==0)
-    {
-      ButtonPressingB=1;
-      BTaskActiv=1;
-      Climb.set(false);
-    }
-
-    else if(!Controller1.ButtonB.pressing())ButtonPressingB=0;
-
-    else if(YTaskActiv==1&&Controller1.ButtonB.pressing()&&ButtonPressingB==0)
-    {
-      ButtonPressingB=1;
-      BTaskActiv=0;
-      Climb.set(true);
-    }
   }
   return 0;
 }
 
 int BTask(void)
-{
-    int mvel = 0;
-    if(BTaskActiv==1&&Controller1.ButtonA.pressing()&&ButtonPressingA==0){
+{   
+    int mvel = 0;  
+    int pow1 = 0;
+
+    while(true)
+    {
+    if (abs(LiftSensor.position(degrees)) <= 19 && BTaskActiv==1) {
+          mvel = (90 - LiftSensor.position(vex::rotationUnits::deg)) * 1.25; //301.81
+          RunLift(-100);
+          if (abs(LiftSensor.position(degrees)) > 19) {
+            BTaskActiv = 0;
+          }
+          }
+    else {
+      pow1=((Controller1.ButtonL2.pressing()-Controller1.ButtonL1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
+      std::cout << mvel << std::endl;
+      if(pow1==0){
+      Lift.setStopping(hold);
+      Lift.stop();}
+      else{
+      RunLift(-pow1);
+    }
+    }  
+
+    if(Controller1.ButtonA.pressing() && ButtonPressingA == 0)
+    {
+      ButtonPressingA=1;
+      BTaskActiv=1;
+      
+               
+    }
+
+    else if(!Controller1.ButtonA.pressing())ButtonPressingA=0;
+
+    else if(BTaskActiv==1&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
+    {
       ButtonPressingA=1;
       BTaskActiv=0;
-      if(LiftSensor.position(vex::rotationUnits::deg) <= 107) {
-        mvel = (107 - LiftSensor.position(vex::rotationUnits::deg)) * 1.25;
-		    RunLift(mvel);
-      }
-      else {
-        RunLift(0);
-      }
-       } 
+      RunLift(0);
+    }
+
+  }
   return 0;
 }
 
 
 
 
-
+    
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -416,6 +422,7 @@ void usercontrol(void) {
     task Dtask=task(DriveTask);
     task Atask=task(ATask);
     task Ptask=task(PTask);
+    task Btask=task(BTask);
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
