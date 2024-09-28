@@ -16,6 +16,7 @@
 
 #include "iostream"
 
+#include "cmath"
 using namespace vex;
 
 // A global instance of competition
@@ -234,8 +235,7 @@ void autonomous(void) {
   }
 
   if(AutoSelectorVal==3) {
-
-    two_ring_route();
+    SimpleRedRight();
   } 
 
   if(AutoSelectorVal==4) {
@@ -320,19 +320,19 @@ int PTask(void) {
 
     //----------------------
     //Toggles intake Raise
-    // if(YTaskActiv==0&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
-    //   ButtonPressingY=1;
-    //   YTaskActiv=1;
-    //   intakeLift.set(true);
-    // }
+    if(YTaskActiv==0&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
+      ButtonPressingY=1;
+      YTaskActiv=1;
+      intakeLift.set(true);
+    }
 
-    // else if(!Controller1.ButtonY.pressing())ButtonPressingY=0;
+    else if(!Controller1.ButtonY.pressing())ButtonPressingY=0;
 
-    // else if(YTaskActiv==1&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
-    //   ButtonPressingY=1;
-    //   YTaskActiv=0;
-    //   intakeLift.set(false);
-    // }
+    else if(YTaskActiv==1&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
+      ButtonPressingY=1;
+      YTaskActiv=0;
+      intakeLift.set(false);
+    }
   }
   return 0;
 }

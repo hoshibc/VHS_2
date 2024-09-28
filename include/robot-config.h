@@ -13,7 +13,7 @@ extern motor RB;
 extern motor Lift;
 extern motor Roller;
 extern digital_out Clamp;
-extern digital_out RightBackWing;
+extern digital_out intakeLift; 
 extern digital_out Climb;
 extern digital_out RingClamp;
 extern motor PU;

@@ -5,5 +5,5 @@
     only put declarations in this file
 */
 
-extern void two_ring_route();
+extern void SimpleRedRight();
 #endif

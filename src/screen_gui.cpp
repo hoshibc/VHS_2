@@ -44,7 +44,7 @@ void DisplayWords(void)
   Brain.Screen.print("6 Ball");
 
   Brain.Screen.setCursor(7,3);
-  Brain.Screen.print("TWO RING");
+  Brain.Screen.print("SimRedRite");
 
     Brain.Screen.setCursor(11,3);
   Brain.Screen.print("GS-AWP");
@@ -80,11 +80,13 @@ void UpdateDynamic(void)
   DisplayAutoSelector();
   DisplayWords();
   Brain.Screen.setFillColor("#39FF14");
-Brain.Screen.setPenColor(black);
+  Brain.Screen.setPenColor(black);
+
+
 if(AutoSelectorVal==1){
 Brain.Screen.drawRectangle(1,25,100,50);
-  Brain.Screen.setCursor(3,3);
-  Brain.Screen.print("6 Ball");
+Brain.Screen.setCursor(3,3);
+Brain.Screen.print("6 Ball");
 
 Brain.Screen.setFillColor(black);
 Brain.Screen.setFont(monoXL);
@@ -115,20 +117,20 @@ Brain.Screen.setFont(monoM);
   Brain.Screen.setFillColor("#39FF14");
 }
 
-if(AutoSelectorVal==3){
+if(AutoSelectorVal==3) {
   Brain.Screen.drawRectangle(1,100,100,50);
   Brain.Screen.setCursor(7,3);
-  Brain.Screen.print("5 Ball");
+  Brain.Screen.print("SimRedRite");
 
-Brain.Screen.setFillColor(black);
+  Brain.Screen.setFillColor(black);
 
-    Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
-Brain.Screen.setCursor(3,10);
-Brain.Screen.print("GOAL SIDE");
-Brain.Screen.setCursor(4,10);
-Brain.Screen.print("5 BALL");
-Brain.Screen.setFont(monoM);  
+  Brain.Screen.setFont(monoXL);
+  Brain.Screen.setPenColor("#39FF14");
+  Brain.Screen.setCursor(3,10);
+  Brain.Screen.print("Red");
+  Brain.Screen.setCursor(4,10);
+  Brain.Screen.print("SimRedRite");
+  Brain.Screen.setFont(monoM);  
   Brain.Screen.setFillColor("#39FF14");
 }
 
