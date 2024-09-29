@@ -105,9 +105,9 @@ void pre_auton(void) {
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("GOAL SIDE");
+    Brain.Screen.print("RL");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("6 BALL");
+    Brain.Screen.print("Red");
     Brain.Screen.setFont(monoM);
     Brain.Screen.setFillColor("#39FF14");
   }
@@ -118,9 +118,9 @@ void pre_auton(void) {
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("MATCHLOAD");
+    Brain.Screen.print("BR");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("StealAWP");
+    Brain.Screen.print("");
     Brain.Screen.setFont(monoM);
     Brain.Screen.setFillColor("#39FF14");
   }
@@ -131,9 +131,9 @@ void pre_auton(void) {
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("TWO");
+    Brain.Screen.print("SRR");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("RING");
+    Brain.Screen.print("Red");
     Brain.Screen.setFont(monoM);  
     Brain.Screen.setFillColor("#39FF14");
   }
@@ -225,13 +225,11 @@ void autonomous(void) {
   //can start editing if nessary
   //Put Auto route function into if statements to use autoselector
   if(AutoSelectorVal==1) { //add program names here
-    //test();
+    RedLeft();
   }
 
   if(AutoSelectorVal==2) {
-
-    //test2();
-
+    BlueRight();
   }
 
   if(AutoSelectorVal==3) {
@@ -245,12 +243,11 @@ void autonomous(void) {
   }
 
   if(AutoSelectorVal==5) {
-
     //test();
   }
 
 
-  if(AutoSelectorVal==6) {//AWP only
+  if(AutoSelectorVal==6) { //AWP only
 
 
   }

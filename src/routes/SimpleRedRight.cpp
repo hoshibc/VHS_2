@@ -33,6 +33,5 @@ void SimpleRedRight(){
     MoveEncoderPID(TestPara, -80, 25, 0.2, -26, true);
     TurnMaxTimePID(TestPara, 120, 1, true);
     MoveEncoderPID(TestPara, 100, 44, 0.2, 140, true);
-    
     RunRoller(0);
 }

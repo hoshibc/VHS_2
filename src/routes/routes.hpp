@@ -6,4 +6,6 @@
 */
 
 extern void SimpleRedRight();
-#endif
+extern void BlueRight();
+extern void RedLeft();
+#endif  
