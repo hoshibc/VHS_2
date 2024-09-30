@@ -21,11 +21,11 @@ void SimpleRedRight(){
     MoveEncoderPID(TestPara, 100, 24, 0.2, 63, true);
     intakeLift.set(false); 
     RunRoller(100);
-    wait(700, msec);
+    wait(600, msec);
     MoveEncoderPID(TestPara, -100, 6, 0.2, 65, true);
     TurnMaxTimePID(TestPara, -110, 0.5, true);
-    MoveEncoderPID(TestPara, 100, 40, 0.3, -110, true);
-    MoveEncoderPID(TestPara, 70, 12, 0.3, -110, true);
+    MoveEncoderPID(TestPara, 100, 38, 0.3, -110, true);
+    MoveEncoderPID(TestPara, 70, 12, 0.3, -110, false);
     MoveEncoderPID(TestPara, -70, 2, 0.2, -110, true);
     TurnMaxTimePID(TestPara, -26, 0.5, true);
     MoveEncoderPID(TestPara, 100, 30, 0.2, -26, true);
