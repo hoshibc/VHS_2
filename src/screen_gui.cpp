@@ -80,6 +80,17 @@ void UpdateDynamic(void) {
   Brain.Screen.setPenColor(black);
 
 
+/*---------------------------------------------------------------------------*/
+/*                            !!!IMPORTANT NOTE!!!                           */
+/*                                                                           */
+/*  When changing the name of a program to be displayed on the brain screen, */
+/*  four different strings must be changed; 3 in this cpp file and one in    */
+/*  main.cpp where each of the asv values are.                               */
+/*                                                                           */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
+
+
   if(AutoSelectorVal==1) {
     Brain.Screen.drawRectangle(1,25,100,50);
     Brain.Screen.setCursor(3,3);
