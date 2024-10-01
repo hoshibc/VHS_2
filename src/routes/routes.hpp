@@ -5,7 +5,7 @@
     only put declarations in this file
 */
 
-extern void SimpleRedRight();
+extern void RedRight();
 extern void BlueRight();
 extern void RedLeft();
 #endif  

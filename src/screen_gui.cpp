@@ -38,11 +38,12 @@ void DisplayAutoSelector(void) {
 void DisplayWords(void) {
   Brain.Screen.setPenColor("#39FF14");
   Brain.Screen.setFont(monoM);
+  
   Brain.Screen.setCursor(3,3);
   Brain.Screen.print("RedLeft");
 
   Brain.Screen.setCursor(7,3);
-  Brain.Screen.print("SimRedRite");
+  Brain.Screen.print("RedRight");
 
   Brain.Screen.setCursor(11,3);
   Brain.Screen.print("RedEmpty");
@@ -124,14 +125,14 @@ void UpdateDynamic(void) {
   if(AutoSelectorVal==3) {
     Brain.Screen.drawRectangle(1,100,100,50);
     Brain.Screen.setCursor(7,3);
-    Brain.Screen.print("SimRedRite");
+    Brain.Screen.print("RedRight");
     Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
     Brain.Screen.print("Red");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("SimRedRite");
+    Brain.Screen.print("RedRight");
     Brain.Screen.setFont(monoM);  
     Brain.Screen.setFillColor("#39FF14");
   }

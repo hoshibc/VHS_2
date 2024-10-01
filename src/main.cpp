@@ -131,7 +131,7 @@ void pre_auton(void) {
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("SRR");
+    Brain.Screen.print("RedRight");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("Red");
     Brain.Screen.setFont(monoM);  
@@ -233,7 +233,7 @@ void autonomous(void) {
   }
 
   if(AutoSelectorVal==3) {
-    SimpleRedRight();
+    RedRight();
   } 
 
   if(AutoSelectorVal==4) {
