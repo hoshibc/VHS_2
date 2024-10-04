@@ -295,16 +295,32 @@ int ButtonPressingX,XTaskActiv;
 int ButtonPressingY,YTaskActiv;
 int ButtonPressingB,BTaskActiv;
 int ButtonPressingA,ATaskActiv;
-
+int ButtonPressingD,DTaskActiv;
 
 int PTask(void) {
   while(true) {
     //----------------------
     //Toggles Clamp
+    if(XTaskActiv==0&&Controller1.ButtonB.pressing()&&ButtonPressingB==0) {
+      ButtonPressingB=1;
+      BTaskActiv=1;
+      Clamp.set(false);
+    }
+
+    else if(!Controller1.ButtonB.pressing())ButtonPressingB=0;
+
+    else if(BTaskActiv==1&&Controller1.ButtonB.pressing()&&ButtonPressingB==0) {
+      ButtonPressingB=1;
+      BTaskActiv=0;
+      Clamp.set(true);
+    }
+
+    //----------------------
+    //Toggles intake Raise
     if(XTaskActiv==0&&Controller1.ButtonX.pressing()&&ButtonPressingX==0) {
       ButtonPressingX=1;
       XTaskActiv=1;
-      Clamp.set(false);
+      intakeLift.set(true);
     }
 
     else if(!Controller1.ButtonX.pressing())ButtonPressingX=0;
@@ -312,22 +328,22 @@ int PTask(void) {
     else if(XTaskActiv==1&&Controller1.ButtonX.pressing()&&ButtonPressingX==0) {
       ButtonPressingX=1;
       XTaskActiv=0;
-      Clamp.set(true);
+      intakeLift.set(false);
     }
 
     //----------------------
-    //Toggles intake Raise
-    if(YTaskActiv==0&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
-      ButtonPressingY=1;
-      YTaskActiv=1;
+    //Toggles doinker arm 
+    if(DTaskActiv==0&&Controller1.ButtonDown.pressing()&&ButtonPressingD==0) {
+      ButtonPressingD=1;
+      DTaskActiv=1;
       intakeLift.set(true);
     }
 
-    else if(!Controller1.ButtonY.pressing())ButtonPressingY=0;
+    else if(!Controller1.ButtonDown.pressing())ButtonPressingD=0;
 
-    else if(YTaskActiv==1&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
-      ButtonPressingY=1;
-      YTaskActiv=0;
+    else if(DTaskActiv==1&&Controller1.ButtonDown.pressing()&&ButtonPressingD==0) {
+      ButtonPressingD=1;
+      DTaskActiv=0;
       intakeLift.set(false);
     }
   }
@@ -341,11 +357,11 @@ int BTask(void) {
   int pow1 = 0;
 
   while(true) {
-    if(abs(LiftSensor.position(degrees)) <= 19 && BTaskActiv==1) {
+    if(abs(LiftSensor.position(degrees)) <= 19 && YTaskActiv==1) {
       mvel = (90 - LiftSensor.position(vex::rotationUnits::deg)) * 1.25; //301.81
       RunLift(-100);
       if(abs(LiftSensor.position(degrees)) > 19) {
-        BTaskActiv = 0;
+        YTaskActiv = 0;
       }
     }
     else {
@@ -364,16 +380,16 @@ int BTask(void) {
     //commenting out the button a pressing macro because we do not have a rotation sensor for now
 
     /*
-    if(Controller1.ButtonA.pressing() && ButtonPressingA == 0) {
+    if(Controller1.ButtonY.pressing() && ButtonPressingY == 0) {
       ButtonPressingA=1;
-      BTaskActiv=1;
+      YTaskActiv=1;
     }
 
-    else if(!Controller1.ButtonA.pressing())ButtonPressingA=0;
+    else if(!Controller1.ButtonY.pressing())ButtonPressingY=0;
 
-    else if(BTaskActiv==1&&Controller1.ButtonA.pressing()&&ButtonPressingA==0) {
-      ButtonPressingA=1;
-      BTaskActiv=0;
+    else if(YTaskActiv==1&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
+      ButtonPressingY=1;
+      YTaskActiv=0;
       RunLift(0);
     }
     */
