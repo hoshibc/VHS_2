@@ -357,16 +357,22 @@ int BTask(void) {
   int pow1 = 0;
 
   while(true) {
-    if(abs(LiftSensor.position(degrees)) <= 19 && YTaskActiv==1) {
-      mvel = (90 - LiftSensor.position(vex::rotationUnits::deg)) * 1.25; //301.81
-      RunLift(-100);
-      if(abs(LiftSensor.position(degrees)) > 19) {
-        YTaskActiv = 0;
-      }
+    if(YTaskActiv==1) {
+      if(abs(LiftSensor.position(degrees)) < 24) {
+        RunLift(-100);
+        if(abs(LiftSensor.position(degrees)) > 24) {
+          YTaskActiv = 0;
+        }
+      } 
+      else if(abs(LiftSensor.position(degrees)) > 24) {
+        RunLift(100);
+        if(abs(LiftSensor.position(degrees)) < 30) {
+          YTaskActiv = 0;
+        }
+      } 
     }
     else {
       pow1=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
-      std::cout << mvel << std::endl;
       if(pow1==0) {
         Lift.setStopping(hold);
         Lift.stop();
@@ -376,6 +382,27 @@ int BTask(void) {
       }
     }  
 
+// copy of macro so if i break it i still have a backup 
+  // while(true) {
+  //   if(abs(LiftSensor.position(degrees)) <= 19 && YTaskActiv==1) {
+  //     mvel = (90 - LiftSensor.position(vex::rotationUnits::deg)) * 1.25; //301.81
+  //     RunLift(-100);
+  //     std::cout << mvel << std::endl; //test
+  //     if(abs(LiftSensor.position(degrees)) > 19) {
+  //       YTaskActiv = 0;
+  //     }
+  //   }
+  //   else {
+  //     pow1=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
+  //     std::cout << mvel << std::endl; //test
+  //     if(pow1==0) {
+  //       Lift.setStopping(hold);
+  //       Lift.stop();
+  //     }
+  //     else {
+  //       RunLift(pow1);
+  //     }
+  //   } 
 
     //commenting out the button a pressing macro because we do not have a rotation sensor for now
 
