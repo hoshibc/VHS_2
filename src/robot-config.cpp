@@ -25,7 +25,7 @@ digital_out intakeLift = digital_out(Brain.ThreeWirePort.H);
 digital_out Clamp = digital_out(Brain.ThreeWirePort.B);
 digital_out arm = digital_out(Brain.ThreeWirePort.G);
 //digital_out RingClamp = digital_out(Brain.ThreeWirePort.G);
-rotation LiftSensor(PORT6);
+rotation LiftSensor(PORT16);
 inertial Gyro = inertial(PORT4);
 //Naming convention: 
 // Important variables

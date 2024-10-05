@@ -301,7 +301,7 @@ int PTask(void) {
   while(true) {
     //----------------------
     //Toggles Clamp
-    if(XTaskActiv==0&&Controller1.ButtonB.pressing()&&ButtonPressingB==0) {
+    if(BTaskActiv==0&&Controller1.ButtonB.pressing()&&ButtonPressingB==0) {
       ButtonPressingB=1;
       BTaskActiv=1;
       Clamp.set(false);
@@ -336,7 +336,7 @@ int PTask(void) {
     if(DTaskActiv==0&&Controller1.ButtonDown.pressing()&&ButtonPressingD==0) {
       ButtonPressingD=1;
       DTaskActiv=1;
-      intakeLift.set(true);
+      arm.set(true);
     }
 
     else if(!Controller1.ButtonDown.pressing())ButtonPressingD=0;
@@ -344,7 +344,7 @@ int PTask(void) {
     else if(DTaskActiv==1&&Controller1.ButtonDown.pressing()&&ButtonPressingD==0) {
       ButtonPressingD=1;
       DTaskActiv=0;
-      intakeLift.set(false);
+      arm.set(false);
     }
   }
   return 0;
@@ -379,9 +379,8 @@ int BTask(void) {
 
     //commenting out the button a pressing macro because we do not have a rotation sensor for now
 
-    /*
     if(Controller1.ButtonY.pressing() && ButtonPressingY == 0) {
-      ButtonPressingA=1;
+      ButtonPressingY=1;
       YTaskActiv=1;
     }
 
@@ -392,7 +391,7 @@ int BTask(void) {
       YTaskActiv=0;
       RunLift(0);
     }
-    */
+  
 
   }
   return 0;
