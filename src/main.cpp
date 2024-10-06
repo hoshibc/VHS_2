@@ -358,15 +358,15 @@ int BTask(void) {
 
   while(true) {
     if(YTaskActiv==1) {
-      if(abs(LiftSensor.position(degrees)) < 24) {
+      if(abs(LiftSensor.position(degrees)) < 28) {
         RunLift(-100);
-        if(abs(LiftSensor.position(degrees)) > 24) {
+        if(abs(LiftSensor.position(degrees)) > 28) {
           YTaskActiv = 0;
         }
       } 
-      else if(abs(LiftSensor.position(degrees)) > 24) {
+      else if(abs(LiftSensor.position(degrees)) > 28) {
         RunLift(100);
-        if(abs(LiftSensor.position(degrees)) < 30) {
+        if(abs(LiftSensor.position(degrees)) < 45) {
           YTaskActiv = 0;
         }
       } 
