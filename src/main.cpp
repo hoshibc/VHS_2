@@ -157,9 +157,9 @@ void pre_auton(void) {
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("GOAL SIDE");
+    Brain.Screen.print("Red2GoalAwp");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("GS-AWP");
+    Brain.Screen.print("Red");
     Brain.Screen.setFont(monoM); 
     Brain.Screen.setFillColor("#39FF14");
   }
@@ -238,12 +238,11 @@ void autonomous(void) {
 
   if(AutoSelectorVal==4) {
 
-
     
   }
 
   if(AutoSelectorVal==5) {
-    //test();
+    Red2GoalAwp();
   }
 
 

@@ -11,27 +11,30 @@ void RedRight(){
     //issues: intake range, time to end
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize 1.5, 0.1, 0.15
     Clamp.set(false);
-    MoveEncoderPID(TestPara, -100, 14, 0.2, 0, true);
-    MoveEncoderPID(TestPara, -50, 4, 0.2, 0, true);
-    Clamp.set(true); 
-    wait(100, msec);
-    RunRoller(100);
-    TurnMaxTimePID(TestPara, 63, 0.3, true);
+    MoveEncoderPID(TestPara, -100, 15, 0.2, 0, true); //get mogo in on the right side
+    MoveEncoderPID(TestPara, -40, 5, 0.2, 0, true);
+    Clamp.set(true);
+    wait(100,msec);   
+    RunRoller(100);//score preload 
+    TurnMaxTimePID(TestPara, 62, 0.3, true); //turn to ge middle red ring
     intakeLift.set(true);
-    MoveEncoderPID(TestPara, 100, 24, 0.2, 63, true);
+    MoveEncoderPID(TestPara, 100, 24, 0.2, 62, true);//get middle field ring 
     intakeLift.set(false); 
-    RunRoller(100);
-    wait(600, msec);
-    MoveEncoderPID(TestPara, -100, 6, 0.2, 65, true);
-    TurnMaxTimePID(TestPara, -110, 0.5, true);
-    MoveEncoderPID(TestPara, 100, 38, 0.3, -110, true);
-    MoveEncoderPID(TestPara, 70, 12, 0.3, -110, false);
-    MoveEncoderPID(TestPara, -70, 2, 0.2, -110, true);
-    TurnMaxTimePID(TestPara, -26, 0.5, true);
-    MoveEncoderPID(TestPara, 100, 30, 0.2, -26, true);
-    MoveEncoderPID(TestPara, 60, 20, 0.2, -26, true);  
-    MoveEncoderPID(TestPara, -80, 25, 0.2, -26, true);
-    TurnMaxTimePID(TestPara, 120, 1, true);
-    MoveEncoderPID(TestPara, 100, 44, 0.2, 140, true);
+    wait(200, msec);
+    MoveEncoderPID(TestPara, -100, 6, 0.2, 65, true);  //back away
+    wait(700,msec);
+    TurnMaxTimePID(TestPara, -113, 0.5, true); // turn to face far right ring
+    MoveEncoderPID(TestPara, 100, 38, 0.3, -113, true); //move to get it
+    MoveEncoderPID(TestPara, 70, 12, 0.3, -113, true);
+    MoveEncoderPID(TestPara, -70, 2, 0.2, -113, true); //back away
+    TurnMaxTimePID(TestPara, -25, 0.5, true); //turn to face corner
+    MoveEncoderPID(TestPara, 100, 33, 0.2, -25, true); //move to corner
+    MoveTimePID(TestPara, 30, 1, 0.3, -25, true); //move time pid function has speed revesed(negative speed for foward)
+    //MoveEncoderPID(TestPara, 50, 19, 0.2, -26, true);  
+    MoveEncoderPID(TestPara, -80, 25, 0.2, -25, true); // back away from corner
+    wait(150, msec);
+    TurnMaxTimePID(TestPara, 120, 1, true); //turn to face mid
+    MoveEncoderPID(TestPara, 80, 34, 0.2, 140, true); //touch mid
+    MoveEncoderPID(TestPara, 30, 10, 0.2, 140, false);
     RunRoller(0);
 }

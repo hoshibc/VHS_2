@@ -46,7 +46,7 @@ void DisplayWords(void) {
   Brain.Screen.print("RedRight");
 
   Brain.Screen.setCursor(11,3);
-  Brain.Screen.print("RedEmpty");
+  Brain.Screen.print("Red2GoalAWP");
 
   Brain.Screen.setCursor(3,40);
   Brain.Screen.print("BlueRight");
@@ -155,14 +155,14 @@ void UpdateDynamic(void) {
   if(AutoSelectorVal==5){
     Brain.Screen.drawRectangle(1,175,100,50);
     Brain.Screen.setCursor(11,3);
-    Brain.Screen.print("RedEmpty");
+    Brain.Screen.print("Red2GoalAWP");
     Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
     Brain.Screen.print("Red");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("RedEmpty");
+    Brain.Screen.print("Red2GoalAWP");
     Brain.Screen.setFont(monoM); 
     Brain.Screen.setFillColor("#39FF14");
   }

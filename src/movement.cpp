@@ -247,6 +247,7 @@ void MaxTimePIDTurnOneSide(PIDDataSet KVals,double DeltaAngle,double TE, bool br
 
 void MoveTimePID(PIDDataSet KVals, int Speed, double TE,double AccT,double ABSHDG, bool brake) {
   double CSpeed=0;
+  Speed *= -1;
   Zeroing(true,false);
   ChassisDataSet SensorVals;
   SensorVals=ChassisUpdate();

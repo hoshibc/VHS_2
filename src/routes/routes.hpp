@@ -8,4 +8,5 @@
 extern void RedRight();
 extern void BlueRight();
 extern void RedLeft();
+extern void Red2GoalAwp();
 #endif  
