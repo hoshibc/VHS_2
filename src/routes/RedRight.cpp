@@ -20,15 +20,17 @@ void RedRight(){
     intakeLift.set(true);
     MoveEncoderPID(TestPara, 100, 26, 0.2, 58, true);//get middle field ring 
     intakeLift.set(false); 
-    wait(300, msec);
+    wait(275, msec);
     MoveEncoderPID(TestPara, -100, 8, 0.2, 65, true);  //back away
-    RunRoller(0);
+    //RunRoller(0);
     TurnMaxTimePID(TestPara, -113, 0.5, true); // turn to face far right ring
     RunRoller(100);
     MoveEncoderPID(TestPara, 100, 38, 0.3, -113, true); //move to get it
     MoveEncoderPID(TestPara, 70, 12, 0.3, -113, true);
+    RunRoller(0);
     MoveEncoderPID(TestPara, -70, 2, 0.2, -113, true); //back away
     TurnMaxTimePID(TestPara, -25, 0.5, true); //turn to face corner
+    RunRoller(100);
     MoveEncoderPID(TestPara, 100, 30, 0.2, -25, true); //move to corner
     MoveEncoderPID(TestPara, 60, 17, 0.2, -25, true); //move slowly
     MoveEncoderPID(TestPara, -80, 25, 0.2, -25, true); // back away from corner
