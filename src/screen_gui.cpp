@@ -182,17 +182,94 @@ void UpdateDynamic(void) {
     Brain.Screen.setFillColor("#39FF14");
   }
 
+//Page 2 Starts Here
+
   if(AutoSelectorVal==7) {
-    Brain.Screen.drawRectangle(187,175,100,50);
-    Brain.Screen.setCursor(11,22);
-    Brain.Screen.print("Skills");
+    Brain.Screen.drawRectangle(1,25,100,50);
+    Brain.Screen.setCursor(3,3);
+    Brain.Screen.print("RedLeft");
     Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("SKILLS");
+    Brain.Screen.print("Red");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("SKILLS");
+    Brain.Screen.print("RedLeft");
+    Brain.Screen.setFont(monoM);
+    Brain.Screen.setFillColor("#39FF14");
+  }
+
+  if(AutoSelectorVal==8) {
+    Brain.Screen.drawRectangle(375,25,100,50);
+    Brain.Screen.setCursor(3,40);
+    Brain.Screen.print("BlueRight");
+    Brain.Screen.setFillColor(black);
+    Brain.Screen.setFont(monoXL);
+    Brain.Screen.setPenColor("#39FF14");
+    Brain.Screen.setCursor(3,10);
+    Brain.Screen.print("Blue");
+    Brain.Screen.setCursor(4,10);
+    Brain.Screen.print("BlueRight");
+    Brain.Screen.setFont(monoM);
+    Brain.Screen.setFillColor("#39FF14");
+  }
+
+  if(AutoSelectorVal==9) {
+    Brain.Screen.drawRectangle(1,100,100,50);
+    Brain.Screen.setCursor(7,3);
+    Brain.Screen.print("RedRight");
+    Brain.Screen.setFillColor(black);
+    Brain.Screen.setFont(monoXL);
+    Brain.Screen.setPenColor("#39FF14");
+    Brain.Screen.setCursor(3,10);
+    Brain.Screen.print("Red");
+    Brain.Screen.setCursor(4,10);
+    Brain.Screen.print("RedRight");
+    Brain.Screen.setFont(monoM);  
+    Brain.Screen.setFillColor("#39FF14");
+  }
+
+  if(AutoSelectorVal==10) {
+    Brain.Screen.drawRectangle(375,100,100,50);
+    Brain.Screen.setCursor(7,40);
+    Brain.Screen.print("BlueEmpty");
+    Brain.Screen.setFillColor(black);
+    Brain.Screen.setFont(monoXL);
+    Brain.Screen.setPenColor("#39FF14");
+    Brain.Screen.setCursor(3,10);
+    Brain.Screen.print("Blue");
+    Brain.Screen.setCursor(4,10);
+    Brain.Screen.print("BlueEmpty");
+    Brain.Screen.setFont(monoM); 
+    Brain.Screen.setFillColor("#39FF14");
+  }
+
+  if(AutoSelectorVal==11){
+    Brain.Screen.drawRectangle(1,175,100,50);
+    Brain.Screen.setCursor(11,3);
+    Brain.Screen.print("Red2GoalAWP");
+    Brain.Screen.setFillColor(black);
+    Brain.Screen.setFont(monoXL);
+    Brain.Screen.setPenColor("#39FF14");
+    Brain.Screen.setCursor(3,10);
+    Brain.Screen.print("Red");
+    Brain.Screen.setCursor(4,10);
+    Brain.Screen.print("Red2GoalAWP");
+    Brain.Screen.setFont(monoM); 
+    Brain.Screen.setFillColor("#39FF14");
+  }
+
+  if(AutoSelectorVal==12) {
+    Brain.Screen.drawRectangle(375,175,175,50);
+    Brain.Screen.setCursor(11,40);
+    Brain.Screen.print("BlueEmpty");
+    Brain.Screen.setFillColor(black);
+    Brain.Screen.setFont(monoXL);
+    Brain.Screen.setPenColor("#39FF14");
+    Brain.Screen.setCursor(3,10);
+    Brain.Screen.print("Blue");
+    Brain.Screen.setCursor(4,10);
+    Brain.Screen.print("BlueEmpty");
     Brain.Screen.setFont(monoM); 
     Brain.Screen.setFillColor("#39FF14");
   }
