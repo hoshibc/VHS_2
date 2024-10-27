@@ -34,6 +34,11 @@ competition Competition;
 /*  function is only called once after the V5 has been powered on and        */
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
+void OnReleasePageFlip()
+{
+  if(AutoSelectorVal<=6) AutoSelectorVal+=6;
+  else AutoSelectorVal+=-6;
+}
 
 bool SP;
 bool EXIT;
@@ -67,8 +72,6 @@ void pre_auton(void) {
 
 
   waitUntil(!Gyro.isCalibrating());
-
-
   Zeroing(true,true);
   DisplayAutoSelector();
   DisplayWords();
@@ -88,7 +91,10 @@ void pre_auton(void) {
 
     if(Brain.Screen.xPosition()>187&&Brain.Screen.xPosition()<287) {
       if(Brain.Screen.yPosition()<55&&Brain.Screen.yPosition()>5) EXIT=true;
-      else if(Brain.Screen.yPosition()>125&&Brain.Screen.yPosition()<225)AutoSelectorVal=7;
+      else if(Brain.Screen.yPosition()>125&&Brain.Screen.yPosition()<225)
+      {
+        Brain.Screen.released(OnReleasePageFlip);
+      }
     }
 
     if(Brain.Screen.pressing()&&!SP) UpdateDynamic();
