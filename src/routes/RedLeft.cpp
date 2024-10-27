@@ -23,22 +23,20 @@ void RedLeft() {
     MoveEncoderPID(TestPara, -100, 28, 0.2, 132, true); //move back
     TurnMaxTimePID(TestPara, 87, 0.2, true); //turn face third ring
     MoveEncoderPID(TestPara, 100, 25, 0.2, 87, true); //get third ring 
-    TurnMaxTimePID(TestPara, 18, 0.3, true); //turn face fourth ring 
-    MoveEncoderPID(TestPara, 100, 30, 0.2, 18, true); //get corner ring 
-    MoveEncoderPID(TestPara, 60, 10, 0.2, 18, true); //slow move foward
-    MoveEncoderPID(TestPara, -100, 20, 0.2, 18, true); //move back 
+    TurnMaxTimePID(TestPara, 15, 0.3, true); //turn face corner ring 
+    MoveEncoderPID(TestPara, 100, 30, 0.2, 15, true); //get corner ring 
+    MoveEncoderPID(TestPara, 60, 10, 0.2, 15, true); //slow move foward
+    MoveEncoderPID(TestPara, -100, 20, 0.2, 15, true); //move back 
     RunRoller(0);
-    TurnMaxTimePID(TestPara, -80, 0.3, true); //turn face 5th ring
+    TurnMaxTimePID(TestPara, -84, 0.3, true); //turn face 5th ring
     RunRoller(100);
     intakeLift.set(true);
-    MoveEncoderPID(TestPara, 100, 50, 0.2, -80, true); //move to get 5th ring 
+    MoveEncoderPID(TestPara, 100, 52, 0.2, -84, true); //move to get 5th ring 
     intakeLift.set(false);
-    wait(180,msec);
-    MoveEncoderPID(TestPara, -100, 3, 0.2, -80, true);
-    TurnMaxTimePID(TestPara, -150, 0.5, true);
-    MoveEncoderPID(TestPara, 50, 15, 0.2, -150, true);
+    wait(200,msec);
+    MoveEncoderPID(TestPara, -100, 15, 0.2, -84, true); //move back 
+    TurnMaxTimePID(TestPara, -145, 0.5, true); //turn to face ladder
+    MoveEncoderPID(TestPara, 100, 27, 0.2, -145, true); //move straight
     wait(200,msec);
     RunRoller(0);
-    arm.set(true);
-
 }

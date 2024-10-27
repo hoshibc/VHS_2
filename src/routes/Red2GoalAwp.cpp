@@ -7,32 +7,43 @@
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
 void Red2GoalAwp() {
-    //version number 1.0 draft route
-    //issues: intake range, time to end
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize 1.5, 0.1, 0.15
-    MoveEncoderPID(TestPara, -100, 40, 0.2, 0, true); //move ahead
-    TurnMaxTimePID(TestPara, 50, 0.3, true); //turn to face side ring
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 50, 17, 0.4, 50, true); //move to intake
-    TurnMaxTimePID(TestPara, 0, 0.3, true); //face the goal 
-    //wait(50, msec);
-    RunRoller(0); //stop roller
-    MoveEncoderPID(TestPara, -50, 19, 0.2, 0, true); //move ahead
-    Clamp.set(true);
-    RunRoller(100); 
-    TurnMaxTimePID(TestPara, -45, 0.2, true);
-    MoveEncoderPID(TestPara, 100, 18, 0.2, -20, true);
-    TurnMaxTimePID(TestPara, 0, 0.2, true);
-    MoveEncoderPID(TestPara, 100, 38, 0.2, 0, true);
-    wait(200,msec);
-    MoveEncoderPID(TestPara, -50, 10, 0.2, 0, true);
-    wait(650,msec);
     Clamp.set(false);
-    MoveEncoderPID(TestPara, 100, 5, 0.2, 0, true);
-    TurnMaxTimePID(TestPara, -35, 0.3, true);
-    MoveEncoderPID(TestPara, 50, 5, 0.2, -35, true);
+    MoveEncoderPID(TestPara, -100, 14, 0.2, 0, true); 
+    MoveEncoderPID(TestPara, -80, 6, 0.2, 0, true);
+    Clamp.set(true); //clamp the first goal 
+    wait(100, msec);
+    TurnMaxTimePID(TestPara, 145, 0.3, true); //turn face stack 
+    RunRoller(100);
+    MoveEncoderPID(TestPara, 90, 32, 0.2, 150, true); //get first ring
+    MoveEncoderPID(TestPara, -50, 8, 0.2, 150, true); //move back 
+    TurnMaxTimePID(TestPara, 132, 0.1, true); //turn face second ring 
+    MoveEncoderPID(TestPara, 90, 14, 0.2, 132, true); //get second ring
+    wait(150,msec);
+    MoveEncoderPID(TestPara, -100, 28, 0.2, 132, true); //move back
+    TurnMaxTimePID(TestPara, 90, 0.175, true); //turn face third ring
+    MoveEncoderPID(TestPara, 100, 25, 0.2, 90, true); //get third ring 
     RunRoller(0);
-    MoveEncoderPID(TestPara, 50, 5, 0.2, -35, true);
-    TurnMaxTimePID(TestPara, -90, 0.5, true);
+    MoveEncoderPID(TestPara, -100, 5, 0.2, 90, true); //get third ring 
+    TurnMaxTimePID(TestPara, -58, 0.5, true); //turn face 4th ring
+    intakeLift.set(true);
+    RunRoller(100);
+    MoveEncoderPID(TestPara, 100, 45, 0.2, -58, true); //move to get ring stack 
+    intakeLift.set(false);
+    MoveEncoderPID(TestPara, -100, 4, 0.2, -58, true);
+    TurnMaxTimePID(TestPara, -88, 0.2, true);
+    MoveEncoderPID(TestPara, 100, 58, 0.2, -88, true);
+    Clamp.set(false);
     RunRoller(0);
+    MoveEncoderPID(TestPara, 100, 12, 0.2, -88, true);
+    TurnMaxTimePID(TestPara, -48, 0.2, true);
+    MoveEncoderPID(TestPara, -65, 25, 0.2, -48, true);
+    Clamp.set(true);
+    RunRoller(100);
+    wait(150,msec);
+    //TurnMaxTimePID(TestPara, -100, 0.2, true);
+    MoveEncoderPID(TestPara, 100, 15, 0.2, -100, true);
+    //TurnMaxTimePID(TestPara, -70, 0.5, true);
+    MoveEncoderPID(TestPara, -100, 30, 0.2, -75, true);
+    
 }
