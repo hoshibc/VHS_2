@@ -5,8 +5,12 @@
     only put declarations in this file
 */
 
-extern void RedRight();
+
+extern void Blue2GoalAwp();
+extern void BlueLeft();
 extern void BlueRight();
-extern void RedLeft();
 extern void Red2GoalAwp();
+extern void RedRight();
+extern void RedLeft();
+
 #endif  
