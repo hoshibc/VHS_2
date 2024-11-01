@@ -9,17 +9,17 @@
 void BlueLeft() {
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize 1.5, 0.1, 0.15
     Clamp.set(false);
-    MoveEncoderPID(TestPara, 100, -15, 0.2, 0, true); //get mogo in on the right side
-    MoveEncoderPID(TestPara, 40, -5, 0.2, 0, true);
+    MoveEncoderPID(TestPara, -100, 15, 0.2, 0, true); //get mogo in on the right side
+    MoveEncoderPID(TestPara, -40, 5, 0.2, 0, true);
     Clamp.set(true);
     wait(100,msec);   
-    TurnMaxTimePID(TestPara, -58, 0.3, true); //turn to ge middle red ring
+    TurnMaxTimePID(TestPara, -54, 0.3, true); //turn to ge middle red ring
     RunRoller(100);//score preload 
     intakeLift.set(true);
-    MoveEncoderPID(TestPara, 100, 26, 0.2, -58, true);//get middle field ring 
+    MoveEncoderPID(TestPara, 100, 25, 0.2, -54, true);//get middle field ring 
     intakeLift.set(false); 
     wait(275, msec);
-    MoveEncoderPID(TestPara, -100, 8, 0.2, -65, true);  //back away
+    MoveEncoderPID(TestPara, -100, 7, 0.2, -65, true);  //back away
     //RunRoller(0);
     TurnMaxTimePID(TestPara, 113, 0.5, true); // turn to face far right ring
     RunRoller(100);
@@ -30,11 +30,16 @@ void BlueLeft() {
     TurnMaxTimePID(TestPara, 25, 0.5, true); //turn to face corner
     RunRoller(100);
     MoveEncoderPID(TestPara, 100, 30, 0.2, 25, true); //move to corner
-    MoveEncoderPID(TestPara, 60, 17, 0.2, 25, true); //move slowly
+    MoveEncoderPID(TestPara, 50, 18, 0.2, 25, true); //move slowly
+    wait(150,msec);
     MoveEncoderPID(TestPara, -80, 25, 0.2, 25, true); // back away from corner
     wait(150, msec);
     TurnMaxTimePID(TestPara, -120, 1, true); //turn to face mid
     RunRoller(0);
-    MoveEncoderPID(TestPara, 80, 45, 0.2, -120, true); //touch mid
+    RunLift(-100);
+    wait(350,msec);
+    RunLift(0);
+    MoveEncoderPID(TestPara, 80, 38, 0.2, -120, true); //touch mid
+    MoveEncoderPID(TestPara, 20, 4, 0.2, -120, true); //touch mid
     RunRoller(0);
 }

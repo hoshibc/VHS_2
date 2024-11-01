@@ -7,5 +7,40 @@
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
 void Blue2GoalAwp() {
+    PIDDataSet TestPara={1.5,0.1,0.15}; //initialize 1.5, 0.1, 0.15
+    Clamp.set(false);
+    MoveEncoderPID(TestPara, -85, 25, 0.2, 0, true); 
+    Clamp.set(true); //clamp the first goal 
+    wait(100, msec);
+    RunRoller(100);
+    MoveEncoderPID(TestPara, 100, 30, 0.2, 0, true); 
+    TurnMaxTimePID(TestPara, -100, 0.4, true);
+    MoveEncoderPID(TestPara, 45, 22, 0.2, -100, true); //move to push other bot 
+    MoveEncoderPID(TestPara, -100, 5, 0.2, -90, true);
+    wait(350,msec);
+    TurnMaxTimePID(TestPara, 110, 0.7, true);
+    intakeLift.set(true);
+    Clamp.set(false);
+    MoveEncoderPID(TestPara, 100, 22, 0.2, 100, true);
+    intakeLift.set(false);
+    wait(100,msec);
+    TurnMaxTimePID(TestPara, -55, 0.4, true);
+    RunRoller(0);
+    MoveEncoderPID(TestPara, -90, 48, 0.3, -55, true);
+    Clamp.set(true);
+    wait(5,msec);
+    TurnMaxTimePID(TestPara, 90, 0.4, true);
+    RunRoller(100);
+    RunLift(-100);
+    MoveEncoderPID(TestPara, 100, 30, 0.2, 90, true);
+    wait(200,msec);
+    RunLift(0);
+    TurnMaxTimePID(TestPara, -110, 0.5, true);
+    MoveEncoderPID(TestPara, 60, 46, 0.2, -110, true);
+    RunRoller(0)
+
+
+ 
+    
     
 }
