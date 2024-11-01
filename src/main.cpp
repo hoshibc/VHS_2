@@ -352,8 +352,7 @@ void autonomous(void) {
 
   }
 
-  if(AutoSelectorVal==12) { //Skill 
-
+  if(AutoSelectorVal==12) { //Auto_skills
 
   }
 
