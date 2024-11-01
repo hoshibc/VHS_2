@@ -11,6 +11,7 @@ extern void BlueLeft();
 extern void BlueRight();
 extern void Red2GoalAwp();
 extern void RedRight();
+extern void RedRightElim();
 extern void RedLeft();
 
 #endif  

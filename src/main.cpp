@@ -338,7 +338,7 @@ void autonomous(void) {
   }
 
   if(AutoSelectorVal==9) { 
-
+    RedRightElim();
 
   }
 
