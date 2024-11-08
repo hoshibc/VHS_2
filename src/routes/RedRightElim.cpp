@@ -11,26 +11,26 @@ void RedRightElim(){
     //issues: intake range, time to end
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize 1.5, 0.1, 0.15
     Clamp.set(false);
-    MoveEncoderPID(TestPara, -100, 24, 0.2, 0, true); //get mogo in on the right side
+    MoveEncoderPID(TestPara, -85, 24, 0.2, 0, true); //get mogo in on the right side
+    MoveEncoderPID(TestPara, -40, 8, 0.2, 0, true);
     Clamp.set(true);
     wait(100,msec);   
     TurnMaxTimePID(TestPara, -90, 0.5, true); // turn to face far right ring
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 38, 0.3, -90, true); //move to get it
-    MoveEncoderPID(TestPara, 70, 12, 0.3, -90, true);
-    MoveEncoderPID(TestPara, -70, 2, 0.2, -90, true); //back away
-    TurnMaxTimePID(TestPara, -25, 0.5, true); //turn to face corner
+    MoveEncoderPID(TestPara, 100, 40, 0.3, -90, true); //move to get it
+    MoveEncoderPID(TestPara, -100,6, 0.3, -90, true); //move back
+    TurnMaxTimePID(TestPara, -38, 0.5, true); //turn to face corner
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 30, 0.2, -25, true); //move to corner
-    MoveEncoderPID(TestPara, 50, 18, 0.2, -25, true); //move slowly
-    wait(150,msec);
-    MoveEncoderPID(TestPara, -80, 25, 0.2, -25, true); // back away from corner
-    wait(150, msec);
-    TurnMaxTimePID(TestPara, 120, 1, true); //turn to face mid
-    RunRoller(0);
-    RunLift(-100);
-    wait(410,msec);
-    RunLift(0);
-    MoveEncoderPID(TestPara, 80, 46, 0.2, 120, true); //touch mid
-    RunRoller(0);
+    MoveEncoderPID(TestPara, 100, 26, 0.2, -38, true); //move to corner
+    MoveEncoderPID(TestPara, 50, 20, 0.2, -23, true); //move slowly
+    wait(300,msec);
+    TurnMaxTimePID(TestPara, -90, 0.5, true);
+    MoveEncoderPID(TestPara, -80, 14, 0.2, -94, true);
+    arm.set(true);
+    wait(200,msec);
+    MoveEncoderPID(TestPara, 50, 6, 0.2, -85, true);
+    TurnMaxTimePID(TestPara, -170, 0.4, true);
+    wait(200,msec);
+    arm.set(false);
+
 }

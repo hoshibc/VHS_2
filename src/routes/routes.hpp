@@ -13,5 +13,6 @@ extern void Red2GoalAwp();
 extern void RedRight();
 extern void RedRightElim();
 extern void RedLeft();
+extern void AutoSkills();
 
 #endif  

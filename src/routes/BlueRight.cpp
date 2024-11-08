@@ -17,9 +17,9 @@ PIDDataSet TestPara={1.5,0.1,0.15}; //initialize 1.5, 0.1, 0.15
     RunRoller(100);
     MoveEncoderPID(TestPara, 90, 26, 0.2, -150, true); //get first ring
     wait(150,msec);
-    MoveEncoderPID(TestPara, -50, 8, 0.2, -150, true); //move back 
+    MoveEncoderPID(TestPara, -50, 7, 0.2, -150, true); //move back 
     TurnMaxTimePID(TestPara, -132, 0.3, true); //turn face second ring 
-    MoveEncoderPID(TestPara, 90, 10, 0.2, -132, true); //get second ring
+    MoveEncoderPID(TestPara, 90, 8, 0.2, -132, true); //get second ring
     wait(200,msec);
     MoveEncoderPID(TestPara, -80, 24, 0.2, -132, true); //move back
     TurnMaxTimePID(TestPara, -87, 0.2, true); //turn face third ring

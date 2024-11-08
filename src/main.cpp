@@ -42,6 +42,8 @@ void OnReleasePageFlip()
           //AutoSelectorVal=5;
 }
 
+
+
 bool SP;
 bool EXIT;
 void pre_auton(void) {
@@ -208,7 +210,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("BlueLeftE");
+    Brain.Screen.print("BlueRightE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("BlueE");
     Brain.Screen.setFont(monoM);
@@ -221,7 +223,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("RedLeftE");
+    Brain.Screen.print("RedRightE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("RedE");
     Brain.Screen.setFont(monoM);
@@ -234,7 +236,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("BlueRightE");
+    Brain.Screen.print("BlueLeftE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("BlueE");
     Brain.Screen.setFont(monoM);  
@@ -247,7 +249,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("RedRightE");
+    Brain.Screen.print("RedLeftE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("RedE");
     Brain.Screen.setFont(monoM); 
@@ -353,7 +355,7 @@ void autonomous(void) {
   }
 
   if(AutoSelectorVal==12) { //Auto_skills
-
+    AutoSkills();
   }
 
 

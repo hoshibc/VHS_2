@@ -25,9 +25,9 @@ void RedRight(){
     //RunRoller(0);
     TurnMaxTimePID(TestPara, -113, 0.5, true); // turn to face far right ring
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 38, 0.3, -113, true); //move to get it
-    MoveEncoderPID(TestPara, 70, 12, 0.3, -113, true);
-    MoveEncoderPID(TestPara, -70, 2, 0.2, -113, true); //back away
+    MoveEncoderPID(TestPara, 100, 35, 0.3, -113, true); //move to get it
+    MoveEncoderPID(TestPara, 70, 11, 0.3, -113, true);
+    MoveEncoderPID(TestPara, -70, 3, 0.2, -113, true); //back away
     TurnMaxTimePID(TestPara, -25, 0.5, true); //turn to face corner
     RunRoller(100);
     MoveEncoderPID(TestPara, 100, 30, 0.2, -25, true); //move to corner
