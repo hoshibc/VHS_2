@@ -7,7 +7,7 @@
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
 void BlueRight() {
-PIDDataSet TestPara={1.5,0.1,0.15}; //initialize 1.5, 0.1, 0.15
+    PIDDataSet TestPara={3.0, 0.25, 0.15}; //initialize 3.0, 0.25, 0.15
     Clamp.set(false);
     MoveEncoderPID(TestPara, -100, 14, 0.2, 0, true); 
     MoveEncoderPID(TestPara, -80, 6, 0.2, 0, true);

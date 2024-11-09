@@ -19,14 +19,16 @@ motor RM = motor(PORT5, ratio6_1, false);
 motor RB = motor(PORT4, ratio6_1, false);
 
 
-motor Roller = motor(PORT7, ratio6_1,   true);
-motor Lift = motor(PORT11, ratio6_1, true);
-digital_out intakeLift = digital_out(Brain.ThreeWirePort.H);
+motor Roller = motor(PORT7, ratio6_1, false);
+motor Lift = motor(PORT19, ratio6_1, true);
+
 digital_out Clamp = digital_out(Brain.ThreeWirePort.E);
+digital_out climbDeploy = digital_out(Brain.ThreeWirePort.F);
 digital_out arm = digital_out(Brain.ThreeWirePort.G);
-//digital_out RingClamp = digital_out(Brain.ThreeWirePort.G);
-rotation LiftSensor(PORT10);
-inertial Gyro = inertial(PORT4);
+digital_out intakeLift = digital_out(Brain.ThreeWirePort.H);
+
+rotation LiftSensor(PORT8);
+inertial Gyro = inertial(PORT20);
 //Naming convention: 
 // Important variables
 const double wheelDiam = 2.75;

@@ -99,6 +99,20 @@ void CStop() {
 }
 
 
+void armMoveToAngle(int deg) {
+  if (abs(LiftSensor.position(degrees)) < deg) {
+    RunLift(-100);
+    if(abs(LiftSensor.position(degrees)) > deg) {
+      RunLift(0);
+    }
+  }
+  else if (abs(LiftSensor.position(degrees)) > deg) {
+    RunLift(100);
+    if (abs(LiftSensor.position(degrees)) <= deg+5) {
+      RunLift(0);
+    }
+  }
+}
 
 
 void RunRoller(int val) {
@@ -158,7 +172,7 @@ void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double
   }
   if(brake) {
     BStop();
-    wait(120,msec);
+    wait(100,msec);
   }
   else CStop();
 }
@@ -199,7 +213,7 @@ void TurnMaxTimePID(PIDDataSet KVals,double DeltaAngle,double TE, bool brake) {
   }
   if(brake) {
     BStop();
-    wait(180,msec);}
+    wait(100,msec);}
   else CStop();
 }
 

@@ -9,7 +9,7 @@
 void RedRight(){
     //version number 1.0 draft route
     //issues: intake range, time to end
-    PIDDataSet TestPara={1.5,0.1,0.15}; //initialize 1.5, 0.1, 0.15
+    PIDDataSet TestPara={3.0, 0.25, 0.15}; //initialize 3.0, 0.25, 0.15
     Clamp.set(false);
     MoveEncoderPID(TestPara, -100, 15, 0.2, 0, true); //get mogo in on the right side
     MoveEncoderPID(TestPara, -40, 5, 0.2, 0, true);

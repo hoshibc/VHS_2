@@ -34,14 +34,14 @@ competition Competition;
 /*  function is only called once after the V5 has been powered on and        */
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
-void OnReleasePageFlip()
-{
+void OnReleasePageFlip() {
   if(AutoSelectorVal<=6) AutoSelectorVal+=6;
   else AutoSelectorVal+=-6;
   
           //AutoSelectorVal=5;
 }
 
+ 
 
 
 bool SP;
