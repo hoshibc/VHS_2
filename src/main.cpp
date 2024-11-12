@@ -117,7 +117,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("RedLeftQ");
+    Brain.Screen.print("RedRingQ");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("RedQ");
     Brain.Screen.setFont(monoM);
@@ -130,7 +130,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("BlueLeftQ");
+    Brain.Screen.print("BlueMogoQ");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("BlueQ");
     Brain.Screen.setFont(monoM);
@@ -143,7 +143,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("RedRightQ");
+    Brain.Screen.print("RedMogoQ");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("RedQ");
     Brain.Screen.setFont(monoM);  
@@ -156,7 +156,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("BlueRightQ");
+    Brain.Screen.print("BlueRingQ");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("BlueQ");
     Brain.Screen.setFont(monoM); 
@@ -210,7 +210,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("BlueRightE");
+    Brain.Screen.print("BlueRingE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("BlueE");
     Brain.Screen.setFont(monoM);
@@ -223,7 +223,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("RedRightE");
+    Brain.Screen.print("RedMogoE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("RedE");
     Brain.Screen.setFont(monoM);
@@ -236,7 +236,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("BlueLeftE");
+    Brain.Screen.print("BlueMogoE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("BlueE");
     Brain.Screen.setFont(monoM);  
@@ -249,7 +249,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("RedLeftE");
+    Brain.Screen.print("RedRingE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("RedE");
     Brain.Screen.setFont(monoM); 
@@ -307,19 +307,19 @@ void autonomous(void) {
   //can start editing if nessary
   //Put Auto route function into if statements to use autoselector
   if(AutoSelectorVal==1) { //RedLeft
-    RedLeft();
+    RedRing();
   }
 
   if(AutoSelectorVal==2) { //BlueLeft
-    BlueLeft();
+    BlueMogo();
   }
 
   if(AutoSelectorVal==3) { //RedRight
-    RedRight();
+    RedMogo();
   } 
 
   if(AutoSelectorVal==4) { //BlueRight
-    BlueRight();
+    BlueRing();
     
   }
 
@@ -340,7 +340,7 @@ void autonomous(void) {
   }
 
   if(AutoSelectorVal==9) { 
-    RedRightElim();
+    RedMogoElim();
 
   }
 
@@ -468,7 +468,7 @@ int BTask(void) {
       } 
       else if(abs(LiftSensor.position(degrees)) > 20) {
         RunLift(100);
-        if(abs(LiftSensor.position(degrees)) < 30) {
+        if(abs(LiftSensor.position(degrees)) < 34) {
           YTaskActiv = 0;
         }
       } 

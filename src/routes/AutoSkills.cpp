@@ -5,21 +5,52 @@
 // MoveEncoderPID(TestPara, motor speed, encoder travel distance (inches), time to full speed(sec), relative heading(to starting position), braking?)
 // TurnMaxTimePID(TestPara, Desired Heading -180 to 180, time out to calculate turn, Braking?)
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
+// armMoveToAngle(angle position (declared in globals, speed (-100 to 100));
+
+// int loadPosition = 20;
+// int alliancePosition = 190;
+// int resetPosition = 0;
+// int holdPosition = 45;
+// int ladderPosition = 140;
 
 void AutoSkills() {
-    PIDDataSet TestPara={3.0, 0.25, 0.15}; //initialize 3.0, 0.25, 0.15
-    MoveEncoderPID(TestPara, 50, 35, 0.2, 0, false);
-    MoveEncoderPID(TestPara, 50, 35, 0.3, 90, false);
-    MoveEncoderPID(TestPara, 50, 35, 0.2, 180, false);
-    MoveEncoderPID(TestPara, 50, 35, 0.3, 270, true);
-    TurnMaxTimePID(TestPara, 0, 5, true);
-    Clamp.set(true);
-    wait(5,sec);
-    TurnMaxTimePID(TestPara, 179, 5, true);
-    TurnMaxTimePID(TestPara, 270, 5, true);
-    Clamp.set(false);
-    wait(5,sec);
-    TurnMaxTimePID(TestPara, 0, 5, true);
+    PIDDataSet TestPara={1.5, 0.20, 0.1}; 
+
+    armMoveToAngle(loadPosition, 100);
+    RunRoller(100);
+    wait(2,sec);
+    RunRoller(0);
+    armMoveToAngle(alliancePosition, 100);
+    RunRoller(100);
+    wait(2,sec);
+    RunRoller(0);
+    armMoveToAngle(resetPosition, 100);
+    RunRoller(100);
+    wait(2,sec);
+    RunRoller(0);
+    armMoveToAngle(holdPosition, 100);
+    RunRoller(100);
+    wait(2,sec);
+    RunRoller(0);
+    armMoveToAngle(ladderPosition, 100);
+    RunRoller(100);
+    wait(2,sec);
+    RunRoller(0);
+    // MoveEncoderPID(TestPara, 50, 35, 0.2, 0, false);
+    // MoveEncoderPID(TestPara, 50, 35, 0.3, 90, false);
+    // MoveEncoderPID(TestPara, 50, 35, 0.2, 180, false);
+    // MoveEncoderPID(TestPara, 50, 35, 0.3, 270, true);
+    // TurnMaxTimePID(TestPara, 0, 5, true);
+    // TurnMaxTimePID(TestPara, -90, 5, true);
+    // TurnMaxTimePID(TestPara, 179, 5, true);
+    // TurnMaxTimePID(TestPara, 90, 5, true);
+    // Clamp.set(true);
+    // wait(5,sec);
+    // TurnMaxTimePID(TestPara, 179, 5, true);
+    // TurnMaxTimePID(TestPara, 270, 5, true);
+    // Clamp.set(false);
+    // wait(5,sec);
+    // TurnMaxTimePID(TestPara, 0, 5, true);
 
 
 

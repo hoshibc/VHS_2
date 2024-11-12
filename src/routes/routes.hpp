@@ -7,12 +7,12 @@
 
 
 extern void Blue2GoalAwp();
-extern void BlueLeft();
-extern void BlueRight();
+extern void BlueMogo();
+extern void BlueRing();
 extern void Red2GoalAwp();
-extern void RedRight();
-extern void RedRightElim();
-extern void RedLeft();
+extern void RedMogo();
+extern void RedMogoElim();
+extern void RedRing();
 extern void AutoSkills();
 
 #endif  

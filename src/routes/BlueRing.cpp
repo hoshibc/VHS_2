@@ -6,7 +6,7 @@
 // TurnMaxTimePID(TestPara, Desired Heading -180 to 180, time out to calculate turn, Braking?)
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
-void BlueRight() {
+void BlueRing() {
     PIDDataSet TestPara={3.0, 0.25, 0.15}; //initialize 3.0, 0.25, 0.15
     Clamp.set(false);
     MoveEncoderPID(TestPara, -100, 14, 0.2, 0, true); 

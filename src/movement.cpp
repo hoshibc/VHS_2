@@ -16,6 +16,13 @@ int PB;
 int PX;
 int JX;
 
+//Globals for arm movement
+int loadPosition = 20;
+int alliancePosition = 190;
+int resetPosition = 0;
+int holdPosition = 45;
+int ladderPosition = 140;
+
 //General Sect;
 //This section includes all general codes for drive and auto
 
@@ -98,28 +105,44 @@ void CStop() {
   RB.stop();
 }
 
+/** Moves the wall stakes arm to a set angle 
+ * @param deg the degrees currently measured by the rotation sensor 
+ * @param speed the speed of the movement from 0-100 
+ */
+void armMoveToAngle(int deg, int speed) {
 
-void armMoveToAngle(int deg) {
   if (abs(LiftSensor.position(degrees)) < deg) {
-    RunLift(-100);
-    if(abs(LiftSensor.position(degrees)) > deg) {
-      RunLift(0);
+    while (abs(LiftSensor.position(degrees)) < deg) {
+      RunLift(-speed);
     }
+    Lift.setStopping(hold);
+    Lift.stop();
+    
   }
   else if (abs(LiftSensor.position(degrees)) > deg) {
-    RunLift(100);
-    if (abs(LiftSensor.position(degrees)) <= deg+5) {
-      RunLift(0);
+    while (abs(LiftSensor.position(degrees)) > deg+8) {
+      RunLift(speed);
     }
+    Lift.setStopping(hold);
+    Lift.stop();
   }
+  Lift.setStopping(hold);
+  Lift.stop();
 }
 
+/** Runs the intake and all connected subsystems 
+ * @param val the speed, from -100 to 100 | postive intakes and negative outtakes 
+ */
 
 void RunRoller(int val) {
   Roller.setMaxTorque(100,percent);
   Roller.spin(forward,(double)val/100.0*12,volt);
 }
 
+
+/** Runs the arm for the wall stake mech. 
+ * @param val the speed, from -100 to 100 | positive moves down and negative moves up 
+ */
 void RunLift(int val) {
   Lift.setMaxTorque(100,percent);
   Lift.spin(forward,(double)val/100.0*12,volt);
@@ -130,7 +153,7 @@ void RunLift(int val) {
 int PrevE;//Error at t-1
 
 /** Moves the robot forward or backward. Negative speed moves
- * the robot forward. Positive value moves it backward. (Ik it's fucked up)
+ * 
  * @param KVals the PID constants
  * @param Speed the speed, from -100 to 100
  * @param dist distance travelled, in inches

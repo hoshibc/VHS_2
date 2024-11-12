@@ -7,6 +7,12 @@ extern int PB;
 extern int PX;
 extern int JX;
 
+extern int loadPosition;
+extern int alliancePosition;
+extern int resetPosition;
+extern int holdPosition;
+extern int ladderPosition;
+
 struct ChassisDataSet{
   int Left;
   int Right;
@@ -26,6 +32,7 @@ extern ChassisDataSet ChassisUpdate();
 extern void Move(int left, int right);
 extern void BStop();
 extern void CStop();
+extern void armMoveToAngle(int deg, int speed);
 extern void RunRoller(int val);
 extern void RunLift(int val);
 extern int PrevE;
