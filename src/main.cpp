@@ -398,6 +398,7 @@ int ButtonPressingY,YTaskActiv;
 int ButtonPressingB,BTaskActiv;
 int ButtonPressingA,ATaskActiv;
 int ButtonPressingD,DTaskActiv;
+int ButtonPressingU,UTaskActiv;
 
 int PTask(void) {
   while(true) {
@@ -448,6 +449,23 @@ int PTask(void) {
       DTaskActiv=0;
       arm.set(false);
     }
+
+
+    //----------------------
+    //Toggles climb activation
+    if(UTaskActiv==0&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0) {
+      ButtonPressingU=1;
+      UTaskActiv=1;
+      armMoveToAngle(alliancePosition, 100);
+    }
+
+    else if(!Controller1.ButtonUp.pressing())ButtonPressingU=0;
+
+    else if(UTaskActiv==1&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0) {
+      ButtonPressingU=1;
+      UTaskActiv=0;
+      armMoveToAngle(resetPosition, 100);
+    }
   }
   return 0;
 }
@@ -484,30 +502,6 @@ int BTask(void) {
       }
     }  
 
-// copy of macro so if i break it i still have a backup 
-  // while(true) {
-  //   if(abs(LiftSensor.position(degrees)) <= 19 && YTaskActiv==1) {
-  //     mvel = (90 - LiftSensor.position(vex::rotationUnits::deg)) * 1.25; //301.81
-  //     RunLift(-100);
-  //     std::cout << mvel << std::endl; //test
-  //     if(abs(LiftSensor.position(degrees)) > 19) {
-  //       YTaskActiv = 0;
-  //     }
-  //   }
-  //   else {
-  //     pow1=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
-  //     std::cout << mvel << std::endl; //test
-  //     if(pow1==0) {
-  //       Lift.setStopping(hold);
-  //       Lift.stop();
-  //     }
-  //     else {
-  //       RunLift(pow1);
-  //     }
-  //   } 
-
-    //commenting out the button a pressing macro because we do not have a rotation sensor for now
-
     if(Controller1.ButtonY.pressing() && ButtonPressingY == 0) {
       ButtonPressingY=1;
       YTaskActiv=1;
@@ -520,8 +514,6 @@ int BTask(void) {
       YTaskActiv=0;
       RunLift(0);
     }
-  
-
   }
   return 0;
 }

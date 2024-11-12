@@ -16,7 +16,7 @@ int PB;
 int PX;
 int JX;
 
-//Globals for arm movement
+//Globals for arm movement, measured in degrees 
 int loadPosition = 20;
 int alliancePosition = 190;
 int resetPosition = 0;
@@ -29,8 +29,8 @@ int ladderPosition = 140;
 
 /** Resets the robot's drive train and inertial sensor
  * 
- * @param dist the 
- * @param HDG the
+ * @param dist 
+ * @param HDG
  */
 void Zeroing(bool dist, bool HDG) {
   if(dist) {
@@ -57,6 +57,10 @@ ChassisDataSet ChassisUpdate() {
   return CDS;
 }
 
+/** Moves the drivetrain by applying power to the left and right side 
+ * @param left left side of the drivetrain
+ * @param right right side of the drivetrain 
+ */
 void Move(int left, int right) {
   LF.setMaxTorque(100,percent);
   LM.setMaxTorque(100,percent);
@@ -73,6 +77,10 @@ void Move(int left, int right) {
   RB.spin(forward,(double)right/100.0*11,volt);
 }
 
+
+/** Stops all drive motors and set on brake
+ * 
+ */
 void BStop() {
   LF.setStopping(brake);
   LM.setStopping(brake);
@@ -89,6 +97,9 @@ void BStop() {
   RB.stop();
 }
 
+/** Stops all drive motors and set on coast
+ * 
+ */
 void CStop() {
   LF.setStopping(coast);
   LM.setStopping(coast);
