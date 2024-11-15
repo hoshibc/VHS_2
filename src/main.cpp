@@ -306,52 +306,44 @@ void autonomous(void) {
 
   //can start editing if nessary
   //Put Auto route function into if statements to use autoselector
-  if(AutoSelectorVal==1) { //RedLeft
+  if(AutoSelectorVal==1) { //Red Ring Side
     RedRing();
   }
 
-  if(AutoSelectorVal==2) { //BlueLeft
+  if(AutoSelectorVal==2) { //Blue Mogo Side
     BlueMogo();
   }
 
-  if(AutoSelectorVal==3) { //RedRight
+  if(AutoSelectorVal==3) { //Red Mogo Side
     RedMogo();
   } 
 
-  if(AutoSelectorVal==4) { //BlueRight
+  if(AutoSelectorVal==4) { //Blue Mogo Side
     BlueRing();
-    
   }
 
-  if(AutoSelectorVal==5) { //RedAWP
+  if(AutoSelectorVal==5) { //Red AWP
     Red2GoalAwp();
   }
 
-
-  if(AutoSelectorVal==6) { //BlueAWP
+  if(AutoSelectorVal==6) { //Blue AWP
     Blue2GoalAwp();
-
   }
 
-
-  if(AutoSelectorVal==8) { 
-
-
+  if(AutoSelectorVal==8) { //Blue Ring Side Elims
+    BlueRingElim();
   }
 
-  if(AutoSelectorVal==9) { 
+  if(AutoSelectorVal==9) { //Red Mogo Side Elims
     RedMogoElim();
-
   }
 
-  if(AutoSelectorVal==10) { 
-
-
+  if(AutoSelectorVal==10) { //Blue Mogo Side Elims
+    BlueMogoElim();
   }
 
-  if(AutoSelectorVal==11) { //Blue
-
-
+  if(AutoSelectorVal==11) { //Red Ring Side Elims
+    RedRingElim();
   }
 
   if(AutoSelectorVal==12) { //Auto_skills
