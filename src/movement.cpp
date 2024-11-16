@@ -21,7 +21,7 @@ int loadPosition = 20;
 int alliancePosition = 190;
 int resetPosition = 0;
 int holdPosition = 45;
-int ladderPosition = 140;
+int ladderPosition = 120;
 int wallPosition = 160;
 
 //General Sect;

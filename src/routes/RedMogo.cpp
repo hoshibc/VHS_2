@@ -9,29 +9,32 @@
 void RedMogo(){
     //version number 1.0 draft route
     //issues: intake range, time to end
-    PIDDataSet TestPara={1.5, 0.20, 0.1};  //initialize 1.5, 0.20, 0.1
+    PIDDataSet TestPara={1.5, 0.20, 0.1};   //initialize 1.5, 0.20, 0.1
+    armMoveToAngle(loadPosition, 80); 
     Clamp.set(false);
-    MoveEncoderPID(TestPara, -85, 70, 0.2, 23, false);
-    MoveEncoderPID(TestPara, -20, 8, 0.2, 23, true);
-    Clamp.set(true);
-    wait(100,msec);
+    wait(150,msec);
     RunRoller(100);
-    TurnMaxTimePID(TestPara, -14, 0.2, true);
-    wait(200,msec);
-    MoveEncoderPID(TestPara, 80, 40, 0.2, -14, true); 
+    TurnMaxTimePID(TestPara, 53, 0.3, true);
     RunRoller(0);
-    MoveEncoderPID(TestPara, 80, 25, 0.2, -12, true); 
-    TurnMaxTimePID(TestPara, 110, 0.4, true);
-    wait(100,msec);
-    Clamp.set(false);
-    wait(100,msec);
-    MoveEncoderPID(TestPara, 90, 20, 0.2, 110, true); 
-    TurnMaxTimePID(TestPara, -33, 0.4, true);
-    MoveEncoderPID(TestPara, -90, 30, 0.2, -33, false);
-    MoveEncoderPID(TestPara, -20, 10, 0.2, -33, true);
+    MoveEncoderPID(TestPara, 50, 19, 0.2, 53, true);
+    armMoveToAngle(alliancePosition, 100);
+    MoveEncoderPID(TestPara, -90, 16, 0.2, 53, true);
+    armMoveToAngle(resetPosition, 100);
+    TurnMaxTimePID(TestPara, 0, 0.3, true);
+    MoveEncoderPID(TestPara, -100, 20, 0.2, 0, false); //move to close mogo
+    MoveEncoderPID(TestPara, -30, 10, 0.2, 0, true); 
     Clamp.set(true);
-    wait(100,msec);
-    MoveEncoderPID(TestPara, 80, 20, 0.2, -33, true);
+    intakeLift.set(true);
+    TurnMaxTimePID(TestPara, 50, 0.3, true);
     RunRoller(100);
-    TurnMaxTimePID(TestPara, 75, 0.3, true);
+    MoveEncoderPID(TestPara, 75, 32, 0.2, 50, true);
+    intakeLift.set(false);
+    wait(150, msec);
+    MoveEncoderPID(TestPara, -60, 32, 0.2, 90, true);
+    TurnMaxTimePID(TestPara, -135, 0.4, true);
+    MoveEncoderPID(TestPara, 70, 34, 0.2, -135, true);
+    TurnMaxTimePID(TestPara, 112, 0.5, true);
+    MoveEncoderPID(TestPara, 80, 26, 0.2, 112, true);
+    armMoveToAngle(ladderPosition, 100);
+    RunRoller(0);
 }

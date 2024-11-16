@@ -11,7 +11,7 @@
 // int alliancePosition = 190;
 // int resetPosition = 0;
 // int holdPosition = 45;
-// int ladderPosition = 140;
+// int ladderPosition = 120;
 // int wallPosition = 160;
 
 void AutoSkills() {
@@ -69,9 +69,9 @@ void AutoSkills() {
     MoveEncoderPID(TestPara, 95, 25, 0.2, 0, true); //get ring b1
     TurnMaxTimePID(TestPara, 46, 0.2, true);
     RunRoller(0);
-    MoveEncoderPID(TestPara, 90, 25, 0.9, 46, false); //get ring b2 (inside ladder)
+    MoveEncoderPID(TestPara, 90, 27, 0.9, 46, false); //get ring b2 (inside ladder)
     RunRoller(100);
-    MoveEncoderPID(TestPara, 90, 26, 0.3, 46, true);
+    MoveEncoderPID(TestPara, 90, 24, 0.3, 46, true);
     wait(150,msec);
     RunRoller(0);
     MoveEncoderPID(TestPara, -90, 38, 0.6, 46, false); //back away
@@ -93,6 +93,9 @@ void AutoSkills() {
     RunRoller(0);
     armMoveToAngle(ladderPosition, 100); //score CHANGE TO WALL POSITION !!!!!!!!!!!!!!!!!!!
     MoveEncoderPID(TestPara, -90, 10, 0.5, -90, true); //back up
+    armMoveToAngle(resetPosition, 100);
+    TurnMaxTimePID(TestPara, 17, 0.2, true); //turn face wall stake
+
 
 
 

@@ -10,7 +10,7 @@
 // global int alliancePosition = 190;
 // global int resetPosition = 0;
 // global int holdPosition = 45;
-// glocal int ladderPosition = 140;
+// global int ladderPosition = 120;
 
 void RedRing() {
     //PIDDataSet TestPara={3.0, 0.25, 0.15}; //initialize 3.0, 0.25, 0.15
@@ -25,31 +25,33 @@ void RedRing() {
     MoveEncoderPID(TestPara, 80, 35, 0.2, 139, true); //get ring 1
     MoveEncoderPID(TestPara, -50, 5, 0.2, 139, true); //back away
     TurnMaxTimePID(TestPara, 120, 0.2, true);
-    MoveEncoderPID(TestPara, 80, 12, 0.2, 122, true); //get ring 2
+    MoveEncoderPID(TestPara, 80, 11, 0.2, 122, true); //get ring 2
     wait(200,msec);
     MoveEncoderPID(TestPara, -75, 23, 0.2, 122, true); //back away 
     TurnMaxTimePID(TestPara, 86, 0.2, true); //turn face side ring stack 
     MoveEncoderPID(TestPara, 80, 22, 0.2, 86, true); //move to get 
     wait(175,msec);
     RunRoller(0);
-    TurnMaxTimePID(TestPara, -55, 0.4, true); //turn face ring stack in front of alliance stake
+    TurnMaxTimePID(TestPara, -65, 0.4, true); //turn face ring stack in front of alliance stake
     RunRoller(100);
+    wait(150,msec);
     intakeLift.set(true);
-    MoveEncoderPID(TestPara, 100, 60, 0.2, -58, false); //move towards ring 
+    MoveEncoderPID(TestPara, 100, 50, 0.2, -65, false); //move towards ring 
     armMoveToAngle(loadPosition, 100); //lift arm to loading position 
-    MoveEncoderPID(TestPara, 20, 10, 0.3, -58, true);
+    MoveEncoderPID(TestPara, 20, 10, 0.3, -65, true); //move forward
     intakeLift.set(false);
-    MoveEncoderPID(TestPara, -50, 10, 0.3, -58, true);
-    TurnMaxTimePID(TestPara, -26, 0.3, true);
-    wait(340,msec);
+    MoveEncoderPID(TestPara, -50, 10, 0.3, -65, true); //move back 
+    TurnMaxTimePID(TestPara, -22, 0.3, true); //turn face alliance stake 
+    wait(500,msec);
     RunRoller(0);
-    MoveEncoderPID(TestPara, 50, 24, 0.3, -26, true);
+    MoveEncoderPID(TestPara, 60, 18, 0.3, -22, true); //move fowards
     wait(200,msec);
-    armMoveToAngle(alliancePosition, 100);
-    MoveEncoderPID(TestPara, -50, 35, 0.3, -26, true);
-    armMoveToAngle(ladderPosition, 100);
-    TurnMaxTimePID(TestPara, -135, 0.3, true);
-    MoveEncoderPID(TestPara, 30, 16, 0.3, -135, true);
+    armMoveToAngle(alliancePosition, 100); //score alliance stake 
+    MoveEncoderPID(TestPara, -65, 50, 0.3, -26, true); //move back 
+    armMoveToAngle(resetPosition, 100); //move arm 
+    TurnMaxTimePID(TestPara, -135, 0.3, true); //turn face ladder
+    MoveEncoderPID(TestPara, 25, 6, 0.3, -135, true); //move to ladder
+    armMoveToAngle(ladderPosition, 100); //move arm 
 
 
 
