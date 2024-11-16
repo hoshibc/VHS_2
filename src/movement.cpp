@@ -22,6 +22,7 @@ int alliancePosition = 190;
 int resetPosition = 0;
 int holdPosition = 45;
 int ladderPosition = 140;
+int wallPosition = 160;
 
 //General Sect;
 //This section includes all general codes for drive and auto
@@ -131,7 +132,7 @@ void armMoveToAngle(int deg, int speed) {
     
   }
   else if (abs(LiftSensor.position(degrees)) > deg) {
-    while (abs(LiftSensor.position(degrees)) > deg+8) {
+    while (abs(LiftSensor.position(degrees)) > deg+4) {
       RunLift(speed);
     }
     Lift.setStopping(hold);

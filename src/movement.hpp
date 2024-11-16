@@ -12,6 +12,7 @@ extern int alliancePosition;
 extern int resetPosition;
 extern int holdPosition;
 extern int ladderPosition;
+extern int wallPosition;
 
 struct ChassisDataSet{
   int Left;
