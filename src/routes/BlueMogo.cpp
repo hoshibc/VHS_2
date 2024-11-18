@@ -6,40 +6,35 @@
 // TurnMaxTimePID(TestPara, Desired Heading -180 to 180, time out to calculate turn, Braking?)
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
-void BlueMogo() {
-    PIDDataSet TestPara={3.0, 0.25, 0.15}; //initialize 3.0, 0.25, 0.15
+void BlueMogo(){
+    //version number 1.0 draft route
+    //issues: intake range, time to end
+    PIDDataSet TestPara={1.5, 0.20, 0.1};   //initialize 1.5, 0.20, 0.1
+    armMoveToAngle(loadPosition, 80); //set arm to loading position
     Clamp.set(false);
-    MoveEncoderPID(TestPara, -100, 15, 0.2, 0, true); //get mogo in on the right side
-    MoveEncoderPID(TestPara, -40, 5, 0.2, 0, true);
-    Clamp.set(true);
-    wait(100,msec);   
-    TurnMaxTimePID(TestPara, -54, 0.3, true); //turn to ge middle red ring
-    RunRoller(100);//score preload 
-    intakeLift.set(true);
-    MoveEncoderPID(TestPara, 100, 25, 0.2, -54, true);//get middle field ring 
-    intakeLift.set(false); 
-    wait(275, msec);
-    MoveEncoderPID(TestPara, -100, 7, 0.2, -65, true);  //back away
-    //RunRoller(0);
-    TurnMaxTimePID(TestPara, 113, 0.5, true); // turn to face far right ring
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 38, 0.3, 113, true); //move to get it
-    MoveEncoderPID(TestPara, 70, 12, 0.3, 113, true);
-    RunRoller(0);
-    MoveEncoderPID(TestPara, -70, 2, 0.2, 113, true); //back away
-    TurnMaxTimePID(TestPara, 25, 0.5, true); //turn to face corner
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 30, 0.2, 25, true); //move to corner
-    MoveEncoderPID(TestPara, 50, 18, 0.2, 25, true); //move slowly
     wait(150,msec);
-    MoveEncoderPID(TestPara, -80, 25, 0.2, 25, true); // back away from corner
-    wait(150, msec);
-    TurnMaxTimePID(TestPara, -120, 1, true); //turn to face mid
+    RunRoller(100); //load ring in 
+    TurnMaxTimePID(TestPara, -53, 0.3, true); //turn face alliance stake
     RunRoller(0);
-    RunLift(-100);
-    wait(350,msec);
-    RunLift(0);
-    MoveEncoderPID(TestPara, 80, 38, 0.2, -120, true); //touch mid
-    MoveEncoderPID(TestPara, 20, 4, 0.2, -120, true); //touch mid
+    MoveEncoderPID(TestPara, 50, 19, 0.2, -53, true); //move foward
+    armMoveToAngle(alliancePosition, 100); //score
+    MoveEncoderPID(TestPara, -90, 16, 0.2, -53, true); //move back 
+    armMoveToAngle(resetPosition, 100); //reset arm 
+    TurnMaxTimePID(TestPara, 0, 0.3, true); //turn clamp mogo 
+    MoveEncoderPID(TestPara, -100, 22, 0.2, 0, false); //move to clamp mogo
+    MoveEncoderPID(TestPara, -30, 10, 0.2, 0, true); 
+    Clamp.set(true);
+    intakeLift.set(true);
+    TurnMaxTimePID(TestPara, -50, 0.3, true); //turn face ring stack 
+    RunRoller(100);
+    MoveEncoderPID(TestPara, 75, 27, 0.2, -50, true); //move foward
+    intakeLift.set(false);
+    wait(150, msec);
+    MoveEncoderPID(TestPara, -30, 32, 0.2, -90, true); //move back 
+    TurnMaxTimePID(TestPara, 135, 0.4, true); //turn face ring 2
+    MoveEncoderPID(TestPara, 70, 34, 0.2, 135, true); //move foward
+    TurnMaxTimePID(TestPara, -112, 0.5, true); //turn face ladder
+    MoveEncoderPID(TestPara, 80, 32, 0.2, -112, true); //move foward
+    armMoveToAngle(ladderPosition, 100); //raise arm touch bar
     RunRoller(0);
 }

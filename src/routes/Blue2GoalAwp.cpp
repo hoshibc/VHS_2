@@ -7,41 +7,37 @@
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
 void Blue2GoalAwp() {
-    PIDDataSet TestPara={3.0, 0.25, 0.15}; //initialize 3.0, 0.25, 0.15
+    PIDDataSet TestPara={1.5, 0.20, 0.1};   //initialize 1.5, 0.20, 0.1
+    armMoveToAngle(loadPosition, 80); //set arm to loading position
     Clamp.set(false);
-    MoveEncoderPID(TestPara, -70, 25, 0.2, 0, true); 
-    Clamp.set(true); //clamp the first goal 
-    wait(100, msec);
+    wait(150,msec);
+    RunRoller(100); //load ring in 
+    TurnMaxTimePID(TestPara, -53, 0.3, true); //turn face alliance stake
+    RunRoller(0);
+    MoveEncoderPID(TestPara, 75, 19, 0.4, -53, true); //move foward
+    armMoveToAngle(alliancePosition, 100); //score alliance
+    MoveEncoderPID(TestPara, -90, 16, 0.2, -53, true); //move back 
+    armMoveToAngle(resetPosition, 100); //reset arm 
+    TurnMaxTimePID(TestPara, 0, 0.3, true); //turn face mogo 
+    MoveEncoderPID(TestPara, -100, 20, 0.2, 0, false); //move to clamp mogo
+    MoveEncoderPID(TestPara, -40, 19, 0.2, 0, true); 
+    Clamp.set(true);
+    wait(100,msec);
+    TurnMaxTimePID(TestPara, 90, 0.3, true); 
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 30, 0.2, 0, true); 
-    TurnMaxTimePID(TestPara, -100, 0.4, true);
-    MoveEncoderPID(TestPara, 45, 22, 0.2, -100, true); //move to push other bot 
-    MoveEncoderPID(TestPara, -100, 5, 0.2, -90, true);
-    wait(350,msec);
-    TurnMaxTimePID(TestPara, 110, 0.7, true);
+    MoveEncoderPID(TestPara, 100, 22, 0.3, 90, true); 
+    wait(200,msec);
+    TurnMaxTimePID(TestPara, -63, 0.3, true); 
+    MoveEncoderPID(TestPara, 100, 50, 0.3, -63, false); 
     intakeLift.set(true);
     Clamp.set(false);
-    MoveEncoderPID(TestPara, 100, 22, 0.2, 100, true);
+    MoveEncoderPID(TestPara, 40, 23, 0.5, -63, true); 
+    wait(150,msec);
     intakeLift.set(false);
-    wait(50,msec);
-    TurnMaxTimePID(TestPara, -53, 0.4, true);
+    TurnMaxTimePID(TestPara, 47, 0.3, true);
+    wait(150,msec);
     RunRoller(0);
-    MoveEncoderPID(TestPara, -90, 54, 0.3, -53, true);
-    Clamp.set(true);
-    wait(5,msec);
-    TurnMaxTimePID(TestPara, 89, 0.4, true);
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 32, 0.2, 89, true);
-    wait(200,msec);
-    TurnMaxTimePID(TestPara, -110, 0.5, true);
-    MoveEncoderPID(TestPara, 60, 45, 0.2, -110, true);
-    RunLift(-100);
-    wait(350,msec);
-    RunLift(0);
-    RunRoller(0);
+    MoveEncoderPID(TestPara, -100, 24, 0.3, 47, false);
+    MoveEncoderPID(TestPara, -30, 10, 0.3, 47, true);
 
-
- 
-    
-    
 }

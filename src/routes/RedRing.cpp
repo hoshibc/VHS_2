@@ -13,7 +13,6 @@
 // global int ladderPosition = 120;
 
 void RedRing() {
-    //PIDDataSet TestPara={3.0, 0.25, 0.15}; //initialize 3.0, 0.25, 0.15
     PIDDataSet TestPara={1.5, 0.20, 0.1}; 
     Clamp.set(false);
     MoveEncoderPID(TestPara, -100, 20, 0.2, 0, false); //move to close mogo
@@ -52,7 +51,5 @@ void RedRing() {
     TurnMaxTimePID(TestPara, -135, 0.3, true); //turn face ladder
     MoveEncoderPID(TestPara, 25, 6, 0.3, -135, true); //move to ladder
     armMoveToAngle(ladderPosition, 100); //move arm 
-
-
-
+    
 }

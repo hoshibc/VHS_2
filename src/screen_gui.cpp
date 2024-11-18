@@ -203,14 +203,14 @@ if(AutoSelectorVal==7) {
   if(AutoSelectorVal==8) {
     Brain.Screen.drawRectangle(375,25,100,50);
     Brain.Screen.setCursor(3,40);
-    Brain.Screen.print("BlueRingE");
+    Brain.Screen.print("BlueMogoE");
     Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
     Brain.Screen.print("BlueE");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("BlueRingE");
+    Brain.Screen.print("BlueMogoE");
     Brain.Screen.setFont(monoM);
     Brain.Screen.setFillColor("#39FF14");
   }
@@ -233,14 +233,14 @@ if(AutoSelectorVal==7) {
   if(AutoSelectorVal==10) {
     Brain.Screen.drawRectangle(375,100,100,50);
     Brain.Screen.setCursor(7,40);
-    Brain.Screen.print("BlueMogoE");
+    Brain.Screen.print("BlueRingE");
     Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
     Brain.Screen.print("BlueE");
     Brain.Screen.setCursor(4,10);
-    Brain.Screen.print("BlueMogoE");
+    Brain.Screen.print("BlueRingE");
     Brain.Screen.setFont(monoM); 
     Brain.Screen.setFillColor("#39FF14");
   }

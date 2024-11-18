@@ -17,7 +17,7 @@ int PX;
 int JX;
 
 //Globals for arm movement, measured in degrees 
-int loadPosition = 20;
+int loadPosition = 19;
 int alliancePosition = 190;
 int resetPosition = 0;
 int holdPosition = 45;
@@ -329,7 +329,7 @@ void MoveTimePID(PIDDataSet KVals, int Speed, double TE,double AccT,double ABSHD
 
   if(brake) {
     BStop();
-    wait(200,msec);
+    wait(100,msec);
   }
   else CStop();
 }

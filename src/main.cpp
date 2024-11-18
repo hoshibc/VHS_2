@@ -210,7 +210,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("BlueRingE");
+    Brain.Screen.print("BlueMogoE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("BlueE");
     Brain.Screen.setFont(monoM);
@@ -236,7 +236,7 @@ Brain.Screen.print("%d",AutoSelectorVal);
     Brain.Screen.setFont(monoXL);
     Brain.Screen.setPenColor("#39FF14");
     Brain.Screen.setCursor(3,10);
-    Brain.Screen.print("BlueMogoE");
+    Brain.Screen.print("BlueRingE");
     Brain.Screen.setCursor(4,10);
     Brain.Screen.print("BlueE");
     Brain.Screen.setFont(monoM);  
@@ -331,7 +331,7 @@ void autonomous(void) {
   }
 
   if(AutoSelectorVal==8) { //Blue Ring Side Elims
-    BlueRingElim();
+    BlueMogoElim();
   }
 
   if(AutoSelectorVal==9) { //Red Mogo Side Elims
@@ -339,7 +339,7 @@ void autonomous(void) {
   }
 
   if(AutoSelectorVal==10) { //Blue Mogo Side Elims
-    BlueMogoElim();
+    BlueRingElim();
   }
 
   if(AutoSelectorVal==11) { //Red Ring Side Elims
@@ -478,7 +478,7 @@ int BTask(void) {
       } 
       else if(abs(LiftSensor.position(degrees)) > 20) {
         RunLift(100);
-        if(abs(LiftSensor.position(degrees)) < 32) {
+        if(abs(LiftSensor.position(degrees)) < 38) {
           YTaskActiv = 0;
         }
       } 
