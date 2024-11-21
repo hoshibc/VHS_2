@@ -9,24 +9,35 @@
 void RedMogoElim(){
     PIDDataSet TestPara={1.5, 0.20, 0.1};  //initialize 1.5, 0.20, 0.1
     Clamp.set(false);
-    MoveEncoderPID(TestPara, -100, 75, 0.2, 22, true);
-    wait(75,msec); 
-    Clamp.set(true);
+    MoveEncoderPID(TestPara, -100, 24, 0.3, 0, false); //rush mogo
+    //TurnMaxTimePID(TestPara, -29, 0.3, true);
+    MoveEncoderPID(TestPara, -100, 29, 0.1, 30, false); //continue rush
+    MoveEncoderPID(TestPara, -20, 14, 0.1, 30, true); //continue rush
+    Clamp.set(true); //clamp mid goal
     wait(100,msec);
     RunRoller(100);
-    TurnMaxTimePID(TestPara, -14, 0.2, true);
-    wait(200,msec);
-    MoveEncoderPID(TestPara, 80, 40, 0.2, -14, true); 
+    MoveEncoderPID(TestPara, 85, 20, 0.3, -40, false);
+    MoveEncoderPID(TestPara, 85, 15, 0.3, -15, false);
     RunRoller(0);
-    MoveEncoderPID(TestPara, 80, 25, 0.2, -12, true); 
-    TurnMaxTimePID(TestPara, 110, 0.4, true);
-    wait(100,msec);
-    Clamp.set(false);
-    wait(200,msec);
-    TurnMaxTimePID(TestPara, -35, 0.4, true);
-    MoveEncoderPID(TestPara, -75, 70, 0.2, -40, true);
-    wait(100,msec);
-    Clamp.set(true);
-    MoveEncoderPID(TestPara, 80, 20, 0.2, -40, true);
+    MoveEncoderPID(TestPara, 85, 9, 0.3, -15, true); //move get second ring
+    TurnMaxTimePID(TestPara, -170, 0.5, true); //turn to drop goal
+    Clamp.set(false); //drop 
+    wait(150,msec);
+    TurnMaxTimePID(TestPara, -52, 0.3, true); //turn face second goal 
+    MoveEncoderPID(TestPara, -100, 30, 0.3, -75, false); //fast move
+    MoveEncoderPID(TestPara, -30, 16, 0.3, -75, true); //slow move
+    Clamp.set(true); //clamp
+    wait(150,msec);
+    TurnMaxTimePID(TestPara, 50, 0.6, true); //turn face alliance stake ring 
     RunRoller(100);
-}
+    MoveEncoderPID(TestPara, 100, 20, 0.3, 50, false);
+    intakeLift.set(true);
+    MoveEncoderPID(TestPara, 30, 28, 0.3, 50, true);
+    intakeLift.set(false);
+    wait(150,msec);
+    MoveEncoderPID(TestPara, -35, 50, 0.3, 50, true);
+    TurnMaxTimePID(TestPara, -90, 0.5, true);
+    wait(2,sec);
+    RunRoller(0);
+    MoveEncoderPID(TestPara, 80, 30, 0.3, -90, true);
+} 
