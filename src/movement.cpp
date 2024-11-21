@@ -21,7 +21,7 @@ int loadPosition = 19;
 int alliancePosition = 190;
 int resetPosition = 0;
 int holdPosition = 45;
-int ladderPosition = 120;
+int ladderPosition = 110;
 int wallPosition = 160;
 
 //General Sect;
@@ -46,6 +46,7 @@ void Zeroing(bool dist, bool HDG) {
     Gyro.setHeading(0,degrees);
   }
 }
+
 
 ChassisDataSet ChassisUpdate() {
   ChassisDataSet CDS;
@@ -117,6 +118,12 @@ void CStop() {
   RB.stop();
 }
 
+void allianceStakeAlign() {
+  PIDDataSet TestPara={1.5, 0.20, 0.1}; 
+  MoveEncoderPID(TestPara, -50, 8, 0.3, -3, true); // back up
+  armMoveToAngle(alliancePosition, 100); //score alliace
+}
+
 /** Moves the wall stakes arm to a set angle 
  * @param deg the degrees currently measured by the rotation sensor 
  * @param speed the speed of the movement from 0-100 
@@ -138,8 +145,10 @@ void armMoveToAngle(int deg, int speed) {
     Lift.setStopping(hold);
     Lift.stop();
   }
-  Lift.setStopping(hold);
-  Lift.stop();
+  else if (abs(LiftSensor.position(degrees)) < 15) {
+    Lift.setStopping(coast);
+    Lift.stop();
+  }
 }
 
 /** Runs the intake and all connected subsystems 

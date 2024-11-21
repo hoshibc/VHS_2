@@ -115,7 +115,7 @@ void AutoSkills() {
     MoveEncoderPID(TestPara, -65, 10, 0.4, -87, true); //move back 
     MoveEncoderPID(TestPara, 70, 21, 0.4, -53, true); //turn move ring c3 (corner right)
     MoveEncoderPID(TestPara, -75, 51, 0.4, -50, true);  //move back 
-    TurnMaxTimePID(TestPara, -110, 0.4, true); //turn ring alliance prep
+    TurnMaxTimePID(TestPara, -110, 0.4, true); //turn ring alliance prep ring
     armMoveToAngle(loadPosition, 100);
     MoveEncoderPID(TestPara, 80, 35, 0.3, -110, true); //move foward
     MoveEncoderPID(TestPara, -80, 81.5, 0.3, -130, true); //move back a lot 

@@ -24,9 +24,9 @@ void RedRing() {
     MoveEncoderPID(TestPara, 80, 35, 0.2, 139, true); //get ring 1
     MoveEncoderPID(TestPara, -50, 5, 0.2, 139, true); //back away
     TurnMaxTimePID(TestPara, 120, 0.2, true);
-    MoveEncoderPID(TestPara, 80, 11, 0.2, 122, true); //get ring 2
-    wait(200,msec);
-    MoveEncoderPID(TestPara, -75, 23, 0.2, 122, true); //back away 
+    MoveEncoderPID(TestPara, 80, 12.5, 0.2, 122, true); //get ring 2
+    wait(230,msec);
+    MoveEncoderPID(TestPara, -75, 24.5, 0.2, 122, true); //back away 
     TurnMaxTimePID(TestPara, 86, 0.2, true); //turn face side ring stack 
     MoveEncoderPID(TestPara, 80, 22, 0.2, 86, true); //move to get 
     wait(175,msec);
@@ -39,17 +39,20 @@ void RedRing() {
     armMoveToAngle(loadPosition, 100); //lift arm to loading position 
     MoveEncoderPID(TestPara, 20, 10, 0.3, -65, true); //move forward
     intakeLift.set(false);
-    MoveEncoderPID(TestPara, -50, 10, 0.3, -65, true); //move back 
-    TurnMaxTimePID(TestPara, -22, 0.3, true); //turn face alliance stake 
+    wait(200,msec);
+    MoveEncoderPID(TestPara, -45, 10, 0.3, -65, true); //move back 
+    TurnMaxTimePID(TestPara, -26, 0.3, true); //turn face alliance stake 
     wait(500,msec);
     RunRoller(0);
-    MoveEncoderPID(TestPara, 60, 18, 0.3, -22, true); //move fowards
+    MoveEncoderPID(TestPara, 60, 19, 0.3, -26, true); //move fowards
     wait(200,msec);
     armMoveToAngle(alliancePosition, 100); //score alliance stake 
     MoveEncoderPID(TestPara, -65, 50, 0.3, -26, true); //move back 
     armMoveToAngle(resetPosition, 100); //move arm 
+    RunRoller(-100);
     TurnMaxTimePID(TestPara, -135, 0.3, true); //turn face ladder
-    MoveEncoderPID(TestPara, 25, 6, 0.3, -135, true); //move to ladder
+    MoveEncoderPID(TestPara, 25, 7, 0.3, -135, true); //move to ladder
+    RunRoller(0);
     armMoveToAngle(ladderPosition, 100); //move arm 
     
 }

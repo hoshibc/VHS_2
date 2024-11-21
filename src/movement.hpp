@@ -33,6 +33,7 @@ extern ChassisDataSet ChassisUpdate();
 extern void Move(int left, int right);
 extern void BStop();
 extern void CStop();
+extern void allianceStakeAlign();
 extern void armMoveToAngle(int deg, int speed);
 extern void RunRoller(int val);
 extern void RunLift(int val);

@@ -375,13 +375,36 @@ int DriveTask(void) {
 }
 
 int V;
+int ButtonPressingU,UTaskActiv;
+
 int ATask(void) {
   double pow;
   while(true) {
+
+    //----------------------
+    //Hold for intake rollers
     pow=((Controller1.ButtonL2.pressing()-Controller1.ButtonL1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
     RunRoller(pow);
+
+    //----------------------
+    //Toggles climb activation
+    if(Controller1.ButtonUp.pressing()&&ButtonPressingU==0) {
+      ButtonPressingU=1;
+      UTaskActiv=1;
+      allianceStakeAlign();
+    }
+
+    else if(!Controller1.ButtonUp.pressing())ButtonPressingU=0;
+
+    else if(UTaskActiv==1&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0) {
+      ButtonPressingU=1;
+      UTaskActiv=0;
+    }
+
   }  
   return 0;
+
+
 }
 
 
@@ -390,7 +413,7 @@ int ButtonPressingY,YTaskActiv;
 int ButtonPressingB,BTaskActiv;
 int ButtonPressingA,ATaskActiv;
 int ButtonPressingD,DTaskActiv;
-int ButtonPressingU,UTaskActiv;
+
 
 int PTask(void) {
   while(true) {
@@ -443,21 +466,7 @@ int PTask(void) {
     }
 
 
-    //----------------------
-    //Toggles climb activation
-    if(UTaskActiv==0&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0) {
-      ButtonPressingU=1;
-      UTaskActiv=1;
-      armMoveToAngle(alliancePosition, 100);
-    }
-
-    else if(!Controller1.ButtonUp.pressing())ButtonPressingU=0;
-
-    else if(UTaskActiv==1&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0) {
-      ButtonPressingU=1;
-      UTaskActiv=0;
-      armMoveToAngle(resetPosition, 100);
-    }
+    
   }
   return 0;
 }
@@ -504,7 +513,9 @@ int BTask(void) {
     else if(YTaskActiv==1&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
       ButtonPressingY=1;
       YTaskActiv=0;
-      RunLift(0);
+      Lift.setStopping(coast);
+      Lift.stop();
+      
     }
   }
   return 0;
