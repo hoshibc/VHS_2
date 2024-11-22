@@ -481,7 +481,7 @@ int BTask(void) {
     if(YTaskActiv==1) {
       if(abs(LiftSensor.position(degrees)) < 20) {
         RunLift(-100);
-        if(abs(LiftSensor.position(degrees)) > 20) {
+        if(abs(LiftSensor.position(degrees)) > 18) {
           YTaskActiv = 0;
         }
       } 
@@ -495,7 +495,8 @@ int BTask(void) {
     else {
       pow1=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
       if(pow1==0) {
-        Lift.setStopping(hold);
+        if (LiftSensor.position(degrees) < 12) Lift.setStopping(coast);
+        else Lift.setStopping(hold);
         Lift.stop();
       }
       else {
@@ -515,7 +516,6 @@ int BTask(void) {
       YTaskActiv=0;
       Lift.setStopping(coast);
       Lift.stop();
-      
     }
   }
   return 0;

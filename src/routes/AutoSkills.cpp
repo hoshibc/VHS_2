@@ -35,7 +35,7 @@ void AutoSkills() {
     MoveEncoderPID(TestPara, -80, 26, 0.7, 18, true); //move back
     TurnMaxTimePID(TestPara, 90, 0.4, true); //turn face right wall stake right
     armMoveToAngle(loadPosition, 100); //raise arm
-    MoveTimePID(TestPara, 50, 1.0, 0.6, 91, true); //move to right wall stake 
+    MoveTimePID(TestPara, 50, 1.1, 0.6, 91, true); //move to right wall stake 
     wait(500,msec); //wait for loading
     RunRoller(0);
     armMoveToAngle(wallPosition, 100); //score wall stake
@@ -72,7 +72,7 @@ void AutoSkills() {
     wait(200, msec);
     RunRoller(100);
     TurnMaxTimePID(TestPara, -49, 0.4, true); //turn face ring b5
-    MoveEncoderPID(TestPara, 80, 20, 0.4, -49, true); //move
+    MoveEncoderPID(TestPara, 80, 19, 0.4, -49, true); //move
     wait(450,msec);
     //TurnMaxTimePID(TestPara, 15, 0.2, true);
     MoveEncoderPID(TestPara, -80, 18, 0.4, 15, true); //move back 
@@ -86,11 +86,6 @@ void AutoSkills() {
     
     MoveEncoderPID(TestPara, 30, 23, 0.2, -25, true);
     wait(130,msec);
-
-
-
-
-
 
     TurnMaxTimePID(TestPara, -90, 0.3, true); //turn face wall stake
     MoveTimePID(TestPara, 50, 0.9, 0.6, -90, true);//move foward 
@@ -123,6 +118,7 @@ void AutoSkills() {
     TurnMaxTimePID(TestPara, 0, 0.4, true); // turn face
     RunRoller(0);
     MoveTimePID(TestPara, 50, 1, 0.5, 0, true);  //move align alliance stake 
+
     MoveEncoderPID(TestPara, -50, 8, 0.3, -3, true); // back up
     armMoveToAngle(alliancePosition, 100); //score alliace
     MoveEncoderPID(TestPara, -50, 5, 0.3, 0, true);
@@ -132,10 +128,10 @@ void AutoSkills() {
     MoveEncoderPID(TestPara, 80, 49, 0.3, 125, true); //move
     TurnMaxTimePID(TestPara, 43, 0.3, true); //turn face ring c5 and corner
     arm.set(true);
-    MoveEncoderPID(TestPara, 80, 40, 0.3, 43, false); //move foward
+    MoveEncoderPID(TestPara, 80, 35, 0.3, 43, false); //move foward
 
     MoveEncoderPID(TestPara, 45, 15, 0.3, 60, false);
-    MoveEncoderPID(TestPara, 30, 13, 0.3, 30, true);
+    MoveEncoderPID(TestPara, 30, 12, 0.3, 34, true);
     wait(325,msec);
     TurnMaxTimePID(TestPara, 0, 0.2, true);
     TurnMaxTimePID(TestPara, -135, 0.3, true); //turn mogo face corner
@@ -145,13 +141,14 @@ void AutoSkills() {
     Clamp.set(false); //drop 
     MoveEncoderPID(TestPara, 100, 23, 0.2, -135, false); //drift move to push 
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 82, 0.2, -58, false); //same change angle
-    MoveEncoderPID(TestPara, 100, 10, 0.2, -85, true); //same chang angle
-    RunRoller(0);
+    MoveEncoderPID(TestPara, 100, 89, 0.2, -58, false); //same change angle
+    MoveEncoderPID(TestPara, 100, 93, 0.2, -85, true); //same change angle
+    
     MoveEncoderPID(TestPara, -100, 20, 0.2, -85, false); //drift back 
-    MoveEncoderPID(TestPara, -100, 50, 0.2, 20, true);
+    MoveEncoderPID(TestPara, -100, 57, 0.2, 20, true);
     TurnMaxTimePID(TestPara, -50, 0.2, true); //turn back face ladder
     armMoveToAngle(alliancePosition, 100); //climb deploy
+    RunRoller(0);
     MoveTimePID(TestPara, -35, 1.7, 0.2, -50, true);//climb
     MoveEncoderPID(TestPara, 35, 10, 0.2, -50, true); //help climb reset
     armMoveToAngle(ladderPosition, 100); //move arm 
