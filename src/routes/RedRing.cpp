@@ -24,7 +24,7 @@ void RedRing() {
     MoveEncoderPID(TestPara, 80, 35, 0.2, 139, true); //get ring 1
     MoveEncoderPID(TestPara, -50, 5, 0.2, 139, true); //back away
     TurnMaxTimePID(TestPara, 120, 0.2, true);
-    MoveEncoderPID(TestPara, 80, 12.5, 0.2, 122, true); //get ring 2
+    MoveEncoderPID(TestPara, 80, 13, 0.2, 122, true); //get ring 2
     wait(230,msec);
     MoveEncoderPID(TestPara, -75, 24.5, 0.2, 122, true); //back away 
     TurnMaxTimePID(TestPara, 86, 0.2, true); //turn face side ring stack 
@@ -44,10 +44,10 @@ void RedRing() {
     TurnMaxTimePID(TestPara, -26, 0.3, true); //turn face alliance stake 
     wait(500,msec);
     RunRoller(0);
-    MoveEncoderPID(TestPara, 60, 19, 0.3, -26, true); //move fowards
+    MoveEncoderPID(TestPara, 60, 22, 0.3, -26, true); //move fowards
     wait(200,msec);
     armMoveToAngle(alliancePosition, 100); //score alliance stake 
-    MoveEncoderPID(TestPara, -65, 50, 0.3, -26, true); //move back 
+    MoveEncoderPID(TestPara, -65, 51, 0.3, -26, true); //move back 
     armMoveToAngle(resetPosition, 100); //move arm 
     RunRoller(-100);
     TurnMaxTimePID(TestPara, -135, 0.3, true); //turn face ladder
