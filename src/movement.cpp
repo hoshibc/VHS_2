@@ -182,7 +182,7 @@ int PrevE;//Error at t-1
  * @param ABSHDG absolute heading of the robot
  * @param brake Brake at end, or coast
  */
-void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double ABSHDG,bool brake) {
+void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double ABSHDG, bool brake) {
   double CSpeed=0;
   Zeroing(true,false);
   ChassisDataSet SensorVals;

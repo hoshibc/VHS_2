@@ -10,6 +10,7 @@ void RedMogo(){
     //version number 1.0 draft route
     //issues: intake range, time to end
     PIDDataSet TestPara={1.5, 0.20, 0.1};   //initialize 1.5, 0.20, 0.1
+    wait(2.5, sec);
     armMoveToAngle(loadPosition, 80); //move arm to position
     Clamp.set(false);
     wait(150,msec);
