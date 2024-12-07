@@ -222,7 +222,7 @@ void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double
 }
 
 /** Moves the robot forward or backward. Negative speed moves
- * the robot forward. Positive value moves it backward. (Ik it's fucked up)
+ * 
  * @param KVals the PID constants
  * @param DeltaAngle the absolute heading to turn to
  * @param TE time to calculate turn (not time to turn)

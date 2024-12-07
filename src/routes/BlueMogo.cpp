@@ -16,9 +16,9 @@ void BlueMogo(){
     RunRoller(100);
     TurnMaxTimePID(TestPara, -53, 0.3, true);//turn face alliance stake 
     RunRoller(0);
-    MoveEncoderPID(TestPara, 50, 19, 0.2, -53, true);//move fowards
+    MoveEncoderPID(TestPara, 50, 21, 0.2, -53, true);//move fowards
     armMoveToAngle(alliancePosition, 100); //score alliance
-    MoveEncoderPID(TestPara, -90, 16, 0.2, -53, true); // move back 
+    MoveEncoderPID(TestPara, -90, 18, 0.2, -53, true); // move back 
     armMoveToAngle(resetPosition, 100); //reset arm
     TurnMaxTimePID(TestPara, 0, 0.3, true); //turn face mogo 
     MoveEncoderPID(TestPara, -100, 20, 0.2, 0, false); //move to mogo
@@ -29,11 +29,11 @@ void BlueMogo(){
     RunRoller(100);
     MoveEncoderPID(TestPara, 75, 34, 0.2, -50, true); //move foward
     intakeLift.set(false);
-    wait(450, msec);
-    MoveEncoderPID(TestPara, -30, 10, 0.2, -50, false); //move back
+    wait(300, msec);
+    MoveEncoderPID(TestPara, -50, 10, 0.2, -50, false); //move back
     MoveEncoderPID(TestPara, -80, 20, 0.7, -50, true);
-    TurnMaxTimePID(TestPara, 105, 0.4, true); //turn face side ring
-    MoveEncoderPID(TestPara, 75, 32, 0.2, 105, true); //movefowards
+    TurnMaxTimePID(TestPara, 100, 0.4, true); //turn face side ring
+    MoveEncoderPID(TestPara, 75, 32, 0.2, 100, true); //movefowards
     wait(200,msec);
     MoveEncoderPID(TestPara, -75, 32, 0.2, 105, true); //move back 
     TurnMaxTimePID(TestPara, -143, 0.4, true);// turn face bar

@@ -15,7 +15,7 @@ void BlueRing() {
     wait(100,msec);
     TurnMaxTimePID(TestPara, -140, 0.3, true); //to face ring stack
     RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 35, 0.2, -139, true); //get ring 1
+    MoveEncoderPID(TestPara, 80, 34, 0.2, -139, true); //get ring 1
     MoveEncoderPID(TestPara, -50, 5, 0.2, -139, true); //back away
     TurnMaxTimePID(TestPara, -120, 0.2, true);
     MoveEncoderPID(TestPara, 80, 11, 0.2, -122, true); //get ring 2
@@ -32,15 +32,19 @@ void BlueRing() {
     MoveEncoderPID(TestPara, 100, 50, 0.2, 65, false); //move towards ring 
     armMoveToAngle(loadPosition, 100); //lift arm to loading position 
     MoveEncoderPID(TestPara, 20, 16, 0.7, 65, true); //move forward
-
-
     intakeLift.set(false);
     wait(300,msec);
-    MoveEncoderPID(TestPara, -37, 17, 0.3, 65, true); //move back 
+
+
+    //following option for not scoring alliance stake 
+
+
+    //following option for scoring alliance stake 
+    MoveEncoderPID(TestPara, -40, 17, 0.3, 65, true); //move back 
     TurnMaxTimePID(TestPara, 27, 0.3, true); //turn face alliance stake 
     wait(500,msec);
     RunRoller(0);
-    MoveEncoderPID(TestPara, 60, 22, 0.3, 27, true); //move fowards
+    MoveEncoderPID(TestPara, 60, 23, 0.3, 27, true); //move fowards
     wait(200,msec);  
     armMoveToAngle(alliancePosition, 100); //score alliance stake 
     MoveEncoderPID(TestPara, -65, 53, 0.3, 26, true); //move back 

@@ -10,14 +10,13 @@ void RedMogo(){
     //version number 1.0 draft route
     //issues: intake range, time to end
     PIDDataSet TestPara={1.5, 0.20, 0.1};   //initialize 1.5, 0.20, 0.1
-    wait(2.5, sec);
     armMoveToAngle(loadPosition, 80); //move arm to position
     Clamp.set(false);
     wait(150,msec);
     RunRoller(100);
-    TurnMaxTimePID(TestPara, 53, 0.3, true);//turn face alliance stake 
+    TurnMaxTimePID(TestPara, 50, 0.3, true);//turn face alliance stake 
     RunRoller(0);
-    MoveEncoderPID(TestPara, 50, 19, 0.2, 53, true);//move fowards
+    MoveEncoderPID(TestPara, 50, 19, 0.2, 50, true);//move fowards
     armMoveToAngle(alliancePosition, 100); //score alliance
     MoveEncoderPID(TestPara, -90, 16, 0.2, 53, true); // move back 
     armMoveToAngle(resetPosition, 100); //reset arm
@@ -30,15 +29,15 @@ void RedMogo(){
     RunRoller(100);
     MoveEncoderPID(TestPara, 75, 34, 0.2, 50, true); //move foward
     intakeLift.set(false);
-    wait(450, msec);
-    MoveEncoderPID(TestPara, -30, 10, 0.2, 50, false); //move back
+    wait(300, msec);
+    MoveEncoderPID(TestPara, -50, 10, 0.2, 50, false); //move back
     MoveEncoderPID(TestPara, -80, 20, 0.7, 50, true);
     TurnMaxTimePID(TestPara, -105, 0.4, true); //turn face side ring
     MoveEncoderPID(TestPara, 75, 30, 0.2, -105, true); //move
     wait(200,msec);
     MoveEncoderPID(TestPara, -75, 30, 0.2, -105, true); //move back 
     TurnMaxTimePID(TestPara, 143, 0.4, true);// turn face bar
-    MoveEncoderPID(TestPara, 30, 16, 0.2, 143, true); //move
+    MoveEncoderPID(TestPara, 30, 13, 0.2, 143, true); //move
     armMoveToAngle(ladderPosition, 100);//lift arm to touch bar 
     RunRoller(0);
 }
