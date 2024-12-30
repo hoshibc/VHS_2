@@ -13,7 +13,7 @@ void Blue2GoalAwp() {
     wait(100,msec);
     RunRoller(100);
     TurnMaxTimePID(TestPara, 34, 0.3, true); //turn face alliacne stake 
-    MoveEncoderPID(TestPara, 80, 3, 0.2, 34, true);
+    MoveEncoderPID(TestPara, 80, 4, 0.2, 34, true);//move to 
     wait(200,msec);
     RunRoller(0);
     armMoveToAngle(alliancePosition, 100);
@@ -23,10 +23,10 @@ void Blue2GoalAwp() {
     armMoveToAngle(resetPosition, 100);
     TurnMaxTimePID(TestPara, -128, 0.3, true); //turn face ring stack
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 23, 0.2, -128, true); //get one ring from ring stack 
+    MoveEncoderPID(TestPara, 100, 25, 0.2, -128, true); //get one ring from ring stack 
     wait(250,msec);
     MoveEncoderPID(TestPara, -70, 24, 0.2, -128, true); //move back 
-    MoveEncoderPID(TestPara, 100, 24, 0.2, -90, true); //move get side ring stack 
+    MoveEncoderPID(TestPara, 100, 25, 0.2, -90, true); //move get side ring stack 
     MoveEncoderPID(TestPara, -80, 27, 0.2, -150, true); //move far back 
     TurnMaxTimePID(TestPara, 90, 0.4, true); //turn face ring stack in front of alliance stake 
     wait(100,msec);
@@ -46,7 +46,7 @@ void Blue2GoalAwp() {
     MoveEncoderPID(TestPara, 90, 28, 0.2, 90, true); //move foward
     MoveEncoderPID(TestPara, -90, 28, 0.2, 110, true); //move back touch bar prep
     TurnMaxTimePID(TestPara, -140, 0.3, true); //turn face bar 
-    MoveEncoderPID(TestPara, 70, 10, 0.2, -140, true); //move foward to bar
+    MoveEncoderPID(TestPara, 70, 15, 0.2, -140, true); //move foward to bar
     armMoveToAngle(ladderPosition, 100); //raise arm 
     RunRoller(0);
 }

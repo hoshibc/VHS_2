@@ -495,7 +495,7 @@ int BTask(void) {
     else {
       pow1=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
       if(pow1==0) {
-        if (LiftSensor.position(degrees) < 12) Lift.setStopping(coast);
+        if (LiftSensor.position(degrees) < 10) Lift.setStopping(coast);
         else Lift.setStopping(hold);
         Lift.stop();
       }
