@@ -55,11 +55,14 @@ void RedRingElim() {
     RunRoller(100);
     wait(100,msec);
 
-    MoveEncoderPID(TestPara, -80, 15, 1, 45, true); //move back 
-    MoveEncoderPID(TestPara, 100, 60, 0.4, -90, true);  
-    wait(2,sec);
+    MoveEncoderPID(TestPara, -80, 20, 1, 45, true); //move back 
+    intakeLift.set(true);
+    MoveEncoderPID(TestPara, 100, 55, 0.3, -90, true);  
+    intakeLift.set(false);
+    MoveEncoderPID(TestPara, -30, 10, 0.3, -90, true);  
+    
+    MoveEncoderPID(TestPara, 100, 40, 0.3, -75, true); 
     RunRoller(0);
-
     
 
 }

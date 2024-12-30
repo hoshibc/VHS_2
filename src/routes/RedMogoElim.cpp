@@ -43,4 +43,15 @@ void RedMogoElim(){
     MoveEncoderPID(TestPara, 60, 30, 0.2, 20, true);
     RunRoller(0);
 
+    MoveEncoderPID(TestPara, -80, 30, 0.2, 30, true);
+
+
+    RunRoller(100);
+    MoveEncoderPID(TestPara, 60, 20, 0.2, 135, true);
+    wait(300,msec);
+    MoveEncoderPID(TestPara, -60, 10, 0.2, 90, true);
+    RunRoller(0);
+    MoveEncoderPID(TestPara, 100, 30, 1.4, 55, true);
+    
+
 } 

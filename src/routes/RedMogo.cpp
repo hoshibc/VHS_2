@@ -31,11 +31,11 @@ void RedMogo(){
     intakeLift.set(false);
     MoveEncoderPID(TestPara, -90, 15, 1.0, 50, true); //move back 
     MoveEncoderPID(TestPara, 100, 31, 0.3, 0, true); //move to wall
-    MoveEncoderPID(TestPara, 100, 53, 0.3, -88, true); //move to corner
+    MoveEncoderPID(TestPara, 100, 55, 0.3, -88, true); //move to corner
     TurnMaxTimePID(TestPara, -43, 0.2, true);
 
     RunRoller(-70);
-    MoveTimePID(TestPara, 70, 0.5, 0.2, -43, true); //push into corner
+    MoveTimePID(TestPara, 60, 0.5, 0.2, -43, true); //push into corner
     RunRoller(100);
     MoveTimePID(TestPara, 80, 0.3, 0.2, -45, true);
     MoveEncoderPID(TestPara, -10, 3, 0.4, -45, true); //get first ring and move back 
@@ -46,11 +46,12 @@ void RedMogo(){
     intakeLift.set(false);
     RunRoller(100);
     wait(300,msec);
+    
     MoveEncoderPID(TestPara, -80, 10, 0.7, -70, true);
-    MoveEncoderPID(TestPara, 90, 50, 0.4, 175, true); //move to get side ring 
-    TurnMaxTimePID(TestPara, 83, 0.2, true);
-    MoveEncoderPID(TestPara, 90, 34, 0.6, 90, true);
+    MoveEncoderPID(TestPara, 90, 43, 0.4, 175, false); //move to get side ring 
+    MoveEncoderPID(TestPara, -90, 15, 0.4, 90, false);
+    MoveEncoderPID(TestPara, 90, 36, 0.6, 105, true);
     armMoveToAngle(ladderPosition, 100);
     RunRoller(0);
-    
+
 }

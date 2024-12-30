@@ -17,7 +17,7 @@ int PX;
 int JX;
 
 //Globals for arm movement, measured in degrees 
-int loadPosition = 19;
+int loadPosition = 21;
 int alliancePosition = 180;
 int resetPosition = 0;
 int holdPosition = 45;
@@ -139,13 +139,13 @@ void armMoveToAngle(int deg, int speed) {
     
   }
   else if (abs(LiftSensor.position(degrees)) > deg) {
-    while (abs(LiftSensor.position(degrees)) > deg+4) {
+    while (abs(LiftSensor.position(degrees)) > deg+6) {
       RunLift(speed);
     }
     Lift.setStopping(hold);
     Lift.stop();
   }
-  else if (abs(LiftSensor.position(degrees)) < 15) {
+  else if (abs(LiftSensor.position(degrees)) < 13) {
     Lift.setStopping(coast);
     Lift.stop();
   }
