@@ -27,31 +27,41 @@ void RedMogoElim(){
     Clamp.set(false);
     wait(100,msec);
     MoveEncoderPID(TestPara, 100, 15, 0.7, 60, true);
-    TurnMaxTimePID(TestPara, 140, 0.2, true);
-    MoveEncoderPID(TestPara, -40, 23, 0.5, 140, true);
+    TurnMaxTimePID(TestPara, 132, 0.2, true);
+    MoveEncoderPID(TestPara, -40, 23, 0.5, 132, true);
     Clamp.set(true);
     wait(100,msec);
 
     MoveEncoderPID(TestPara, 80, 33, 0.5, 170, false);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 60, 23, 0.2, 100, false);
-    arm.set(true);
-    MoveEncoderPID(TestPara, 60, 15, 0.2, 95, true);
-    wait(200,msec);
-    TurnMaxTimePID(TestPara, 20, 0.2, true);
-    arm.set(false);
-    MoveEncoderPID(TestPara, 60, 30, 0.2, 20, true);
-    RunRoller(0);
+    MoveEncoderPID(TestPara, 60, 25, 0.2, 85, false);
+    MoveEncoderPID(TestPara, 60, 15, 0.2, 95, false);
 
-    MoveEncoderPID(TestPara, -80, 30, 0.2, 30, true);
-
-
+    TurnMaxTimePID(TestPara, 135, 0.3, true);
+    wait(300, msec);
+    RunRoller(-70);
+    MoveTimePID(TestPara, 60, 0.5, 0.2, 135, true); //push into corner
     RunRoller(100);
-    MoveEncoderPID(TestPara, 60, 20, 0.2, 135, true);
+    MoveTimePID(TestPara, 80, 0.3, 0.2, 135, true);
+    MoveEncoderPID(TestPara, -10, 3, 0.4, 135, true); //get first ring and move back 
+    wait(1,sec);
+    intakeLift.set(true);
+    RunRoller(-80);
+    MoveTimePID(TestPara, 50, 0.5, 0.2, 135, true);  //get second ring
+    intakeLift.set(false);
+    RunRoller(100);
     wait(300,msec);
-    MoveEncoderPID(TestPara, -60, 10, 0.2, 90, true);
-    RunRoller(0);
-    MoveEncoderPID(TestPara, 100, 30, 1.4, 55, true);
-    
 
+    TurnMaxTimePID(TestPara, 90, 0.2, true);
+    MoveEncoderPID(TestPara, -70, 28, 0.4, 80, true);
+    arm.set(true);
+    
+    MoveEncoderPID(TestPara, 80, 14, 0.8, 93, true);
+    TurnMaxTimePID(TestPara, 0, 0.4, true);
+    RunRoller(0);
+    arm.set(false);
+    wait(200,msec);
+    MoveEncoderPID(TestPara, 80, 14, 0.2, -40, true);
+    
+    RunRoller(0);
 } 

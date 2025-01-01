@@ -54,7 +54,7 @@ PIDDataSet TestPara={1.5, 0.20, 0.1};
     RunRoller(100);
     wait(100,msec);
 
-    MoveEncoderPID(TestPara, -80, 60, 1, 45, true); //move back 
+    MoveEncoderPID(TestPara, -80, 65, 1, 45, true); //move back 
     MoveEncoderPID(TestPara, 80, 39, 0.4, -130, true);  
     armMoveToAngle(ladderPosition, 100);
     RunRoller(0);

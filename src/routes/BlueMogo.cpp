@@ -46,11 +46,12 @@ void BlueMogo(){
     intakeLift.set(false);
     RunRoller(100);
     wait(300,msec);
+    
     MoveEncoderPID(TestPara, -80, 10, 0.7, 70, true);
     MoveEncoderPID(TestPara, 90, 50, 0.4, -175, true); //move to get side ring 
     TurnMaxTimePID(TestPara, -83, 0.2, true);
     MoveEncoderPID(TestPara, 90, 34, 0.6, -90, true);
     armMoveToAngle(ladderPosition, 100);
     RunRoller(0);
-    
+
 }

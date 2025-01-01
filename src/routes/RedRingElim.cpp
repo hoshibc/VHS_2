@@ -29,14 +29,14 @@ void RedRingElim() {
     Clamp.set(true);
     TurnMaxTimePID(TestPara, 122, 0.3, true); //turn face ring stack
     RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 12, 0.2, 122, true); //get one ring from ring stack
+    MoveEncoderPID(TestPara, 80, 14, 0.2, 122, true); //get one ring from ring stack
     MoveEncoderPID(TestPara, 75, 30, 0.2, 90, true); //get seconds ring 
     wait(200,msec);
     MoveEncoderPID(TestPara, -100, 6, 0.2, 94, false); //back up at an angle 
-    MoveEncoderPID(TestPara, -100, 6, 0.2, 100, false); //back up more 
+    MoveEncoderPID(TestPara, -100, 6, 0.2, 105, false); //back up more 
     MoveEncoderPID(TestPara, -100, 26, 0.2, 150, true); //more 
     TurnMaxTimePID(TestPara, 85, 0.4, true); //turn face ring stack 
-    MoveEncoderPID(TestPara, 100, 18, 0.2, 85, true); //move fowards
+    MoveEncoderPID(TestPara, 100, 20, 0.2, 85, true); //move fowards
     MoveEncoderPID(TestPara, 100, 47, 0.2, 10, true); //move fowards towards corner
 
     TurnMaxTimePID(TestPara, 45, 0.4, true); //turn face corner 
@@ -55,14 +55,15 @@ void RedRingElim() {
     RunRoller(100);
     wait(100,msec);
 
-    MoveEncoderPID(TestPara, -80, 20, 1, 45, true); //move back 
+    MoveEncoderPID(TestPara, -80, 7, 1, 45, true); //move back 
+    TurnMaxTimePID(TestPara, -90, 0.3, true);
     intakeLift.set(true);
-    MoveEncoderPID(TestPara, 100, 55, 0.3, -90, true);  
+    MoveEncoderPID(TestPara, 90, 58, 0.3, -90, true);  
     intakeLift.set(false);
-    MoveEncoderPID(TestPara, -30, 10, 0.3, -90, true);  
-    
-    MoveEncoderPID(TestPara, 100, 40, 0.3, -75, true); 
+    MoveEncoderPID(TestPara, -30, 3, 0.3, -90, true);  
+    wait(1.5,sec);
     RunRoller(0);
+    MoveEncoderPID(TestPara, 100, 40, 0.3, -90, true);  
     
 
 }

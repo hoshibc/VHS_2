@@ -48,7 +48,7 @@ void BlueRing() {
     RunRoller(100);
     wait(100,msec);
 
-    MoveEncoderPID(TestPara, -70, 83, 2, -45, true); //move back 
+    MoveEncoderPID(TestPara, -75, 83, 1, -45, true); //move back 
     TurnMaxTimePID(TestPara, 130, 0.5, true); 
     armMoveToAngle(ladderPosition, 100);
     RunRoller(0);

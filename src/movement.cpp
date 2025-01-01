@@ -18,7 +18,7 @@ int JX;
 
 //Globals for arm movement, measured in degrees 
 int loadPosition = 21;
-int alliancePosition = 180;
+int alliancePosition = 185;
 int resetPosition = 0;
 int holdPosition = 45;
 int ladderPosition = 110;

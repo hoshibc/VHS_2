@@ -30,7 +30,7 @@ void RedMogo(){
     MoveEncoderPID(TestPara, 90, 32, 0.2, 40, true); //move foward
     intakeLift.set(false);
     MoveEncoderPID(TestPara, -90, 15, 1.0, 50, true); //move back 
-    MoveEncoderPID(TestPara, 100, 31, 0.3, 0, true); //move to wall
+    MoveEncoderPID(TestPara, 100, 29, 0.3, 0, true); //move to wall
     MoveEncoderPID(TestPara, 100, 55, 0.3, -88, true); //move to corner
     TurnMaxTimePID(TestPara, -43, 0.2, true);
 
