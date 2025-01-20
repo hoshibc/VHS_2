@@ -48,10 +48,20 @@ void RedMogo(){
     wait(300,msec);
     
     MoveEncoderPID(TestPara, -80, 10, 0.7, -70, true);
-    MoveEncoderPID(TestPara, 90, 43, 0.4, 175, false); //move to get side ring 
-    MoveEncoderPID(TestPara, -90, 15, 0.4, 90, false);
-    MoveEncoderPID(TestPara, 90, 36, 0.6, 105, true);
-    armMoveToAngle(ladderPosition, 100);
+    MoveEncoderPID(TestPara, 90, 35, 0.4, 175, false); //move to get side ring 
+    wait(100,msec);
+    MoveEncoderPID(TestPara, 90, 55, 0.4, -45, true);
+    TurnMaxTimePID(TestPara, 176, 0.8, true);
+    Clamp.set(false);
+    TurnMaxTimePID(TestPara, 0, 0.8, true);
     RunRoller(0);
+
+       
+
+
+    // MoveEncoderPID(TestPara, -90, 15, 0.4, 90, false);
+    // MoveEncoderPID(TestPara, 90, 36, 0.6, 105, true);
+    // armMoveToAngle(ladderPosition, 100);
+    // RunRoller(0);
 
 }

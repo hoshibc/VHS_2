@@ -17,7 +17,7 @@ void BlueRing() {
     armMoveToAngle(alliancePosition, 100);
     MoveEncoderPID(TestPara, -100, 31, 0.2, 33, true); //move back 
     RunLift(100);
-    MoveEncoderPID(TestPara, -50, 24, 0.2, 0, true);//move face mogo
+    MoveEncoderPID(TestPara, -50, 25, 0.2, 0, true);//move face mogo
     RunLift(0);
     Clamp.set(true);
     TurnMaxTimePID(TestPara, -122, 0.3, true); //turn face ring stack
@@ -29,7 +29,7 @@ void BlueRing() {
     MoveEncoderPID(TestPara, -100, 6, 0.2, -100, false); //back up more 
     MoveEncoderPID(TestPara, -100, 26, 0.2, -150, true); //more 
     TurnMaxTimePID(TestPara, -85, 0.4, true); //turn face ring stack 
-    MoveEncoderPID(TestPara, 100, 18, 0.2, -85, true); //move fowards
+    MoveEncoderPID(TestPara, 100, 16, 0.2, -85, true); //move fowards
     MoveEncoderPID(TestPara, 90, 47, 0.2, -10, true); //move fowards towards corner
 
     TurnMaxTimePID(TestPara, -45, 0.4, true); //turn face corner 
@@ -48,7 +48,7 @@ void BlueRing() {
     RunRoller(100);
     wait(100,msec);
 
-    MoveEncoderPID(TestPara, -75, 83, 1, -45, true); //move back 
+    MoveEncoderPID(TestPara, -90, 83, 1, -43, true); //move back 
     TurnMaxTimePID(TestPara, 130, 0.5, true); 
     armMoveToAngle(ladderPosition, 100);
     RunRoller(0);

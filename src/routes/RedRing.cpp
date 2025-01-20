@@ -23,12 +23,12 @@ PIDDataSet TestPara={1.5, 0.20, 0.1};
     armMoveToAngle(alliancePosition, 100);
     MoveEncoderPID(TestPara, -100, 31, 0.2, -33, true); //move back 
     RunLift(100);
-    MoveEncoderPID(TestPara, -50, 24, 0.2, 0, true);//move face mogo
+    MoveEncoderPID(TestPara, -50, 25, 0.2, 0, true);//move face mogo
     RunLift(0);
     Clamp.set(true);
     TurnMaxTimePID(TestPara, 122, 0.3, true); //turn face ring stack
     RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 12, 0.2, 122, true); //get one ring from ring stack
+    MoveEncoderPID(TestPara, 80, 14, 0.2, 122, true); //get one ring from ring stack
     MoveEncoderPID(TestPara, 75, 30, 0.2, 90, true); //get seconds ring 
     wait(200,msec);
     MoveEncoderPID(TestPara, -100, 6, 0.2, 94, false); //back up at an angle 
@@ -54,7 +54,7 @@ PIDDataSet TestPara={1.5, 0.20, 0.1};
     RunRoller(100);
     wait(100,msec);
 
-    MoveEncoderPID(TestPara, -80, 65, 1, 45, true); //move back 
+    MoveEncoderPID(TestPara, -80, 68, 1, 45, true); //move back 
     MoveEncoderPID(TestPara, 80, 39, 0.4, -130, true);  
     armMoveToAngle(ladderPosition, 100);
     RunRoller(0);

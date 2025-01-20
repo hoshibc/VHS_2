@@ -24,7 +24,7 @@ void BlueRingElim() {
     armMoveToAngle(alliancePosition, 100);
     MoveEncoderPID(TestPara, -100, 31, 0.2, 33, true); //move back 
     RunLift(100);
-    MoveEncoderPID(TestPara, -50, 24, 0.2, 0, true);//move face mogo
+    MoveEncoderPID(TestPara, -50, 25, 0.2, 0, true);//move face mogo
     RunLift(0);
     Clamp.set(true);
     TurnMaxTimePID(TestPara, -122, 0.3, true); //turn face ring stack
@@ -58,11 +58,11 @@ void BlueRingElim() {
     MoveEncoderPID(TestPara, -80, 20, 1, -45, true); //move back 
     TurnMaxTimePID(TestPara, 90, 0.3, true);
     intakeLift.set(true);
-    MoveEncoderPID(TestPara, 80, 48, 0.3, 90, true);  
+    MoveEncoderPID(TestPara, 80, 48, 0.3, 92, true);  
     intakeLift.set(false);
     wait(100,msec);
-    MoveEncoderPID(TestPara, -30, 10, 0.3, 90, true);  
-    
+    MoveEncoderPID(TestPara, -30, 10, 0.3, 92, true);  
+    wait(1,sec);
     MoveEncoderPID(TestPara, 100, 30, 0.3, 75, true); 
     RunRoller(0);
 

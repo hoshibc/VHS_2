@@ -31,7 +31,7 @@ void BlueMogo(){
     intakeLift.set(false);
     MoveEncoderPID(TestPara, -90, 15, 1.0, -50, true); //move back 
     MoveEncoderPID(TestPara, 100, 31, 0.3, 0, true); //move to wall
-    MoveEncoderPID(TestPara, 100, 53, 0.3, 88, true); //move to corner
+    MoveEncoderPID(TestPara, 100, 59, 0.3, 88, true); //move to corner
     TurnMaxTimePID(TestPara, 43, 0.2, true);
 
     RunRoller(-70);
@@ -46,12 +46,21 @@ void BlueMogo(){
     intakeLift.set(false);
     RunRoller(100);
     wait(300,msec);
-    
+
     MoveEncoderPID(TestPara, -80, 10, 0.7, 70, true);
-    MoveEncoderPID(TestPara, 90, 50, 0.4, -175, true); //move to get side ring 
-    TurnMaxTimePID(TestPara, -83, 0.2, true);
-    MoveEncoderPID(TestPara, 90, 34, 0.6, -90, true);
-    armMoveToAngle(ladderPosition, 100);
+    MoveEncoderPID(TestPara, 90, 35, 0.4, -175, false); //move to get side ring 
+    wait(100,msec);
+    MoveEncoderPID(TestPara, 90, 55, 0.4, 45, true);
+    TurnMaxTimePID(TestPara, -176, 0.8, true);
+    Clamp.set(false);
+    TurnMaxTimePID(TestPara, 0, 0.8, true);
+    RunRoller(0);
+
+    // MoveEncoderPID(TestPara, -80, 10, 0.7, 70, true);
+    // MoveEncoderPID(TestPara, 90, 50, 0.4, -175, true); //move to get side ring 
+    // TurnMaxTimePID(TestPara, -83, 0.2, true);
+    // MoveEncoderPID(TestPara, 90, 40, 0.6, -90, true);
+    // armMoveToAngle(ladderPosition, 100);
     RunRoller(0);
 
 }

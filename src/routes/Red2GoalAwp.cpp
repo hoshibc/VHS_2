@@ -27,7 +27,7 @@ void Red2GoalAwp() {
     wait(200,msec);
     MoveEncoderPID(TestPara, -70, 26, 0.2, 128, true); //move back 
     MoveEncoderPID(TestPara, 100, 20, 0.2, 90, true); //move get side ring stack 
-    MoveEncoderPID(TestPara, -80, 27, 0.2, 150, true); //move far back 
+    MoveEncoderPID(TestPara, -80, 30, 0.2, 150, true); //move far back 
     TurnMaxTimePID(TestPara, -90, 0.4, true); //turn face ring stack in front of alliance stake 
     wait(100,msec);
     
