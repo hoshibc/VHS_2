@@ -14,12 +14,12 @@ motor LF = motor(PORT3, ratio6_1, false);
 motor LM = motor(PORT2, ratio6_1, true);
 motor LB = motor(PORT1, ratio6_1, true);
 
-motor RF = motor(PORT7, ratio6_1, true);
-motor RM = motor(PORT8, ratio6_1, false);
-motor RB = motor(PORT9, ratio6_1, false);
+motor RF = motor(PORT8, ratio6_1, true);
+motor RM = motor(PORT9, ratio6_1, false);
+motor RB = motor(PORT10, ratio6_1, false);
 
 
-motor Roller = motor(PORT10, ratio6_1, true);
+motor Roller = motor(PORT7, ratio6_1, true);
 motor Lift = motor(PORT21, ratio6_1, true);
 
 digital_out Clamp = digital_out(Brain.ThreeWirePort.H);
@@ -27,8 +27,10 @@ digital_out arm = digital_out(Brain.ThreeWirePort.F);
 digital_out leftArm = digital_out(Brain.ThreeWirePort.G);
 digital_out intakeLift = digital_out(Brain.ThreeWirePort.E);
 
-rotation LiftSensor(PORT8);
+rotation LiftSensor(PORT12);
 inertial Gyro = inertial(PORT20);
+optical OpSens = optical(PORT12);
+
 //Naming convention: 
 // Important variables
 const double wheelDiam = 2.75;

@@ -388,18 +388,7 @@ int ATask(void) {
 
     //----------------------
     //Toggles climb activation
-    if(Controller1.ButtonUp.pressing()&&ButtonPressingU==0) {
-      ButtonPressingU=1;
-      UTaskActiv=1;
-      allianceStakeAlign();
-    }
 
-    else if(!Controller1.ButtonUp.pressing())ButtonPressingU=0;
-
-    else if(UTaskActiv==1&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0) {
-      ButtonPressingU=1;
-      UTaskActiv=0;
-    }
 
   }  
   return 0;
@@ -473,6 +462,126 @@ int PTask(void) {
 
 
 
+int BTask(void) {
+  int pow1 = 0;
+  int targetPosition = 30; // Target position for the lift
+  double error = 0;
+  double kP = 0.85; // Proportional constant (tune this value)
+  double motorPower = 0.0;
+  double minPower = 20;
+
+  while (true) {
+    if (YTaskActiv == 1) {
+      // P-Control for Lift
+      error = targetPosition - LiftSensor.position(degrees); // Calculate error
+      error = -error;
+      motorPower = kP * error;                               // Calculate motor power based on proportional control
+
+      // Apply minimum power threshold
+      if (motorPower > 0 && motorPower < minPower) {
+          motorPower = minPower; // Set to minimum forward power
+      } else if (motorPower < 0 && motorPower > -minPower) {
+          motorPower = -minPower; // Set to minimum reverse power
+      }
+
+      // Clamp motor power to allowable range (-100 to 100)
+      if (motorPower > 100) motorPower = 100;
+      if (motorPower < -100) motorPower = -100;
+
+      // Run the motor with calculated power
+      RunLift(motorPower);
+
+      // Stop autonomous task if the error is small enough (target reached)
+      if (abs(error) < 5.0) {
+        YTaskActiv = 0;
+        RunLift(0); // Stop the motor
+      }
+    } 
+    else {
+      // Manual Control
+      pow1 = ((Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100); // Calculate manual power
+      if (pow1 == 0) {
+        if (LiftSensor.position(degrees) < 10 || LiftSensor.position(degrees) > 265){
+          Lift.setStopping(coast);
+        }
+        else {
+          Lift.setStopping(hold);
+        }
+        Lift.stop();
+      } 
+      else {
+        RunLift(pow1); // Direct power control in manual mode
+      }
+    }
+
+    // Button Y Logic to Toggle Autonomous Control
+    if (Controller1.ButtonY.pressing() && ButtonPressingY == 0) {
+      ButtonPressingY = 1;
+      YTaskActiv = 1;
+      
+
+    } else if (!Controller1.ButtonY.pressing()) {
+        ButtonPressingY = 0;
+    }
+  }
+
+    return 0;
+}
+// int BTask(void) {   
+//   int mvel = 0;  
+//   int pow1 = 0;
+   
+  
+
+//   while(true) {
+//     if(YTaskActiv==1) {
+//       if(abs(LiftSensor.position(degrees)) < 24) {
+//         RunLift(-45);
+//         if(abs(LiftSensor.position(degrees)) > 22) {
+//           YTaskActiv = 0;
+//         }
+//       } 
+//       else if(abs(LiftSensor.position(degrees)) > 24) {
+//         RunLift(45);
+//         if(abs(LiftSensor.position(degrees)) < 30) {
+//           YTaskActiv = 0;
+//         }
+//       } 
+//     }
+//     else {
+//       pow1=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
+//       if(pow1==0) {
+//         if (LiftSensor.position(degrees) < 10) Lift.setStopping(coast);
+//         else Lift.setStopping(hold);
+//         Lift.stop();
+//       }
+//       else {
+//         RunLift(pow1);
+//       }
+//     }  
+
+//     if(Controller1.ButtonY.pressing() && ButtonPressingY == 0) {
+//       ButtonPressingY=1;
+//       YTaskActiv=1;
+//     }
+
+//     else if(!Controller1.ButtonY.pressing())ButtonPressingY=0;
+
+//     else if(YTaskActiv==1&&Controller1.ButtonY.pressing()&&ButtonPressingY==0) {
+//       ButtonPressingY=1;
+//       YTaskActiv=0;
+//       Lift.setStopping(coast);
+//       Lift.stop();
+//     }
+//   }
+//   return 0;
+// }
+
+
+
+
+/*
+
 int BTask(void) {   
   int mvel = 0;  
   int pow1 = 0;
@@ -480,13 +589,13 @@ int BTask(void) {
   while(true) {
     if(YTaskActiv==1) {
       if(abs(LiftSensor.position(degrees)) < 20) {
-        RunLift(-100);
+        RunLift(-40);
         if(abs(LiftSensor.position(degrees)) > 18) {
           YTaskActiv = 0;
         }
       } 
       else if(abs(LiftSensor.position(degrees)) > 20) {
-        RunLift(100);
+        RunLift(40);
         if(abs(LiftSensor.position(degrees)) < 38) {
           YTaskActiv = 0;
         }
@@ -522,7 +631,7 @@ int BTask(void) {
 }
 
 
-
+*/
 
     
 
