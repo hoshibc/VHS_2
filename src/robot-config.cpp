@@ -20,20 +20,20 @@ motor RB = motor(PORT10, ratio6_1, false);
 
 
 motor Roller = motor(PORT7, ratio6_1, true);
-motor Lift = motor(PORT21, ratio6_1, true);
+motor Lift = motor(PORT12, ratio6_1, false);
 
 digital_out Clamp = digital_out(Brain.ThreeWirePort.H);
 digital_out arm = digital_out(Brain.ThreeWirePort.F);
 digital_out leftArm = digital_out(Brain.ThreeWirePort.G);
-digital_out intakeLift = digital_out(Brain.ThreeWirePort.E);
+digital_out intakeLift = digital_out(Brain.ThreeWirePort.A);
 
-rotation LiftSensor(PORT12);
-inertial Gyro = inertial(PORT20);
+rotation LiftSensor(PORT21);
+inertial Gyro = inertial(PORT5);
 optical OpSens = optical(PORT12);
 
 //Naming convention: 
 // Important variables
-const double wheelDiam = 2.75;
+const double wheelDiam = 3.25;
 const double wheelToMotorRatio = 48.0/36;
 
 // VEXcode generated functions

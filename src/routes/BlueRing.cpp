@@ -8,54 +8,6 @@
 
 void BlueRing() {
     PIDDataSet TestPara={1.5, 0.20, 0.1}; 
-    armMoveToAngle(loadPosition, 100);
     Clamp.set(false);
-    RunRoller(100);
-    TurnMaxTimePID(TestPara, 33, 0.3, true); //turn face alliance stake 
-    MoveEncoderPID(TestPara, 100, 4, 0.2, 33, true);
-    RunRoller(0);
-    armMoveToAngle(alliancePosition, 100);
-    MoveEncoderPID(TestPara, -100, 31, 0.2, 33, true); //move back 
-    RunLift(100);
-    MoveEncoderPID(TestPara, -50, 25, 0.2, 0, true);//move face mogo
-    RunLift(0);
-    Clamp.set(true);
-    TurnMaxTimePID(TestPara, -122, 0.3, true); //turn face ring stack
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 12, 0.2, -122, true); //get one ring from ring stack
-    MoveEncoderPID(TestPara, 75, 30, 0.2, -90, true); //get seconds ring 
-    wait(200,msec);
-    MoveEncoderPID(TestPara, -100, 6, 0.2, -94, false); //back up at an angle 
-    MoveEncoderPID(TestPara, -100, 6, 0.2, -100, false); //back up more 
-    MoveEncoderPID(TestPara, -100, 26, 0.2, -150, true); //more 
-    TurnMaxTimePID(TestPara, -85, 0.4, true); //turn face ring stack 
-    MoveEncoderPID(TestPara, 100, 16, 0.2, -85, true); //move fowards
-    MoveEncoderPID(TestPara, 90, 47, 0.2, -10, true); //move fowards towards corner
-
-    TurnMaxTimePID(TestPara, -45, 0.4, true); //turn face corner 
     
-    //following is the corner grab sequence 
-    RunRoller(-70);
-    MoveTimePID(TestPara, 70, 0.4, 0.2, -45, true); //push into corner
-    RunRoller(100);
-    MoveTimePID(TestPara, 80, 0.3, 0.2, -45, true);
-    MoveEncoderPID(TestPara, -10, 2, 0.4, -45, true); //get first ring and move back 
-    wait(1,sec);
-    intakeLift.set(true);
-    RunRoller(-80);
-    MoveTimePID(TestPara, 50, 0.5, 0.2, -45, true);  //get second ring
-    intakeLift.set(false);
-    RunRoller(100);
-    wait(100,msec);
-
-    MoveEncoderPID(TestPara, -90, 83, 1, -43, true); //move back 
-    TurnMaxTimePID(TestPara, 130, 0.5, true); 
-    armMoveToAngle(ladderPosition, 100);
-    RunRoller(0);
-
-    
-
-
-    
-
 }

@@ -14,11 +14,13 @@ extern motor Lift;
 extern motor Roller;
 extern digital_out Clamp;
 extern digital_out arm;
+extern digital_out leftArm;
 extern digital_out intakeLift; 
 extern digital_out Climb;
 extern digital_out RingClamp;
 extern motor PU;
 extern inertial Gyro;
+extern optical OpSens;
 extern digital_out LeftBackWing;
 extern rotation LiftSensor;
 

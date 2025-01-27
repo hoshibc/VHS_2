@@ -464,15 +464,14 @@ int PTask(void) {
 
 int BTask(void) {
   int pow1 = 0;
-  int targetPosition = 30; // Target position for the lift
+  int targetPosition = 35; // Target position for the lift
   double error = 0;
   double kP = 0.85; // Proportional constant (tune this value)
   double motorPower = 0.0;
-  double minPower = 20;
+  double minPower = 30;
 
   while (true) {
     if (YTaskActiv == 1) {
-      // P-Control for Lift
       error = targetPosition - LiftSensor.position(degrees); // Calculate error
       error = -error;
       motorPower = kP * error;                               // Calculate motor power based on proportional control

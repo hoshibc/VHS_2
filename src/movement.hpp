@@ -35,6 +35,7 @@ extern void BStop();
 extern void CStop();
 extern void allianceStakeAlign();
 extern void armMoveToAngle(int deg, int speed);
+extern void armMoveToAngle2(int deg, int speed);
 extern void RunRoller(int val);
 extern void RunLift(int val);
 extern int PrevE;

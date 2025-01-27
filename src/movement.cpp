@@ -17,11 +17,11 @@ int PX;
 int JX;
 
 //Globals for arm movement, measured in degrees 
-int loadPosition = 21;
-int alliancePosition = 185;
+int loadPosition = 30;
+int alliancePosition = 190;
 int resetPosition = 0;
 int holdPosition = 45;
-int ladderPosition = 110;
+int ladderPosition = 115;
 int wallPosition = 160;
 
 //General Sect;
@@ -151,13 +151,45 @@ void armMoveToAngle(int deg, int speed) {
   }
 }
 
+void armMoveToAngle2(int deg, int speed) {
+  // Proportional control constants
+  const float kP = 0.8;  // Proportional gain (adjust as needed)
+  const int minSpeed = 42;  // Minimum speed to prevent stalling
+
+  int error = deg - LiftSensor.position(degrees);
+  int currentSpeed = 0;
+
+  while (abs(error) > 2) {  // Allow a small threshold to avoid oscillations
+    // Calculate proportional speed
+    currentSpeed = error * kP;
+
+    // Ensure the speed is within the desired range
+    if (abs(currentSpeed) < minSpeed) {
+      currentSpeed = (currentSpeed < 0) ? -minSpeed : minSpeed;
+    }
+    if (abs(currentSpeed) > speed) {
+      currentSpeed = (currentSpeed < 0) ? -speed : speed;
+    }
+
+    // Move the lift
+    RunLift(-currentSpeed);
+
+    // Update the error
+    error = deg - LiftSensor.position(degrees);
+  }
+
+  // Stop the lift and hold position
+  Lift.setStopping(hold);
+  Lift.stop();
+}
+
 /** Runs the intake and all connected subsystems 
  * @param val the speed, from -100 to 100 | postive intakes and negative outtakes 
  */
 
 void RunRoller(int val) {
   Roller.setMaxTorque(100,percent);
-  Roller.spin(forward,(double)val/100.0*12,volt);
+  Roller.spin(forward,(double)val/100.0*11,volt);
 }
 
 
@@ -216,7 +248,7 @@ void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double
   }
   if(brake) {
     BStop();
-    wait(100,msec);
+    wait(130,msec);
   }
   else CStop();
 }
