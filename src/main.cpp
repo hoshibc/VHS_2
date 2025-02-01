@@ -464,7 +464,7 @@ int PTask(void) {
 
 int BTask(void) {
   int pow1 = 0;
-  int targetPosition = 35; // Target position for the lift
+  int targetPosition = 29; // Target position for the lift
   double error = 0;
   double kP = 0.85; // Proportional constant (tune this value)
   double motorPower = 0.0;
@@ -491,7 +491,7 @@ int BTask(void) {
       RunLift(motorPower);
 
       // Stop autonomous task if the error is small enough (target reached)
-      if (abs(error) < 5.0) {
+      if (abs(error) < 3.0) {
         YTaskActiv = 0;
         RunLift(0); // Stop the motor
       }

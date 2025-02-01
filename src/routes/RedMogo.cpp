@@ -10,10 +10,23 @@ void RedMogo(){
     //version number 1.0 draft route
     //issues: intake range, time to end
     PIDDataSet TestPara={1.5, 0.20, 0.1};   //initialize 1.5, 0.20, 0.1
-    armMoveToAngle(loadPosition, 100);
-    Clamp.set(false);
     RunRoller(100);
-    TurnMaxTimePID(TestPara, 33, 0.3, true); //turn face alliance stake 
+    armMoveToAngle2(loadPosition, 100);
+    Clamp.set(false);
+
+    wait(300,msec);
+    RunRoller(0);
+    RunLift(-90);
+    TurnMaxTimePID(TestPara, 50, 0.3, true); //turn face score alliance stake 
+    RunLift(0);
+    MoveEncoderPID(TestPara, -80, 5, 0.2, 50, false); //move back 
+    RunLift(70);
+    MoveEncoderPID(TestPara, -80, 39, 0.4, 10, true); //move back to goal 
+    RunLift(0);
+
+
+
+    /*
     MoveEncoderPID(TestPara, 100, 4, 0.2, 33, true);
     RunRoller(0);
     armMoveToAngle(alliancePosition, 100);
@@ -56,7 +69,7 @@ void RedMogo(){
     TurnMaxTimePID(TestPara, 0, 0.8, true);
     RunRoller(0);
 
-       
+    */
 
 
     // MoveEncoderPID(TestPara, -90, 15, 0.4, 90, false);
