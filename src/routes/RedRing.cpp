@@ -13,7 +13,7 @@
 // global int ladderPosition = 120;
 
 void RedRing() {
-    PIDDataSet TestPara={1.5, 0.20, 0.15}; 
+    PIDDataSet TestPara={1.5, 0.2, 0.1}; 
     Clamp.set(false);
     leftArm.set(true);
     RunRoller(100);
@@ -31,6 +31,7 @@ void RedRing() {
     MoveEncoderPID(TestPara, 50, 50, 0.6, -85, true);// move intake 3 rings 
     MoveEncoderPID(TestPara, 70, 46, 0.3, -175, true); //turn move toward corner
     //TurnMaxTimePID(TestPara, -135, 0.3, true);  //turn direct face corner
+
     RunRoller(100);
     MoveTimePID(TestPara, 40, 1.2, 0.6, -135, true); //move in
     MoveEncoderPID(TestPara, -40, 8, 0.4, -135, true); //move back 
@@ -39,6 +40,8 @@ void RedRing() {
     MoveTimePID(TestPara, 38, 0.8, 0.5, -135, true); //move in again
     intakeLift.set(false);
     MoveEncoderPID(TestPara, -80, 18, 0.4, -135, true); //move out 
+
+
     TurnMaxTimePID(TestPara, 90, 0.3, true);
     RunRoller(-100);
     armMoveToAngle2(loadPosition, 100);

@@ -16,57 +16,39 @@
 void BlueMogoElim() {
     PIDDataSet TestPara={1.5, 0.20, 0.1};  //initialize 1.5, 0.20, 0.1
     Clamp.set(false);
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 48, 0.2, -20, true);
-    arm.set(true);
-    RunRoller(0);
-    MoveEncoderPID(TestPara, -80, 20, 0.2, 0, true);
-    wait(150,msec);
-    arm.set(false);
-    TurnMaxTimePID(TestPara, -175, 0.4, true);
-    MoveEncoderPID(TestPara, -40, 25, 0.2, -175, true);
+    MoveEncoderPID(TestPara, -100, 20, 0.3, 0, false);
+    MoveEncoderPID(TestPara, -30, 25, 0.3, 0, true);
     Clamp.set(true);
-    wait(100,msec);
-    TurnMaxTimePID(TestPara, -20, 0.3, true);
+    TurnMaxTimePID(TestPara, -50, 0.3, true);
+    intakeLift.set(true);
     RunRoller(100);
-    MoveEncoderPID(TestPara, -100, 60, 0.2, -20, true);
+    MoveEncoderPID(TestPara, 45, 50, 0.6, -50, true);
+    intakeLift.set(false);
+    wait(100,msec);
+    MoveEncoderPID(TestPara, -60, 50, 0.5, -50, true);
+    TurnMaxTimePID(TestPara, -129, 0.4, true);
+    RunRoller(0);
+    leftArm.set(true);
+    MoveEncoderPID(TestPara, 45, 47, 0.3, -130, true);
+    MoveEncoderPID(TestPara, -70, 60, 0.3, -150, true);
+    wait(100,msec);
+    TurnMaxTimePID(TestPara, 150, 0.4, true);
+    leftArm.set(false);
+    RunRoller(100);
+    MoveEncoderPID(TestPara, 100, 42, 0.3, 125, true);
+    MoveEncoderPID(TestPara, 100, 58, 0.6, 20, true);
+
+    MoveTimePID(TestPara, 40, 1.2, 0.6, 40, true); //move in
+    MoveEncoderPID(TestPara, -30, 9, 0.4, 42, true); //move back 
+    intakeLift.set(true);
+    wait(100,msec);
+    MoveTimePID(TestPara, 35, 0.9, 0.6, 45, true); //move in again
+    intakeLift.set(false);
+    MoveEncoderPID(TestPara, -80, 20, 0.3, 0 , true); //move back  
+    TurnMaxTimePID(TestPara, 170, 0.54, true);
     RunRoller(0);
     Clamp.set(false);
-    wait(100,msec);
-    MoveEncoderPID(TestPara, 100, 15, 0.7, -60, true);
-    TurnMaxTimePID(TestPara, -130, 0.2, true);
-    MoveEncoderPID(TestPara, -40, 32, 0.5, -130, true);
-    Clamp.set(true);
-    wait(100,msec);
+    TurnMaxTimePID(TestPara, 20, 0.3, true);
+    MoveEncoderPID(TestPara, -100, 25, 0.3, 20, true);
 
-    MoveEncoderPID(TestPara, 80, 34, 0.5, -162, false);
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 60, 20, 0.2, -85, false);
-    MoveEncoderPID(TestPara, 60, 12, 0.2, -50, true);
-
-    TurnMaxTimePID(TestPara, -135, 0.2, true);
-    wait(300,msec);
-    RunRoller(-70);
-    MoveTimePID(TestPara, 70, 0.5, 0.2, -135, true); 
-    RunRoller(100);
-    MoveTimePID(TestPara, 80, 0.3, 0.2, -135, true);
-    MoveEncoderPID(TestPara, -10, 3, 0.4, -135, true); //get first ring and move back 
-    wait(1,sec);
-    intakeLift.set(true);
-    RunRoller(-80);
-    MoveTimePID(TestPara, 50, 0.5, 0.2, -135, true);  //get second ring
-    intakeLift.set(false);
-    RunRoller(100);
-    wait(100,msec);
-
-    TurnMaxTimePID(TestPara, 175, 0.2, true);
-    MoveEncoderPID(TestPara, -70, 28, 0.4, 175, true);
-    arm.set(true);
-    
-    MoveEncoderPID(TestPara, 60, 19, 0.8, -178, true);
-    TurnMaxTimePID(TestPara, 80, 0.5, true);
-    RunRoller(100);
-    TurnMaxTimePID(TestPara, 45, 0.5, true);
-    arm.set(false);
-    RunRoller(0);
 }
