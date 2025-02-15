@@ -27,11 +27,11 @@ void BlueMogoElim() {
     wait(100,msec);
     MoveEncoderPID(TestPara, -60, 50, 0.5, -50, true);
     TurnMaxTimePID(TestPara, -129, 0.4, true);
-    RunRoller(0);
+    RunRoller(-30);
     leftArm.set(true);
-    MoveEncoderPID(TestPara, 45, 47, 0.3, -130, true);
+    MoveEncoderPID(TestPara, 45, 46, 0.3, -130, true);
     MoveEncoderPID(TestPara, -70, 60, 0.3, -150, true);
-    wait(100,msec);
+    wait(200,msec);
     TurnMaxTimePID(TestPara, 150, 0.4, true);
     leftArm.set(false);
     RunRoller(100);

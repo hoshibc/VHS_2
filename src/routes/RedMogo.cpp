@@ -13,25 +13,25 @@ void RedMogo(){
     armMoveToAngle2(loadPosition, 100);
     RunRoller(80);
     Clamp.set(false);
-    TurnMaxTimePID(TestPara, 50, 0.3, true); //turn face score alliance stake 
+    TurnMaxTimePID(TestPara, 48, 0.3, true); //turn face score alliance stake 
     wait(100,msec);
     RunRoller(0);
     RunLift(-100);
     wait(350,msec);
     RunLift(0);
-    MoveEncoderPID(TestPara, -80, 9, 0.2, 50, true); //move back 
+    MoveEncoderPID(TestPara, -80, 9, 0.2, 48, true); //move back 
     RunLift(70);
     
-    MoveEncoderPID(TestPara, -80, 20, 0.3, 0, false); //move back to goal 
+    MoveEncoderPID(TestPara, -80, 22, 0.3, 0, false); //move back to goal 
     RunRoller(-100);
     MoveEncoderPID(TestPara, -30, 28, 0.5, 0, true); //slow move 
     RunLift(0);
     Clamp.set(true);
     intakeLift.set(true);
     wait(100,msec);
-    TurnMaxTimePID(TestPara, 50, 0.3, true); //turn face alliance stake ring
+    TurnMaxTimePID(TestPara, 48, 0.3, true); //turn face alliance stake ring
     RunRoller(100);
-    MoveEncoderPID(TestPara, 50, 36, 0.2, 50, true); //move to get
+    MoveEncoderPID(TestPara, 50, 36, 0.2, 48, true); //move to get
     intakeLift.set(false);
     wait(300,msec);
 

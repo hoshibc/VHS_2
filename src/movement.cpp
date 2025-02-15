@@ -17,7 +17,7 @@ int PX;
 int JX;
 
 //Globals for arm movement, measured in degrees 
-int loadPosition = 28;
+int loadPosition = 29;
 int alliancePosition = 205;
 int resetPosition = 0;
 int holdPosition = 45;
@@ -198,7 +198,7 @@ void RunRoller(int val) {
  */
 void RunLift(int val) {
   Lift.setMaxTorque(100,percent);
-  Lift.spin(forward,(double)val/100.0*12,volt);
+  Lift.spin(forward,(double)val/100.0*11,volt);
 }
 
 
@@ -252,6 +252,64 @@ void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double
   }
   else CStop();
 }
+
+
+void MoveDecelPID(PIDDataSet KVals, int Speed, double dist, double AccT, bool decel, double ABSHDG, bool brake) {
+    double CSpeed = 0;
+    Zeroing(true, false); // Reset encoders
+    ChassisDataSet SensorVals;
+    SensorVals = ChassisUpdate(); // Get initial sensor values
+    double PVal = 0, IVal = 0, DVal = 0, LGV = 0, PrevE = 0, Correction = 0;
+    Brain.Screen.clearScreen(); // Clear the brain screen
+
+    double decelDist = decel ? fabs(dist) / 3.0 : 0; // Deceleration distance (1/4 of total distance)
+    const double k = 5; // Exponential decay constant (adjust for smoother/faster deceleration)
+
+    while (fabs(SensorVals.Avg) <= fabs(dist)) {
+        // Acceleration phase
+        if (fabs(CSpeed) < fabs((double)Speed)) {
+            CSpeed += Speed / AccT * 0.02; // Increase speed over AccT time
+        }
+
+        // Exponential deceleration phase (only if decel is true)
+        if (decel && fabs(dist - fabs(SensorVals.Avg)) <= decelDist) {
+            double remainingDist = fabs(dist - fabs(SensorVals.Avg));
+            CSpeed = Speed * exp(-k * (decelDist - remainingDist) / decelDist); // Exponential deceleration
+            if (CSpeed < 0.1) CSpeed = 0; // Ensure speed doesn't go below a small threshold
+        }
+
+        SensorVals = ChassisUpdate(); // Update sensor values
+        LGV = SensorVals.HDG - ABSHDG; // Calculate heading error
+        if (LGV > 180) LGV -= 360; // Normalize heading error to ±180°
+        if (LGV < -180) LGV += 360;
+
+        // PID calculations
+        PVal = KVals.kp * LGV; // Proportional term
+        IVal += KVals.ki * LGV * 0.02; // Integral term
+        DVal = KVals.kd * (LGV - PrevE); // Derivative term
+
+        Correction = PVal + IVal + DVal / 0.02; // Total correction
+
+        // Apply correction to motors
+        Move(CSpeed - Correction, CSpeed + Correction);
+        PrevE = LGV; // Update previous error
+
+        Brain.Screen.setCursor(1, 1);
+        Brain.Screen.print("Distance: %.2f, Speed: %.2f", SensorVals.Avg, CSpeed);
+
+        wait(20, msec); // Wait for 20ms (50Hz loop)
+    }
+
+    // Stop the robot
+    if (brake) {
+        BStop(); // Brake stop
+        wait(100, msec); // Wait for brakes to engage
+    } else {
+        CStop(); // Coast stop
+    }
+}
+
+
 
 /** Moves the robot forward or backward. Negative speed moves
  * 

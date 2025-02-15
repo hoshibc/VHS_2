@@ -18,7 +18,7 @@ void RedRingElim() {
     Clamp.set(false);
     leftArm.set(true);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 87, 0.3, -20, true);// rush
+    MoveEncoderPID(TestPara, 80, 87, 0.3, -19, true);// rush
     wait(200,msec);
     RunRoller(0);
     MoveEncoderPID(TestPara, -48, 56, 0.8, -44, true);// move back 
@@ -30,22 +30,22 @@ void RedRingElim() {
     
     RunRoller(100);// move foward
     MoveEncoderPID(TestPara, 50, 50, 0.6, -85, true);// move intake 3 rings 
-    MoveEncoderPID(TestPara, 70, 46, 0.3, -175, true); //turn move toward corner
+    MoveEncoderPID(TestPara, 70, 47, 0.3, -178, true); //turn move toward corner
     //TurnMaxTimePID(TestPara, -135, 0.3, true);  //turn direct face corner
 
     RunRoller(100);
     MoveTimePID(TestPara, 40, 1.2, 0.6, -135, true); //move in
-    MoveEncoderPID(TestPara, -40, 8, 0.4, -135, true); //move back 
+    MoveEncoderPID(TestPara, -30, 6, 0.4, -135, true); //move back 
     intakeLift.set(true);
-    wait(100,msec);
-    MoveTimePID(TestPara, 38, 0.8, 0.5, -135, true); //move in again
+    wait(300,msec);
+    MoveTimePID(TestPara, 30, 0.8, 0.5, -135, true); //move in again
     intakeLift.set(false);
-    MoveEncoderPID(TestPara, -80, 18, 0.4, -135, true); //move out 
+    MoveEncoderPID(TestPara, -70, 18, 0.9, -135, true); //move out 
 
 
     TurnMaxTimePID(TestPara, 90, 0.3, true);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 45, 0.4, 90, true);
+    MoveEncoderPID(TestPara, 60, 45, 0.3, 90, true);
     wait(1,sec);
     RunRoller(0);
     MoveEncoderPID(TestPara, 100, 85, 0.4, 95, true);

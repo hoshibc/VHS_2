@@ -22,26 +22,24 @@ void AutoSkills() {
     // TurnMaxTimePID(TestPara, 0, 3, true);
     
 
-    armMoveToAngle2(ladderPosition, 100);
-    wait(500,msec);
-    armMoveToAngle2(alliancePosition, 100);
-    wait(500,msec);
-    armMoveToAngle2(resetPosition, 100);
-    wait(500,msec);
-    armMoveToAngle2(loadPosition, 100);
-    wait(500,msec);
-    armMoveToAngle2(ladderPosition, 100);
-    wait(500,msec);
-    armMoveToAngle2(alliancePosition, 100);
-    wait(500,msec);
-    armMoveToAngle2(resetPosition, 100);
-    wait(500,msec);
-    armMoveToAngle2(loadPosition, 100);
-    wait(500,msec);
+    // armMoveToAngle2(ladderPosition, 100);
+    // wait(500,msec);
+    // armMoveToAngle2(alliancePosition, 100);
+    // wait(500,msec);
+    // armMoveToAngle2(resetPosition, 100);
+    // wait(500,msec);
+    // armMoveToAngle2(loadPosition, 100);
+    // wait(500,msec);
+    // armMoveToAngle2(ladderPosition, 100);
+    // wait(500,msec);
+    // armMoveToAngle2(alliancePosition, 100);
+    // wait(500,msec);
+    // armMoveToAngle2(resetPosition, 100);
+    // wait(500,msec);
+    // armMoveToAngle2(loadPosition, 100);
+    // wait(500,msec);
 
-
-
-
+    MoveEncoderPID(TestPara, 100, 50, 0.3, 0, true);
 
     // Clamp.set(false);   
     // RunRoller(100); //score alliance stake 

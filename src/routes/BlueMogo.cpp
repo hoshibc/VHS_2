@@ -31,11 +31,11 @@ void BlueMogo(){
     RunRoller(100);
     MoveEncoderPID(TestPara, 50, 36, 0.2, -50, true); //move to get
     intakeLift.set(false);
-    wait(300,msec);
+    wait(250,msec);
 
     MoveEncoderPID(TestPara, -90, 10, 1.0, -50, true); //move back 
-    MoveEncoderPID(TestPara, 80, 22, 0.3, 10, true); //move to wall
-    MoveEncoderPID(TestPara, 100, 70, 0.3, 94, true); //move to corner
+    MoveEncoderPID(TestPara, 80, 26, 0.3, 10, true); //move to wall
+    MoveEncoderPID(TestPara, 100, 72, 0.3, 92, true); //move to corner
     TurnMaxTimePID(TestPara, 45, 0.2, true);
 
     RunRoller(100);
@@ -55,7 +55,7 @@ void BlueMogo(){
     RunRoller(100);
     MoveEncoderPID(TestPara, 100, 50, 0.3, 148, true);
     TurnMaxTimePID(TestPara, -110, 0.5, true);
-    MoveEncoderPID(TestPara, 80, 25, 0.3, -110, true);
+    MoveEncoderPID(TestPara, 80, 26, 0.3, -110, true);
 
     armMoveToAngle2(ladderPosition+35, 100);
     RunRoller(0);
