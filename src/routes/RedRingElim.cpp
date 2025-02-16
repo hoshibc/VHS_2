@@ -36,10 +36,10 @@ void RedRingElim() {
     RunRoller(100);
     MoveTimePID(TestPara, 40, 1.2, 0.6, -135, true); //move in
     MoveEncoderPID(TestPara, -30, 6, 0.4, -135, true); //move back 
-    intakeLift.set(true);
+    intakeDrop.set(true);
     wait(300,msec);
     MoveTimePID(TestPara, 30, 0.8, 0.5, -135, true); //move in again
-    intakeLift.set(false);
+    intakeDrop.set(false);
     MoveEncoderPID(TestPara, -70, 18, 0.9, -135, true); //move out 
 
 

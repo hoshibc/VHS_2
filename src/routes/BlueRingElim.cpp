@@ -36,10 +36,10 @@ void BlueRingElim() {
     RunRoller(100);
     MoveTimePID(TestPara, 40, 1.2, 0.6, 135, true); //move in
     MoveEncoderPID(TestPara, -40, 8, 0.4, 135, true); //move back 
-    intakeLift.set(true);
+    intakeDrop.set(true);
     wait(100,msec);
     MoveTimePID(TestPara, 38, 0.8, 0.5, 135, true); //move in again
-    intakeLift.set(false);
+    intakeDrop.set(false);
     MoveEncoderPID(TestPara, -80, 18, 0.4, 135, true); //move out 
 
 

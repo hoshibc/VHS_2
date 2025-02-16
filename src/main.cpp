@@ -301,8 +301,8 @@ void autonomous(void) {
   // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
   //Do not change the below
-  PIDDataSet TestPara={4,0.1,0.2};
-  Zeroing(true,true);
+
+  Zeroing(true,false);
 
   //can start editing if nessary
   //Put Auto route function into if statements to use autoselector
@@ -427,7 +427,7 @@ int PTask(void) {
     if(XTaskActiv==0&&Controller1.ButtonX.pressing()&&ButtonPressingX==0) {
       ButtonPressingX=1;
       XTaskActiv=1;
-      intakeLift.set(true);
+      intakeDrop.set(true);
     }
 
     else if(!Controller1.ButtonX.pressing())ButtonPressingX=0;
@@ -435,7 +435,7 @@ int PTask(void) {
     else if(XTaskActiv==1&&Controller1.ButtonX.pressing()&&ButtonPressingX==0) {
       ButtonPressingX=1;
       XTaskActiv=0;
-      intakeLift.set(false);
+      intakeDrop.set(false);
     }
 
     //----------------------
@@ -464,7 +464,7 @@ int PTask(void) {
 
 int BTask(void) {
   int pow1 = 0;
-  int targetPosition = 29; // Target position for the lift
+  int targetPosition = 18; // Target position for the lift
   double error = 0;
   double kP = 0.85; // Proportional constant (tune this value)
   double motorPower = 0.0;
@@ -500,7 +500,7 @@ int BTask(void) {
       // Manual Control
       pow1 = ((Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100); // Calculate manual power
       if (pow1 == 0) {
-        if (LiftSensor.position(degrees) < 10 || LiftSensor.position(degrees) > 265){
+        if (LiftSensor.position(degrees) < 9 || LiftSensor.position(degrees) > 265){
           Lift.setStopping(coast);
         }
         else {

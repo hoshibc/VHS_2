@@ -44,7 +44,7 @@ void RedRing() {
     MoveEncoderPID(TestPara, -60, 10, 0.3, 91, true);
     arm.set(true);
     TurnMaxTimePID(TestPara, 200, 0.7, true); //turn face stake and push away rings
-    intakeLift.set(true);
+    intakeDrop.set(true);
     wait(100,msec);
     arm.set(false);
     MoveTimePID(TestPara, 50, 1.0, 0.5, 180, true);
@@ -56,7 +56,7 @@ void RedRing() {
     RunLift(0);
     MoveEncoderPID(TestPara, -100, 12, 0.3, 180, true);
 
-    intakeLift.set(false);
+    intakeDrop.set(false);
     TurnMaxTimePID(TestPara, 0, 0.5, true);
     MoveEncoderPID(TestPara, 80, 14, 0.3, 0, false);
 

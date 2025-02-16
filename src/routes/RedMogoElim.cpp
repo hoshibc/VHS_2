@@ -13,10 +13,10 @@ void RedMogoElim(){
     MoveEncoderPID(TestPara, -30, 25, 0.3, 0, true);
     Clamp.set(true);
     TurnMaxTimePID(TestPara, 50, 0.3, true);
-    intakeLift.set(true);
+    intakeDrop.set(true);
     RunRoller(100);
     MoveEncoderPID(TestPara, 45, 50, 0.6, 50, true);
-    intakeLift.set(false);
+    intakeDrop.set(false);
     wait(100,msec);
     MoveEncoderPID(TestPara, -60, 50, 0.5, 50, true);
     TurnMaxTimePID(TestPara, 129, 0.4, true);
@@ -33,10 +33,10 @@ void RedMogoElim(){
 
     MoveTimePID(TestPara, 40, 1.2, 0.6, -40, true); //move in
     MoveEncoderPID(TestPara, -30, 9, 0.4, -42, true); //move back 
-    intakeLift.set(true);
+    intakeDrop.set(true);
     wait(100,msec);
     MoveTimePID(TestPara, 35, 0.9, 0.6, -45, true); //move in again
-    intakeLift.set(false);
+    intakeDrop.set(false);
     MoveEncoderPID(TestPara, -80, 20, 0.3, 0 , true); //move back  
     TurnMaxTimePID(TestPara, -170, 0.54, true);
     RunRoller(0);

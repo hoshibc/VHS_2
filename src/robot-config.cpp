@@ -26,7 +26,7 @@ motor Lift = motor(PORT12, ratio6_1, false);
 digital_out Clamp = digital_out(Brain.ThreeWirePort.H);
 digital_out arm = digital_out(Brain.ThreeWirePort.F);
 digital_out leftArm = digital_out(Brain.ThreeWirePort.G);
-digital_out intakeLift = digital_out(Brain.ThreeWirePort.A);
+digital_out intakeDrop = digital_out(Brain.ThreeWirePort.A);
 
 rotation LiftSensor(PORT21);
 inertial Gyro = inertial(PORT5);

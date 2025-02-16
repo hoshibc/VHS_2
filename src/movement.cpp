@@ -17,12 +17,12 @@ int PX;
 int JX;
 
 //Globals for arm movement, measured in degrees 
-int loadPosition = 29;
+int loadPosition = 19;
 int alliancePosition = 205;
 int resetPosition = 0;
-int holdPosition = 45;
 int ladderPosition = 115;
 int wallPosition = 160;
+int holdPosition = 65;
 
 //General Sect;
 //This section includes all general codes for drive and auto

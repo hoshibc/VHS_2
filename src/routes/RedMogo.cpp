@@ -27,12 +27,12 @@ void RedMogo(){
     MoveEncoderPID(TestPara, -30, 28, 0.5, 0, true); //slow move 
     RunLift(0);
     Clamp.set(true);
-    intakeLift.set(true);
+    intakeDrop.set(true);
     wait(100,msec);
     TurnMaxTimePID(TestPara, 48, 0.3, true); //turn face alliance stake ring
     RunRoller(100);
     MoveEncoderPID(TestPara, 50, 36, 0.2, 48, true); //move to get
-    intakeLift.set(false);
+    intakeDrop.set(false);
     wait(300,msec);
 
     MoveEncoderPID(TestPara, -90, 10, 1.0, 50, true); //move back 
@@ -45,10 +45,10 @@ void RedMogo(){
     //corner grab sequence
     MoveTimePID(TestPara, 35, 1.2, 0.6, -45, true); //move in
     MoveEncoderPID(TestPara, -30, 5, 0.4, -45, true); //move back 
-    intakeLift.set(true);
+    intakeDrop.set(true);
     wait(100,msec);
     MoveTimePID(TestPara, 35, 0.8, 0.6, -45, true); //move in again
-    intakeLift.set(false);
+    intakeDrop.set(false);
     MoveEncoderPID(TestPara, -80, 50, 0.3, -90, true); //move out 
     
     RunRoller(-20);
