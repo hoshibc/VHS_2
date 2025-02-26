@@ -646,6 +646,7 @@ int BTask(void) {
 
 void usercontrol(void) {
   EXIT=true;//Force Exit Autosel once drivercontrol began.
+  intakeDrop.set(true);
   // User control code here, inside the loop
   while (1) {
     // This is the main execution loop for the user control program.

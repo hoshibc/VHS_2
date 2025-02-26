@@ -7,46 +7,56 @@
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
 void Red2GoalAwp() {
-    PIDDataSet TestPara={1.5, 0.20, 0.1}; // initialize 1.5, 0.20, 0.1
-    armMoveToAngle(loadPosition, 100);
+    PIDDataSet TestPara={1.5, 0.2, 0.1};   //initialize 1.5, 0.20, 0.1
     Clamp.set(false);
-    wait(100,msec);
-    RunRoller(100);
-    TurnMaxTimePID(TestPara, -32, 0.3, true); //turn face alliacne stake 
-    MoveEncoderPID(TestPara, 80, 4, 0.2, -32, true);
-    wait(200,msec);
-    RunRoller(0);
-    armMoveToAngle(alliancePosition, 100);
-    MoveEncoderPID(TestPara, -100, 30, 0.2, -35, true); //move back 
-    MoveEncoderPID(TestPara, -50, 24, 0.2, 0, true);//move face mogo
-    Clamp.set(true);
-    armMoveToAngle(resetPosition, 100);
-    TurnMaxTimePID(TestPara, 128, 0.3, true); //turn face ring stack
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 17, 0.2, 128, true); //get one ring from ring stack 
-    wait(200,msec);
-    MoveEncoderPID(TestPara, -70, 26, 0.2, 128, true); //move back 
-    MoveEncoderPID(TestPara, 100, 20, 0.2, 90, true); //move get side ring stack 
-    MoveEncoderPID(TestPara, -80, 30, 0.2, 150, true); //move far back 
-    TurnMaxTimePID(TestPara, -90, 0.4, true); //turn face ring stack in front of alliance stake 
-    wait(100,msec);
+    RunLift(-90);
+    TurnMaxTimePID(TestPara, -50, 0.3, true); //turn face score alliance stake 
+    wait(150,msec);
+    RunLift(0);
+    MoveEncoderPID(TestPara, -80, 7, 0.2, -50, false); //move back 
+    intakeDrop.set(true);
+    RunLift(77);
     
-    MoveEncoderPID(TestPara, 100, 30, 0.2, -90, false);
-    Clamp.set(false); //drop mogo
-    MoveEncoderPID(TestPara, 60, 30, 0.2, -90, false); //move slowly
-    MoveEncoderPID(TestPara, 50, 10, 0.2, -90, true); //slower
-    RunRoller(0); //stop intake when blue ing is flung out and red ring is being held 
-    TurnMaxTimePID(TestPara, 0, 0.3, true); //turn back face mogo
-    MoveEncoderPID(TestPara, -70, 20, 0.2, 0, false); //move 
-    MoveEncoderPID(TestPara, -30, 20, 0.2, 0, true); //slow move
-    Clamp.set(true); // clamp
+    MoveEncoderPID(TestPara, -80, 32, 0.3, 0, false); //move back to goal 
+    
+    MoveEncoderPID(TestPara, -40, 21, 0.5, 0, true); //slow move 
+    RunLift(0);
+    armMoveToAngle2(resetPosition, 100);
+    Clamp.set(true);
     wait(100,msec);
-    TurnMaxTimePID(TestPara, -90, 0.3, true); //turn face side ring stack 
+
+    TurnMaxTimePID(TestPara, 90, 0.4, false); //turn to ring stack 
+    RunRoller(100); //start intake 
+    MoveEncoderPID(TestPara, 100, 30, 0.5, 90, true);
+    
+    MoveEncoderPID(TestPara, 100, 42, 0.3, 0, false); //turn move toward corner
+
     RunRoller(100);
-    MoveEncoderPID(TestPara, 90, 28, 0.2, -90, true); //move foward
-    MoveEncoderPID(TestPara, -90, 28, 0.2, -110, true); //move back touch bar prep
-    TurnMaxTimePID(TestPara, 140, 0.3, true); //turn face bar 
-    MoveEncoderPID(TestPara, 70, 18, 0.2, 140, true); //move foward
-    armMoveToAngle(ladderPosition, 100); //raise arm  
+    MoveTimePID(TestPara, 45, 1.5, 0.6, 45, true); //move in
+    
+
+    MoveEncoderPID(TestPara, -80, 10, 0.3, 45, true); //move out 
+
+
+
+
+    TurnMaxTimePID(TestPara, -90, 0.5, true); //turn to alliance stack 
+    RunRoller(70);
+    MoveEncoderPID(TestPara, 90, 65, 0.3, -90, true);
+    Clamp.set(false);
+    MoveEncoderPID(TestPara, 40, 65, 0.3, -90, true);
     RunRoller(0);
+    TurnMaxTimePID(TestPara, 0, 0.4, false);
+    MoveEncoderPID(TestPara, -40, 45, 0.3, 0, true);
+    Clamp.set(true);
+    TurnMaxTimePID(TestPara, -80, 0.5, false);
+    RunRoller(100);
+    MoveEncoderPID(TestPara, 80, 38, 0.3, -80, true);
+    TurnMaxTimePID(TestPara, 90, 0.6, false);
+    MoveEncoderPID(TestPara, 80, 56, 0.3, 90, true);
+    RunLift(-100);
+    wait(360,msec);
+    RunLift(0);
+    RunRoller(0);
+
 }

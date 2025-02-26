@@ -15,41 +15,106 @@
 
 void RedRingElim() {
     PIDDataSet TestPara={1.5, 0.2, 0.1}; 
+    intakeDrop.set(true);
     Clamp.set(false);
     leftArm.set(true);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 87, 0.3, -19, true);// rush
+    MoveEncoderPID(TestPara, 100, 78, 0.3, -20, true);// rush
     wait(200,msec);
     RunRoller(0);
-    MoveEncoderPID(TestPara, -48, 56, 0.8, -44, true);// move back 
+    MoveEncoderPID(TestPara, -50, 52, 0.8, -44, true);// move back 
     
     Clamp.set(true);
     wait(100,msec);
-    TurnMaxTimePID(TestPara, -85, 0.3, true);// turn face 3 rings
     leftArm.set(false);
+    TurnMaxTimePID(TestPara, -80, 0.3, true);// turn face 3 rings
+    
     
     RunRoller(100);// move foward
-    MoveEncoderPID(TestPara, 50, 50, 0.6, -85, true);// move intake 3 rings 
-    MoveEncoderPID(TestPara, 70, 47, 0.3, -178, true); //turn move toward corner
-    //TurnMaxTimePID(TestPara, -135, 0.3, true);  //turn direct face corner
+    MoveEncoderPID(TestPara, 55, 53, 0.6, -80, true);// move intake 3 rings 
+    MoveEncoderPID(TestPara, 90, 42, 0.3, -180, false); //turn move toward corner
 
     RunRoller(100);
-    MoveTimePID(TestPara, 40, 1.2, 0.6, -135, true); //move in
-    MoveEncoderPID(TestPara, -30, 6, 0.4, -135, true); //move back 
-    intakeDrop.set(true);
-    wait(300,msec);
-    MoveTimePID(TestPara, 30, 0.8, 0.5, -135, true); //move in again
-    intakeDrop.set(false);
-    MoveEncoderPID(TestPara, -70, 18, 0.9, -135, true); //move out 
+    MoveTimePID(TestPara, 43, 1.5, 0.6, -135, true); //move in
+    MoveEncoderPID(TestPara, -55, 13, 0.3, -135, true); //move out 
 
-
-    TurnMaxTimePID(TestPara, 90, 0.3, true);
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 60, 45, 0.3, 90, true);
-    wait(1,sec);
-    RunRoller(0);
-    MoveEncoderPID(TestPara, 100, 85, 0.4, 95, true);
-    TurnMaxTimePID(TestPara, -10, 0.8, true);
-
+    TurnMaxTimePID(TestPara, 93, 0.5, true);
     
+    RunRoller(100);
+    MoveEncoderPID(TestPara, 90, 51, 0.3, 94, true); //move to preload
+    wait(400, msec);
+    intakeDrop.set(false);
+    MoveEncoderPID(TestPara, 45, 22, 0.2, 94, true); //move to alliance ring 
+    armMoveToAngle2(loadPosition, 100);
+    arm.set(true);
+    TurnMaxTimePID(TestPara, 180, 0.5, true); //turn face stake and push away rings
+    intakeDrop.set(true);
+    arm.set(false);
+    
+    MoveTimePID(TestPara, 40, 1, 0.3, 180, true); //move in alliance stake 
+    
+    RunRoller(0);
+    double currAngle = Gyro.heading();
+    RunLift(-90);
+    MoveEncoderPID(TestPara, -65, 6, 0.2, currAngle, true); //score n move back 
+    wait(75,msec);
+    RunLift(0);
+    
+    MoveEncoderPID(TestPara, -100, 15, 0.3, -178, true); //move back 
+    intakeDrop.set(true);
+    RunLift(100);
+    RunRoller(-80);
+    TurnMaxTimePID(TestPara, 100, 0.3, false);
+    RunLift(0);
+    MoveEncoderPID(TestPara, 80, 45, 0.3, 98, false);
+    
+
+
+    //AUTOS FOR PILONS
+
+    // intakeDrop.set(true);
+    // Clamp.set(false);
+    // leftArm.set(true);
+    // RunRoller(100);
+    // MoveEncoderPID(TestPara, 100, 78, 0.3, -20, true);// rush
+    // wait(200,msec);
+    // RunRoller(0);
+    // MoveEncoderPID(TestPara, -50, 52, 0.8, -44, true);// move back 
+    
+    // Clamp.set(true);
+    // wait(100,msec);
+    // leftArm.set(false);
+    // TurnMaxTimePID(TestPara, -80, 0.3, true); // turn face 3 rings
+    
+    
+    // RunRoller(100);// move foward
+    // MoveEncoderPID(TestPara, 55, 53, 0.6, -80, true);// move intake 3 rings 
+    // MoveEncoderPID(TestPara, 90, 42, 0.3, -180, false); //turn move toward corner
+
+    // RunRoller(100);
+    // MoveTimePID(TestPara, 43, 1.5, 0.6, -135, true); //move in
+    
+    // MoveEncoderPID(TestPara, -30, 5, 0.4, -135, true); //move back 
+    // intakeDrop.set(false);
+    // wait(100,msec);
+    // MoveTimePID(TestPara, 35, 0.8, 0.6, -135, true); //move in again
+    // intakeDrop.set(true);
+    // MoveEncoderPID(TestPara, -55, 13, 0.3, -135, true); //move out 
+
+
+
+
+    // TurnMaxTimePID(TestPara, 93, 0.5, true);
+    
+    // RunRoller(100);
+    // MoveEncoderPID(TestPara, 90, 51, 0.3, 94, true); //move to preload
+    // wait(600, msec);
+    
+    // RunRoller(0);
+
+
+    // RunLift(0);
+    // MoveEncoderPID(TestPara, 80, 50, 0.3, 98, false);
+
+
 }

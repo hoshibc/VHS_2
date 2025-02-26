@@ -21,17 +21,20 @@ void AutoSkills() {
     wait(280,msec);
     RunLift(0);
     double curAngle1 = Gyro.heading();
+
+
+    //FIRST CORNER
     MoveEncoderPID(TestPara, -35, 25, 0.3, curAngle1, true); //move back to clamp goal 
-    Clamp.set(true);
+    Clamp.set(true); //clamp goal 
     wait(100,msec);
     intakeDrop.set(true);
     RunLift(95);
     TurnMaxTimePID(TestPara, 0, 0.4, true); //turn face ring a1
     RunLift(0);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 90, 23, 0.3, 0, true);
-    MoveEncoderPID(TestPara, 80, 110, 0.5, 24, true); // move face ring a2
-    armMoveToAngle2(loadPosition, 100); // load arm
+    MoveEncoderPID(TestPara, 90, 24, 0.3, 0, true);
+    MoveEncoderPID(TestPara, 80, 113, 0.5, 24, true); // move face ring a2
+    armMoveToAngle2(loadPosition-1, 100); // load arm
     MoveEncoderPID(TestPara, -60, 32, 0.3, 17, true); //move back a bit for wall stakes 
     TurnMaxTimePID(TestPara, 90, 0.4, true); //face wall stakes 
     RunRoller(-20);
@@ -49,78 +52,75 @@ void AutoSkills() {
     MoveEncoderPID(TestPara, 50, 120, 0.5, 178, true); //move
     MoveEncoderPID(TestPara, 60, 35, 0.5, 45, true); // move face intake ring a6
     wait(250,msec);
-    MoveTimePID(TestPara, -40, 1.5, 0.3, -35, true); // put goal in corner 
+    MoveTimePID(TestPara, -44, 1.3, 0.2, -35, true); // put goal in corner 
     RunRoller(-100);
     Clamp.set(false);
 
 
-    TurnMaxTimePID(TestPara, -8, 0.3, true); // turn face blue alliace stake ring 
+    //SECOND CORNER
+    TurnMaxTimePID(TestPara, -6, 0.3, true); // turn face far blue alliace stake ring 
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 145, 0.3, -8, false); //move 
+    MoveEncoderPID(TestPara, 100, 147, 0.3, -6, false); //move 
+    leftArm.set(true);
     armMoveToAngle2(loadPosition, 100); //raise arm 
-    MoveEncoderPID(TestPara, 50, 25, 0.8, -8, true); //slow move 
+    MoveEncoderPID(TestPara, 50, 25, 0.8, -6, true); //slow move 
     wait(100,msec);
-    TurnMaxTimePID(TestPara, 123, 0.5, false); //turn face goal 
-    MoveEncoderPID(TestPara, -44, 50, 0.8, 123, true); //move back to clamp 
+    TurnMaxTimePID(TestPara, 124, 0.5, false); //turn face goal 
+    MoveEncoderPID(TestPara, -40, 54, 0.4, 124, true); //move back to clamp 
     Clamp.set(true); //clmap goal 
     leftArm.set(true); //extend arm for sweep 
     wait(50,msec);
     MoveEncoderPID(TestPara, 50, 60, 0.5, 85, true); //move foward
     TurnMaxTimePID(TestPara, -135, 0.6, true); //sweep corner 
-    RunRoller(0);
+    
     leftArm.set(false);
+    RunRoller(0);
+    armMoveToAngle2(holdPosition, 100);
     MoveTimePID(TestPara, -40, 0.9, 0.3, -135, true); //place goal in negative
     Clamp.set(false);
 
 
 
-
-    MoveEncoderPID(TestPara, 80, 25, 0.5, -135, true); //move out 
-    TurnMaxTimePID(TestPara, 90, 0.5, false); //turn face middle goal 
-    MoveEncoderPID(TestPara, -40, 70, 0.3, 90, true); //move
+    //ALLIANCE STAKE AND THIRD CORNER
+    MoveEncoderPID(TestPara, 80, 24, 0.5, -135, true); //move out from corner 
+    TurnMaxTimePID(TestPara, 90, 0.5, false); //turn back face middle goal 
+    MoveEncoderPID(TestPara, -40, 76, 0.3, 90, true); //move
     Clamp.set(true);
+    RunRoller(100);
     wait(50,msec);
     TurnMaxTimePID(TestPara, 0, 0.3, true); //turn face alliance stake 
     MoveTimePID(TestPara, 50, 0.9, 0.3, 0, true); //move in 
     double curAngle2 = Gyro.heading();
     MoveEncoderPID(TestPara, -30, 7, 0.3, curAngle2, true); //move back 
-    RunLift(-100); //score 
-    wait(450, msec);
+    RunLift(-100); //score alliance stake 
+    wait(300, msec);
     RunLift(0);
-    
-
-
-    // Clamp.set(true);
-    // MoveTimePID(TestPara, 50, 0.9, 0.3, 0, true);
-
-
-
-    MoveEncoderPID(TestPara, -80, 6, 0.3, 0, true); //move back after scoring 
+    MoveEncoderPID(TestPara, -80, 4, 0.3, 0, true); //move back after scoring 
     RunRoller(100);
     RunLift(95);
     TurnMaxTimePID(TestPara, 130, 0.4, false); //turn face ring b1
     RunLift(0);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 53, 0.3, 130, true); //move 
+    MoveEncoderPID(TestPara, 80, 54, 0.3, 130, true); //move 
     TurnMaxTimePID(TestPara, -135, 0.5, true); //turn face ladder mid
     wait(340,msec);
     RunRoller(0);
     MoveEncoderPID(TestPara, 80, 110, 0.3, -135, false); //move
     RunRoller(100);
-    MoveEncoderPID(TestPara, 40, 50, 0.3, -138, false); //move get rings b2, b3, 
-    MoveEncoderPID(TestPara, 35, 20, 0.3, -138, false);// ring b4
-    MoveEncoderPID(TestPara, 35, 25, 0.3, -164, true); //get ring b5
+    MoveEncoderPID(TestPara, 40, 52, 0.3, -138, false); //move get rings b2, b3, 
+    MoveEncoderPID(TestPara, 35, 25, 0.3, -138, false);// ring b4
+    MoveEncoderPID(TestPara, 35, 27, 0.3, -168, true); //get ring b5
     wait(200,msec);
     TurnMaxTimePID(TestPara, -63, 0.4, false);
-    MoveEncoderPID(TestPara, 35, 25, 0.3, -63, true); //get ring b6
+    MoveEncoderPID(TestPara, 35, 28, 0.3, -63, true); //get ring b6
     wait(150,msec);
-    MoveTimePID(TestPara, -70, 0.8, 0.3, 18, true); //push in corner
+    MoveTimePID(TestPara, -70, 0.9, 0.3, 15, true); //push in corner
     RunRoller(0);
     Clamp.set(false);
 
 
 
-
+    //FOURTH CORNER
     RunRoller(-60);
     MoveEncoderPID(TestPara, 55, 10, 0.3, 12, false); //move out 
     RunRoller(100);
@@ -166,15 +166,16 @@ void AutoSkills() {
     
     MoveTimePID(TestPara, 40, 1.2, 0.3, -5, true);
     TurnMaxTimePID(TestPara, 135, 0.8, true);
+    RunRoller(-100);
     MoveTimePID(TestPara, -80, 1.2, 0.2, 150, true);
     Clamp.set(false);
     RunRoller(-50);
     leftArm.set(false);
     MoveEncoderPID(TestPara, 80, 40, 0.5, 120, true);
     RunLift(-90);
-    RunRoller(0);
+    RunRoller(-75);
     TurnMaxTimePID(TestPara, -45, 0.3, true);
     RunLift(0);
-    MoveEncoderPID(TestPara, -80, 60, 0.5, -45, true);
-    
+    MoveEncoderPID(TestPara, -65, 85, 0.3, -45, true);
+    RunRoller(0);
 }    

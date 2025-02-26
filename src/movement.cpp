@@ -17,7 +17,7 @@ int PX;
 int JX;
 
 //Globals for arm movement, measured in degrees 
-int loadPosition = 19;
+int loadPosition = 18;
 int alliancePosition = 205;
 int resetPosition = 0;
 int ladderPosition = 115;
@@ -154,7 +154,7 @@ void armMoveToAngle(int deg, int speed) {
 void armMoveToAngle2(int deg, int speed) {
   // Proportional control constants
   const float kP = 0.8;  // Proportional gain (adjust as needed)
-  const int minSpeed = 34;  // Minimum speed to prevent stalling
+  const int minSpeed = 40;  // Minimum speed to prevent stalling
 
   int error = deg - LiftSensor.position(degrees);
   int currentSpeed = 0;

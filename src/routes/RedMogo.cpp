@@ -7,37 +7,31 @@
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
 void RedMogo(){
-    //version number 1.0 draft route
-    //issues: intake range, time to end
     PIDDataSet TestPara={1.5, 0.2, 0.1};   //initialize 1.5, 0.20, 0.1
-    armMoveToAngle2(loadPosition, 100);
-    RunRoller(80);
     Clamp.set(false);
-    TurnMaxTimePID(TestPara, 48, 0.3, true); //turn face score alliance stake 
-    wait(100,msec);
-    RunRoller(0);
-    RunLift(-100);
-    wait(350,msec);
+    RunLift(-90);
+    TurnMaxTimePID(TestPara, 50, 0.3, true); //turn face score alliance stake 
+    wait(150,msec);
     RunLift(0);
-    MoveEncoderPID(TestPara, -80, 9, 0.2, 48, true); //move back 
+    MoveEncoderPID(TestPara, -80, 9, 0.2, 50, false); //move back 
+    intakeDrop.set(true);
     RunLift(70);
     
-    MoveEncoderPID(TestPara, -80, 22, 0.3, 0, false); //move back to goal 
+    MoveEncoderPID(TestPara, -80, 23, 0.3, 0, false); //move back to goal 
     RunRoller(-100);
-    MoveEncoderPID(TestPara, -30, 28, 0.5, 0, true); //slow move 
+    MoveEncoderPID(TestPara, -30, 30, 0.5, 0, true); //slow move 
     RunLift(0);
     Clamp.set(true);
-    intakeDrop.set(true);
     wait(100,msec);
-    TurnMaxTimePID(TestPara, 48, 0.3, true); //turn face alliance stake ring
+    TurnMaxTimePID(TestPara, 50, 0.3, true); //turn face alliance stake ring
     RunRoller(100);
-    MoveEncoderPID(TestPara, 50, 36, 0.2, 48, true); //move to get
     intakeDrop.set(false);
-    wait(300,msec);
+    MoveEncoderPID(TestPara, 60, 36, 0.2, 50, true); //move to get
+    intakeDrop.set(true);
 
     MoveEncoderPID(TestPara, -90, 10, 1.0, 50, true); //move back 
-    MoveEncoderPID(TestPara, 80, 22, 0.3, -10, true); //move to wall
-    MoveEncoderPID(TestPara, 100, 70, 0.3, -94, true); //move to corner
+    MoveEncoderPID(TestPara, 80, 26, 0.3, -10, true); //move to wall
+    MoveEncoderPID(TestPara, 100, 72, 0.3, -92, true); //move to corner
     TurnMaxTimePID(TestPara, -45, 0.2, true);
 
     RunRoller(100);
@@ -45,23 +39,21 @@ void RedMogo(){
     //corner grab sequence
     MoveTimePID(TestPara, 35, 1.2, 0.6, -45, true); //move in
     MoveEncoderPID(TestPara, -30, 5, 0.4, -45, true); //move back 
-    intakeDrop.set(true);
+    intakeDrop.set(false);
     wait(100,msec);
     MoveTimePID(TestPara, 35, 0.8, 0.6, -45, true); //move in again
-    intakeDrop.set(false);
+    intakeDrop.set(true);
     MoveEncoderPID(TestPara, -80, 50, 0.3, -90, true); //move out 
     
     RunRoller(-20);
 
-    TurnMaxTimePID(TestPara, -151, 0.4, true);
+    TurnMaxTimePID(TestPara, -148, 0.4, true);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 50, 0.3, -151, true);
-    TurnMaxTimePID(TestPara, 110, 0.5, true);
-    MoveEncoderPID(TestPara, 80, 25, 0.3, 110, true);
-
-    armMoveToAngle2(ladderPosition+35, 100);
+    MoveEncoderPID(TestPara, 100, 50, 0.3, -148, true);
+    TurnMaxTimePID(TestPara, 115, 0.5, true);
+    MoveEncoderPID(TestPara, 80, 23, 0.3, 115, true);
+    RunLift(-60);
+    wait(250,msec);
+    RunLift(0);
     RunRoller(0);
-
-
-
 }
