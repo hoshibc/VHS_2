@@ -17,25 +17,26 @@ void BlueRingElim() {
     PIDDataSet TestPara={1.5, 0.2, 0.1}; 
     intakeDrop.set(true);
     Clamp.set(false);
-    leftArm.set(true);
+    arm.set(true);
     RunRoller(100);
     MoveEncoderPID(TestPara, 100, 78, 0.3, 20, true);// rush
     wait(200,msec);
-    RunRoller(0);
-    MoveEncoderPID(TestPara, -50, 52, 0.8, 44, true);// move back 
+    RunRoller(30);
+    MoveEncoderPID(TestPara, -50, 50, 0.8, 44, true);// move back 
     
     Clamp.set(true);
     wait(100,msec);
-    leftArm.set(false);
+    RunRoller(100);// move foward
+    arm.set(false);
     TurnMaxTimePID(TestPara, 80, 0.3, true);// turn face 3 rings
     
     
-    RunRoller(100);// move foward
-    MoveEncoderPID(TestPara, 55, 53, 0.6, 80, true);// move intake 3 rings 
-    MoveEncoderPID(TestPara, 90, 42, 0.3, 180, false); //turn move toward corner
+    
+    MoveEncoderPID(TestPara, 55, 49, 0.6, 80, true);// move intake 3 rings 
+    MoveEncoderPID(TestPara, 90, 45, 0.3, 180, false); //turn move toward corner
 
     RunRoller(100);
-    MoveTimePID(TestPara, 43, 1.5  , 0.6, 135, true); //move in
+    MoveTimePID(TestPara, 43, 1.5, 0.6, 135, true); //move in
     MoveEncoderPID(TestPara, -55, 13, 0.3, 135, true); //move out 
 
     TurnMaxTimePID(TestPara, -93, 0.5, true);
@@ -46,10 +47,10 @@ void BlueRingElim() {
     intakeDrop.set(false);
     MoveEncoderPID(TestPara, 45, 22, 0.2, -94, true); //move to alliance ring 
     armMoveToAngle2(loadPosition, 100);
-    arm.set(true);
+    leftArm.set(true);
     TurnMaxTimePID(TestPara, -180, 0.5, true); //turn face stake and push away rings
     intakeDrop.set(true);
-    arm.set(false);
+    leftArm.set(false);
     
     MoveTimePID(TestPara, 40, 1, 0.3, -180, true); //move in alliance stake 
     
@@ -64,9 +65,9 @@ void BlueRingElim() {
     intakeDrop.set(true);
     RunLift(100);
     RunRoller(-80);
-    TurnMaxTimePID(TestPara, -100, 0.3, false);
+    TurnMaxTimePID(TestPara, -105, 0.3, false);
     RunLift(0);
-    MoveEncoderPID(TestPara, 80, 45, 0.3, -98, false);
+    MoveEncoderPID(TestPara, 80, 45, 0.3, -105, false);
     
 
 
@@ -76,10 +77,10 @@ void BlueRingElim() {
     // Clamp.set(false);
     // leftArm.set(true);
     // RunRoller(100);
-    // MoveEncoderPID(TestPara, 100, 78, 0.3, 20, true);// rush
+    // MoveEncoderPID(TestPara, 100, 73, 0.3, 20, true);// rush
     // wait(200,msec);
     // RunRoller(0);
-    // MoveEncoderPID(TestPara, -50, 52, 0.8, 44, true);// move back 
+    // MoveEncoderPID(TestPara, -50, 50, 0.8, 44, true);// move back 
     
     // Clamp.set(true);
     // wait(100,msec);
@@ -88,8 +89,8 @@ void BlueRingElim() {
     
     
     // RunRoller(100);// move foward
-    // MoveEncoderPID(TestPara, 55, 53, 0.6, 80, true);// move intake 3 rings 
-    // MoveEncoderPID(TestPara, 90, 42, 0.3, 180, false); //turn move toward corner
+    // MoveEncoderPID(TestPara, 55, 50, 0.6, 80, true);// move intake 3 rings 
+    // MoveEncoderPID(TestPara, 90, 40, 0.3, 180, false); //turn move toward corner
 
     // RunRoller(100);
     // MoveTimePID(TestPara, 43, 1.5, 0.6, 135, true); //move in

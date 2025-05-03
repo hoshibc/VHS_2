@@ -8,28 +8,28 @@
 
 void Blue2GoalAwp() {
     PIDDataSet TestPara={1.5, 0.2, 0.1};   //initialize 1.5, 0.20, 0.1
-    Clamp.set(false);
-    RunLift(-90);
-    TurnMaxTimePID(TestPara, 50, 0.3, true); //turn face score alliance stake 
-    wait(150,msec);
-    RunLift(0);
-    MoveEncoderPID(TestPara, -80, 7, 0.2, 50, false); //move back 
-    intakeDrop.set(true);
-    RunLift(77);
-    
-    MoveEncoderPID(TestPara, -80, 32, 0.3, 0, false); //move back to goal 
-    
-    MoveEncoderPID(TestPara, -40, 21, 0.5, 0, true); //slow move 
-    RunLift(0);
-    armMoveToAngle2(resetPosition, 100);
-    Clamp.set(true);
-    wait(100,msec);
 
+
+    Clamp.set(false);
+    intakeDrop.set(true);
+    double curAngle1 = Gyro.heading();
+    RunLift(-90);
+
+    MoveEncoderPID(TestPara, 40, 2, 0.2, curAngle1, true);
+    RunLift(0);
+    MoveEncoderPID(TestPara, -80, 35, 0.2 , curAngle1, true);
+    RunLift(100);
+    MoveEncoderPID(TestPara, -20, 13, 0.2 , curAngle1, true);
+    RunLift(0);
+    Clamp.set(true);
+
+
+    
     TurnMaxTimePID(TestPara, -90, 0.4, false); //turn to ring stack 
     RunRoller(100); //start intake 
-    MoveEncoderPID(TestPara, 100, 30, 0.5, -90, true);
+    MoveEncoderPID(TestPara, 100, 35, 0.5, -90, true);
     
-    MoveEncoderPID(TestPara, 100, 42, 0.3, 0, false); //turn move toward corner
+    MoveEncoderPID(TestPara, 100, 54, 0.3, 0, false); //turn move toward corner
 
     RunRoller(100);
     MoveTimePID(TestPara, 45, 1.5, 0.6, -45, true); //move in
@@ -41,19 +41,19 @@ void Blue2GoalAwp() {
 
 
     TurnMaxTimePID(TestPara, 90, 0.5, true); //turn to alliance stack 
-    RunRoller(70);
+    RunRoller(90);
     MoveEncoderPID(TestPara, 90, 65, 0.3, 90, true);
     Clamp.set(false);
-    MoveEncoderPID(TestPara, 40, 65, 0.3, 90, true);
+    MoveEncoderPID(TestPara, 50, 52, 0.3, 90, true);
     RunRoller(0);
     TurnMaxTimePID(TestPara, 0, 0.4, false);
-    MoveEncoderPID(TestPara, -40, 45, 0.3, 0, true);
+    MoveEncoderPID(TestPara, -40, 43, 0.3, 0, true);
     Clamp.set(true);
     TurnMaxTimePID(TestPara, 80, 0.5, false);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 38, 0.3, 80, true);
+    MoveEncoderPID(TestPara, 80, 35, 0.3, 80, true);
     TurnMaxTimePID(TestPara, -90, 0.6, false);
-    MoveEncoderPID(TestPara, 80, 56, 0.3, -90, true);
+    MoveEncoderPID(TestPara, 80, 50, 0.3, -90, true);
     RunLift(-100);
     wait(360,msec);
     RunLift(0);
