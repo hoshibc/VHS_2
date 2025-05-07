@@ -15,6 +15,7 @@ extern int ladderPosition;
 extern int wallPosition;
 
 
+
 struct ChassisDataSet{
   int Left;
   int Right;
@@ -28,6 +29,15 @@ struct PIDDataSet{
   double ki;
   double kd;
 };
+
+
+
+
+extern void ColourSort(int intakeSpeed, bool SortRed);
+extern void StartColourSort(int speed, bool IssRed);
+extern void stopColourSort(int speed);
+extern void toggleColourSort(int Speed, bool IssRed);
+extern int colourSortThreadFn(void* arg);
 
 extern void Zeroing(bool dist, bool HDG);
 extern ChassisDataSet ChassisUpdate();

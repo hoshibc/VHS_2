@@ -118,11 +118,140 @@ void CStop() {
   RB.stop();
 }
 
-void allianceStakeAlign() {
-  PIDDataSet TestPara={1.5, 0.20, 0.1}; 
-  MoveEncoderPID(TestPara, -50, 8, 0.3, -3, true); // back up
-  armMoveToAngle(alliancePosition, 100); //score alliace
+
+
+bool RunColourSort = true;
+thread* colourSortThread = nullptr;
+void ColourSort(int intakespeed, bool SortRed){
+  double CSpeed=0;
+  Zeroing(true,false);
+  ChassisDataSet SensorVals;
+  SensorVals=ChassisUpdate();
+  double PVal=0;
+  double IVal=0;
+  double DVal=0;
+  double LGV=0;//define local gyro variable.
+  PrevE=0;
+  double Correction=0;
+  Brain.Screen.clearScreen();
+  bool discDetected = false;
+  bool rightcolor = false;
+  int arraynumber = 200; //blue color hues
+  int arraynumber2 = 270; //blue color hues
+  int arraynumber3;
+  int arrarnumber4;
+  bool CorrectPosition = false;
+  double pow;
+
+  if (SortRed) {
+    arraynumber2=40; //red color hues
+    arraynumber=0; //red color hues
+  }
+
+  OpSens.integrationTime(5);
+  OpSens.setLightPower(100,percent);
+ 
+  //bool question = false;
+  double hue;
+  
+  while(RunColourSort)  {
+    //std::cout << SensorVals.Avg << " " << dist << std::endl
+
+
+
+ //Colour Sort
+  hue = OpSens.hue();
+  if (RunColourSort)  {
+    if (OpSens.isNearObject() && !rightcolor && OpSens.hue() >= arraynumber && OpSens.hue() <= arraynumber2) {
+      // Initialize state for sorting
+      Roller.setPosition(0, degrees);
+      rightcolor = true;
+      CorrectPosition = false;
+      
+      
+    }
+
+    if (rightcolor) {
+      if (!CorrectPosition) {
+        // Spin the roller to the correct position
+        
+        RunRoller(100);
+        if (!OpSens.isNearObject()) {
+          CorrectPosition = true;
+          std::cout<<"I"<<std::endl;
+        }
+      } 
+      else {
+        // Stop the roller when position is corrected
+        RunRoller(-100);
+        if (Roller.position(degrees) <= 10) {
+          rightcolor = false; // Reset state for the next object
+        }
+      }
+    }
+    else if(!rightcolor){
+      RunRoller(intakespeed);
+    }
+  }
+  else if (!RunColourSort){
+    RunRoller(0);
+
+  }
+  }
+  RunRoller(0);
 }
+
+
+
+struct ColourSortParams {
+  int speed;
+  bool IssRed;
+};
+
+int colourSortThreadFn(void* arg) {
+  ColourSortParams* params = static_cast<ColourSortParams*>(arg);
+  ColourSort(params->speed, params->IssRed);
+  delete params;
+  return 0;
+}
+
+void StartColourSort(int speed, bool IssRed) {
+  if (!colourSortThread) {
+      RunColourSort = true;
+      colourSortThread = new thread(colourSortThreadFn, new ColourSortParams{speed, IssRed});
+  }
+}
+
+void stopColourSort(int Speed) {
+  RunColourSort = false;  // Stops intake immediately
+  colourSortThread->interrupt();
+  colourSortThread->join();
+  delete colourSortThread;
+  colourSortThread = nullptr;
+  RunRoller(Speed);
+}
+
+void toggleColourSort(int speed, bool IssRed) {
+  if (RunColourSort) {
+      stopColourSort(0);
+  } else {
+      StartColourSort(speed, IssRed);
+  }
+}
+
+void emergencyStopColourSort() {
+  
+  if (colourSortThread) {
+      colourSortThread->interrupt();
+      colourSortThread->join();
+      delete colourSortThread;
+      colourSortThread = nullptr;
+  }
+}
+
+
+
+
 
 /** Moves the wall stakes arm to a set angle 
  * @param deg the degrees currently measured by the rotation sensor 

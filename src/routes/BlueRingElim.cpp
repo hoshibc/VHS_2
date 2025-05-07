@@ -13,35 +13,44 @@
 // int holdPosition = 45;
 // int ladderPosition = 140;
 
+
+// color sort TRUE if SORTING RED, set to FALSE is SORTING BLUE 
+
+// extern void ColourSort(int intakeSpeed, bool SortRed);
+// extern void StartColourSort(int speed, bool IssRed);
+// extern void stopColourSort(int speed);
+// extern void toggleColourSort(int Speed, bool IssRed);
+// extern int colourSortThreadFn(void* arg);
+
 void BlueRingElim() {
     PIDDataSet TestPara={1.5, 0.2, 0.1}; 
     intakeDrop.set(true);
     Clamp.set(false);
     arm.set(true);
-    RunRoller(100);
+    StartColourSort(100, true);
     MoveEncoderPID(TestPara, 100, 78, 0.3, 20, true);// rush
     wait(200,msec);
-    RunRoller(30);
-    MoveEncoderPID(TestPara, -50, 50, 0.8, 44, true);// move back 
+    stopColourSort(30);
+    MoveEncoderPID(TestPara, -50, 50, 0.8, 48, true);// move back 
     
     Clamp.set(true);
     wait(100,msec);
-    RunRoller(100);// move foward
+    StartColourSort(100, true);// move foward
     arm.set(false);
     TurnMaxTimePID(TestPara, 80, 0.3, true);// turn face 3 rings
     
     
     
-    MoveEncoderPID(TestPara, 55, 49, 0.6, 80, true);// move intake 3 rings 
-    MoveEncoderPID(TestPara, 90, 45, 0.3, 180, false); //turn move toward corner
+    MoveEncoderPID(TestPara, 55, 48, 0.6, 80, true);// move intake 3 rings 
+    MoveEncoderPID(TestPara, 90, 48, 0.3, 180, false); //turn move toward corner
 
-    RunRoller(100);
+
     MoveTimePID(TestPara, 43, 1.5, 0.6, 135, true); //move in
     MoveEncoderPID(TestPara, -55, 13, 0.3, 135, true); //move out 
 
     TurnMaxTimePID(TestPara, -93, 0.5, true);
     
-    RunRoller(100);
+  
     MoveEncoderPID(TestPara, 90, 51, 0.3, -94, true); //move to preload
     wait(400, msec);
     intakeDrop.set(false);
@@ -54,7 +63,7 @@ void BlueRingElim() {
     
     MoveTimePID(TestPara, 40, 1, 0.3, -180, true); //move in alliance stake 
     
-    RunRoller(0);
+    stopColourSort(0);
     double currAngle = Gyro.heading();
     RunLift(-90);
     MoveEncoderPID(TestPara, -65, 6, 0.2, currAngle, true); //score n move back 
@@ -64,7 +73,7 @@ void BlueRingElim() {
     MoveEncoderPID(TestPara, -100, 15, 0.3, 178, true); //move back 
     intakeDrop.set(true);
     RunLift(100);
-    RunRoller(-80);
+    StartColourSort(100, true);
     TurnMaxTimePID(TestPara, -105, 0.3, false);
     RunLift(0);
     MoveEncoderPID(TestPara, 80, 45, 0.3, -105, false);

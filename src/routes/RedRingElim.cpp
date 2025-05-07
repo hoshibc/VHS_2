@@ -13,16 +13,25 @@
 // int holdPosition = 45;
 // int ladderPosition = 140;
 
+
+// color sort TRUE if SORTING RED, set to FALSE is SORTING BLUE 
+
+// extern void ColourSort(int intakeSpeed, bool SortRed);
+// extern void StartColourSort(int speed, bool IssRed);
+// extern void stopColourSort(int speed);
+// extern void toggleColourSort(int Speed, bool IssRed);
+// extern int colourSortThreadFn(void* arg);
+
 void RedRingElim() {
     PIDDataSet TestPara={1.5, 0.2, 0.1}; 
     intakeDrop.set(true);
     Clamp.set(false);
     leftArm.set(true);
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 100, 73, 0.3, -21, true);// rush
+    StartColourSort(100, false);
+    MoveEncoderPID(TestPara, 100, 86, 0.3, -21, true);// rush
     wait(100,msec);
-    RunRoller(30);
-    MoveEncoderPID(TestPara, -50, 50, 0.8, -46, true);// move back 
+    stopColourSort(30);
+    MoveEncoderPID(TestPara, -50, 50, 0.8, -48, true);// move back 
     
     Clamp.set(true);
     wait(100,msec);
@@ -30,21 +39,21 @@ void RedRingElim() {
     TurnMaxTimePID(TestPara, -80, 0.3, true);// turn face 3 rings
     
     
-    RunRoller(100);// move foward
+    StartColourSort(100, false);// move foward
     MoveEncoderPID(TestPara, 55, 48, 0.6, -80, true);// move intake 3 rings 
-    MoveEncoderPID(TestPara, 90, 36, 0.3, -179, false); //turn move toward corner
+    MoveEncoderPID(TestPara, 90, 48, 0.3, -179, false); //turn move toward corner
 
-    RunRoller(100);
+   
     MoveTimePID(TestPara, 53, 1.5, 0.3, -135, true); //move in
     MoveEncoderPID(TestPara, -55, 13, 0.3, -135, true); //move out 
 
     TurnMaxTimePID(TestPara, 90, 0.5, true);
     
-    RunRoller(100);
-    MoveEncoderPID(TestPara, 90, 51, 0.3, 89, true); //move to preload
+    
+    MoveEncoderPID(TestPara, 90, 60, 0.3, 89, true); //move to preload
     wait(400, msec);
     intakeDrop.set(false);
-    MoveEncoderPID(TestPara, 45, 22, 0.2, 89, true); //move to alliance ring 
+    MoveEncoderPID(TestPara, 45, 30, 0.2, 89, true); //move to alliance ring 
     armMoveToAngle2(loadPosition, 100);
     arm.set(true);
     TurnMaxTimePID(TestPara, 180, 0.5, true); //turn face stake and push away rings
@@ -53,7 +62,7 @@ void RedRingElim() {
     
     MoveTimePID(TestPara, 40, 1, 0.3, 180, true); //move in alliance stake 
     
-    RunRoller(0);
+    stopColourSort(0);
     double currAngle = Gyro.heading();
     RunLift(-90);
     MoveEncoderPID(TestPara, -65, 6, 0.2, currAngle, true); //score n move back 
@@ -63,10 +72,10 @@ void RedRingElim() {
     MoveEncoderPID(TestPara, -100, 5, 0.3, -178, true); //move back 
     intakeDrop.set(true);
     RunLift(100);
-    RunRoller(-90);
+    StartColourSort(100, false);
     TurnMaxTimePID(TestPara, 110, 0.3, false);
     RunLift(0);
-    RunRoller(0);
+  
     MoveEncoderPID(TestPara, 80, 45, 0.3, 110, false);
     
 

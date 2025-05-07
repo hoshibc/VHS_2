@@ -16,7 +16,7 @@ motor LB = motor(PORT1, ratio6_1, true);
 
 motor RF = motor(PORT8, ratio6_1, true);
 motor RM = motor(PORT9, ratio6_1, false);
-motor RB = motor(PORT10, ratio6_1, false);
+motor RB = motor(PORT6, ratio6_1, false);
 
 
 motor Roller = motor(PORT7, ratio6_1, true);
@@ -30,7 +30,7 @@ digital_out intakeDrop = digital_out(Brain.ThreeWirePort.A);
 
 rotation LiftSensor(PORT21);
 inertial Gyro = inertial(PORT5);
-optical OpSens = optical(PORT12);
+optical OpSens = optical(PORT4);
 
 //Naming convention: 
 // Important variables
