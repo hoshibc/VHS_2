@@ -16,13 +16,14 @@
 // extern int colourSortThreadFn(void* arg);
 void BlueMogo(){
     PIDDataSet TestPara={1.5, 0.2, 0.1};   //initialize 1.5, 0.20, 0.1
+    wait(600,msec);
     intakeDrop.set(true);
     Clamp.set(false);
 
     double curAngle1 = Gyro.heading();
     RunLift(-90);
 
-    MoveEncoderPID(TestPara, 53, 2, 0.2, curAngle1, true);
+    MoveEncoderPID(TestPara, 53, 2.5, 0.2, curAngle1, true);
     RunLift(0);
     MoveEncoderPID(TestPara, -88, 40, 0.2 , curAngle1, true);
     RunLift(100);
@@ -52,7 +53,7 @@ void BlueMogo(){
     MoveTimePID(TestPara, 40, 0.5, 0.3, 45, true); //move in again
     intakeDrop.set(true);
     MoveEncoderPID(TestPara, -80, 55, 0.3, 90, true); //move out 
-    wait(0.5,sec);
+    wait(0.4,sec);
     stopColourSort(-20);
 
     TurnMaxTimePID(TestPara, 150, 0.4, true);

@@ -63,7 +63,7 @@ void RedRing() {
     
     MoveTimePID(TestPara, 40, 1, 0.3, 180, true); //move in alliance stake 
     
-    
+
     double currAngle = Gyro.heading();
     stopColourSort(0);
     RunLift(-90);

@@ -34,14 +34,14 @@ void RedMogo(){
 
     
     TurnMaxTimePID(TestPara, 50, 0.3, true); //turn face alliance stake ring
-    StartColourSort(100, false);
+    StartColourSort(95, false);
     intakeDrop.set(false);
     MoveEncoderPID(TestPara, 45, 39, 0.2, 50, true); //move to get
     intakeDrop.set(true);
 
     MoveEncoderPID(TestPara, -70, 14, 1.0, 50, true); //move back 
     MoveEncoderPID(TestPara, 80, 26, 0.3, -10, true); //move to wall
-    MoveEncoderPID(TestPara, 100, 72, 0.3, -90, true); //move to corner
+    MoveEncoderPID(TestPara, 100, 76, 0.3, -90, true); //move to corner
     TurnMaxTimePID(TestPara, -45, 0.2, true);
 
 
@@ -57,11 +57,11 @@ void RedMogo(){
     stopColourSort(-20);
 
     TurnMaxTimePID(TestPara, -148, 0.4, true);
-    StartColourSort(100, true);
+    StartColourSort(100, false);
     MoveEncoderPID(TestPara, 100, 50, 0.3, -148, true);
     TurnMaxTimePID(TestPara, 110, 0.5, true);
     MoveEncoderPID(TestPara, 80, 45, 0.3, 110, true);
-    stopColourSort(-80);
+    RunLift(-80);
     wait(250,msec);
     RunLift(0);
     wait(750,msec);

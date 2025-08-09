@@ -26,33 +26,36 @@ void BlueMogoElim() {
     intakeDrop.set(true);
     Clamp.set(false);
     MoveEncoderPID(TestPara, -100, 30, 0.3, 0, false); //move back 
-    MoveEncoderPID(TestPara, -30, 20, 0.3, 0, true); //move clamp goal 
+    MoveEncoderPID(TestPara, -20, 20, 0.3, 0, true); //move clamp goal 
     Clamp.set(true);
-    TurnMaxTimePID(TestPara, -35, 0.2, true); //turn to alliance ring
-    //intakeDrop.set(false);
+    // TurnMaxTimePID(TestPara, 35, 0.2, true); //turn to alliance ring
+    // //intakeDrop.set(false);
+
+    // MoveEncoderPID(TestPara, 80, 20, 0.6, 35, true); //move 
+    // arm.set(true);
+    // wait(50,msec);
+    // MoveEncoderPID(TestPara, -70, 30, 0.6, 50, true); //move back 
+    // wait(100,msec);
+    // TurnMaxTimePID(TestPara, 110, 0.35, true); //turn face ladder 
+    // arm.set(false);
+    TurnMaxTimePID(TestPara, -131, 0.35, true);
+    leftArm.set(true);
+    MoveEncoderPID(TestPara, 45, 55, 0.3, -137.5, true); //get ring under ladder 
+    MoveEncoderPID(TestPara, -70, 32, 0.3, -150, true); //move back 
     StartColourSort(100, true);
-    MoveEncoderPID(TestPara, 80, 20, 0.6, -35, true); //move 
-    leftArm.set(true);
-    wait(50,msec);
-    MoveEncoderPID(TestPara, -70, 20, 0.6, -50, true); //move back 
-    wait(100,msec);
-    TurnMaxTimePID(TestPara, -110, 0.35, true); //turn face ladder 
-    leftArm.set(false);
-    TurnMaxTimePID(TestPara, -138, 0.35, true);
-    stopColourSort(60);
-    leftArm.set(true);
-    MoveEncoderPID(TestPara, 45, 54, 0.3, -138, true); //get ring under ladder 
-    stopColourSort(-10);
-    MoveEncoderPID(TestPara, -70, 36, 0.3, -150, true); //move back 
-    StartColourSort(100, false);
     wait(200,msec);
-    TurnMaxTimePID(TestPara, 140, 0.4, true); //turn 
+    TurnMaxTimePID(TestPara, 125, 0.4, true); //turn 
     leftArm.set(false);
     
-    MoveEncoderPID(TestPara, 100, 46, 0.2, 100, true); //move intake 2 rings 
-    MoveEncoderPID(TestPara, 100, 54, 0.6, 20, true); //move to corner 
+    MoveEncoderPID(TestPara, 100, 56, 0.3, 102, true); //move intake 2 rings 
+    MoveEncoderPID(TestPara, 100, 57, 0.6, 20, true); //move to corner 
 
-    MoveTimePID(TestPara, 45, 1.4, 0.6, 40, true); //move in
+    MoveTimePID(TestPara, 60, 1.2, 0.4, 40, true); //move in
+    MoveEncoderPID(TestPara, -30, 7, 0.4, 45, true); //move back 
+    intakeDrop.set(false);
+    wait(30,msec);
+    MoveTimePID(TestPara, 50, 0.5, 0.4, 45, true); //move in again
+    intakeDrop.set(true);
     MoveEncoderPID(TestPara, -40, 30, 0.4, -15, true); //move back 
     arm.set(true);
     TurnMaxTimePID(TestPara, 0, 0.3, true); //turn 
@@ -60,11 +63,12 @@ void BlueMogoElim() {
     MoveEncoderPID(TestPara, 50, 21, 0.3, 6, true); //move back foward to sweep 
     TurnMaxTimePID(TestPara, -150, 0.6, true);
     arm.set(false);
-    
+   
     MoveTimePID(TestPara, -50, 0.6, 0.6, -135, true); 
     Clamp.set(false);
     MoveEncoderPID(TestPara, 100, 8, 0.3, -120, false);
-    
-    MoveEncoderPID(TestPara, -70, 40, 0.3, 0, true);
+   
+    MoveEncoderPID(TestPara, -70, 35, 0.3, 0, true);
+ 
 
 }

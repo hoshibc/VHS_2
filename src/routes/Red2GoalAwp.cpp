@@ -23,11 +23,11 @@ void Red2GoalAwp() {
     double curAngle1 = Gyro.heading();
     RunLift(-90);
 
-    MoveEncoderPID(TestPara, 46, 5, 0.2, curAngle1, true);
+    MoveEncoderPID(TestPara, 46, 4, 0.2, curAngle1, true);
     RunLift(0);
-    MoveEncoderPID(TestPara, -86, 46, 0.2 , curAngle1, true);
+    MoveEncoderPID(TestPara, -86, 45, 0.2 , curAngle1, true);
     RunLift(100);
-    MoveEncoderPID(TestPara, -20, 13, 0.2 , curAngle1, true);
+    MoveEncoderPID(TestPara, -20, 16, 0.2 , curAngle1, true);
     RunLift(0);
     Clamp.set(true);
 
@@ -37,29 +37,29 @@ void Red2GoalAwp() {
     RunRoller(100); //start intake 
     MoveEncoderPID(TestPara, 100, 38, 0.5, 90, true);
     
-    MoveEncoderPID(TestPara, 100, 52, 0.3, 0, false); //turn move toward corner
+    MoveEncoderPID(TestPara, 100, 49, 0.3, 0, false); //turn move toward corner
 
     RunRoller(100);
-    MoveTimePID(TestPara, 45, 1.6, 0.6, 40, true); //move in
+    MoveTimePID(TestPara, 60, 1.6, 0.6, 40, true); //move in
     
 
-    MoveEncoderPID(TestPara, -80, 13, 0.3, 45, true); //move out 
+    MoveEncoderPID(TestPara, -80, 16, 0.3, 45, true); //move out 
 
 
 
 
-    TurnMaxTimePID(TestPara, -88, 0.5, true); //turn to alliance stack 
+    TurnMaxTimePID(TestPara, -92, 0.5, true); //turn to alliance stack 
     RunRoller(90);
-    MoveEncoderPID(TestPara, 90, 70, 0.3, -88, true);
+    MoveEncoderPID(TestPara, 90, 70, 0.3, -92, true);
     Clamp.set(false);
-    MoveEncoderPID(TestPara, 50, 70, 0.3, -90, true);
+    MoveEncoderPID(TestPara, 50, 70, 0.3, -92, true);
     RunRoller(0);
     TurnMaxTimePID(TestPara, 0, 0.4, false);
-    MoveEncoderPID(TestPara, -40, 51, 0.3, 0, true);
+    MoveEncoderPID(TestPara, -40, 49, 0.3, 0, true);
     Clamp.set(true);
     TurnMaxTimePID(TestPara, -80, 0.5, false);
     RunRoller(100);
-    MoveEncoderPID(TestPara, 80, 35, 0.3, -85, true);
+    MoveEncoderPID(TestPara, 80, 35, 0.3, -84, true);
     TurnMaxTimePID(TestPara, 90, 0.6, false);
     MoveEncoderPID(TestPara, 80, 60, 0.3, 90, true);
     RunLift(-100);

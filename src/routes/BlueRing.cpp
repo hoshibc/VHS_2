@@ -44,10 +44,10 @@ void BlueRing() {
 
     TurnMaxTimePID(TestPara, -93, 0.5, true);
 
-    MoveEncoderPID(TestPara, 75, 56, 0.3, -89, true); //move to preload
+    MoveEncoderPID(TestPara, 75, 58, 0.3, -89, true); //move to preload
     wait(400, msec);
     intakeDrop.set(false);
-    MoveEncoderPID(TestPara, 40, 30, 0.2, -89, true); //move to alliance ring 
+    MoveEncoderPID(TestPara, 40, 35, 0.2, -89, true); //move to alliance ring 
     armMoveToAngle2(loadPosition, 100);
     leftArm.set(true);
     TurnMaxTimePID(TestPara, -180, 0.5, true); //turn face stake and push away rings
